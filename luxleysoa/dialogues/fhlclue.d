@@ -6,7 +6,7 @@ IF ~OR(2)
 !See("FHLSEB")
 Global("FHLAliSeb","GLOBAL",1)
 RandomNum(3,1)~ THEN BEGIN FHLAli21
-SAY ~Approaching me in a public place? What impudence!~
+SAY @0
 IF ~~ EXIT
 END
 
@@ -14,7 +14,7 @@ IF ~OR(2)
 !See("FHLSEB")
 Global("FHLAliSeb","GLOBAL",1)
 RandomNum(3,2)~ THEN BEGIN FHLAli22
-SAY ~I believe there is a term for ones like you: riff-raff.~
+SAY @1
 IF ~~ EXIT
 END
 
@@ -22,7 +22,7 @@ IF ~OR(2)
 !See("FHLSEB")
 Global("FHLAliSeb","GLOBAL",1)
 RandomNum(3,3)~ THEN BEGIN FHLAli23
-SAY ~Do you people not clean the streets any more? The decline in cleanliness is simply dreadful.~
+SAY @2
 IF ~~ EXIT
 END
 
@@ -32,7 +32,7 @@ IF ~OR(2)
 !See("FHLSEB")
 Global("FHLFredSeb","GLOBAL",1)
 RandomNum(3,1)~ THEN BEGIN FHLFred21
-SAY ~The Council keeps on raisin' taxes, not worryin' at all about us poor folk.  Pretty soon I won't be able to afford a single ale.~
+SAY @3
 IF ~~ EXIT
 END
 
@@ -40,7 +40,7 @@ IF ~OR(2)
 !See("FHLSEB")
 Global("FHLFredSeb","GLOBAL",1)
 RandomNum(3,2)~ THEN BEGIN FHLFred22
-SAY ~(hic) Urrgh, not feeling so good...~
+SAY @4
 IF ~~ EXIT
 END
 
@@ -48,7 +48,7 @@ IF ~OR(2)
 !See("FHLSEB")
 Global("FHLFredSeb","GLOBAL",1)
 RandomNum(3,2)~ THEN BEGIN FHLFred23
-SAY ~Good to see you, good to see you...~
+SAY @5
 IF ~~ EXIT
 END
 
@@ -58,47 +58,47 @@ CHAIN IF ~InParty("FHLSEB")
 See("FHLSEB")
 !StateCheck("FHLSEB",CD_STATE_NOTVALID)
 Global("FHLAliSeb","GLOBAL",0)~ THEN FHLALI FHLAliGreet
-~Ah, finally you have arrived. How charming to see you again.~
+@6
 DO ~SetGlobal("FHLAliSeb","GLOBAL",1)~
 == FHLSEBJ
-~I could be away for only so long, my dear.~
+@7
 == FHLALI
-~Imnesvale is very pleasant for the time of year.~
+@8
 == FHLSEBJ
-~Oh? I will endeavour to visit it - perhaps in your company?~
+@9
 EXIT
 
 CHAIN IF ~See("FHLSEB")
 InParty("FHLSEB")
 !StateCheck("FHLSEB",CD_STATE_NOTVALID)
 Global("FHLFredSeb","GLOBAL",0)~ THEN FHLFRED FHLFredGreet
-~Heeey, good to see you again!~
+@10
 DO ~SetGlobal("FHLFredSeb","GLOBAL",1)~
 == FHLSEBJ
-~The same to you, Frederick! How's the wife?~
+@11
 == FHLFRED
-~She's good, she's good, just had our third little boy - lemme buy you a drink at the Coronet to celebrate!~
+@12
 == FHLSEBJ
-~Not for me, thanks.~
+@13
 == FHLFRED
-~Not even a mead? C'mon...~
+@14
 == FHLSEBJ
-~Sorry, Frederick, people to see, things to do...or is it the other way round? I forget.~
+@15
 == FHLFRED
-~Hahaha! Yer a good 'un, Sebastian!~
+@16
 EXIT
 
 CHAIN IF ~Global("FHLKav","GLOBAL",1)~ THEN FHLKAV FHLKav
-~Sebastian Ambrose Xavier Luxley?~
+@17
 DO ~SetGlobal("FHLKav","GLOBAL",2)~
 == FHLSEBJ
-~Yes, that's me.~
+@18
 == FHLKAV
-~Genevieve d'Arcy sent me with this letter for you. Said you'd know what it meant.~
+@19
 == FHLSEBJ
-~Oh! Excellent. Give it to me.~
+@20
 =
-~Hmmm, interesting...~
+@21
 DO ~SetGlobal("FHLKavLetter","GLOBAL",1)
 GiveItemCreate("FHLNOTE","FHLSEB",0,0,0)
 ActionOverride("FHLKAV",EscapeArea())~
@@ -107,40 +107,40 @@ EXIT
 BEGIN FHLBOY2
 
 IF ~Global("FHLSpawnBoy","GLOBAL",1)~ THEN BEGIN FHLBOY2
-SAY ~We-ell, ye don't look like a big rav-en-ing monster, but I think ye're the one I'm lookin' for.~
-++ ~What is it, child? Who sent you?~ + FHLBOY2_who
-++ ~Get away from me, brat. I don't need you disturbing me.~ + FHLBOY2_away
+SAY @22
+++ @23 + FHLBOY2_who
+++ @24 + FHLBOY2_away
 END
 
 IF ~~ FHLBOY2_who
-SAY ~Two men, one of them had a lot of pink on and one of them had really weird white hair! They said they're at the Mithrest Inn if ye want to see them.~
-++ ~Did they say what happened? How did they look?~ + FHLBOY2_how
-++ ~Thank you. Now, run along home.~ + FHLBOY2_home
-IF ~PartyGoldGT(0)~ THEN REPLY ~Here, have a gold piece for the trouble.~ DO ~TakePartyGold(1)~ + FHLBOY2_gold
-++ ~I don't know what you're talking about. Now, leave me alone.~ + FHLBOY2_home
+SAY @25
+++ @26 + FHLBOY2_how
+++ @27 + FHLBOY2_home
+IF ~PartyGoldGT(0)~ THEN REPLY @28 DO ~TakePartyGold(1)~ + FHLBOY2_gold
+++ @29 + FHLBOY2_home
 END
 
 IF ~~ FHLBOY2_away
-SAY ~Eeek! But the man in pink'll sneer at me if I don't tell you! They said they're at the Mithrest Inn if ye want to see them.~
-++ ~Did they say what happened? How did they look?~ + FHLBOY2_how
-++ ~Thank you. Now, run along home.~ + FHLBOY2_home
-IF ~PartyGoldGT(0)~ THEN REPLY ~Here, have a gold piece for the trouble.~ DO ~TakePartyGold(1)~ + FHLBOY2_gold
-++ ~I don't know what you're talking about. Now, leave me alone.~ + FHLBOY2_home
+SAY @30
+++ @26 + FHLBOY2_how
+++ @27 + FHLBOY2_home
+IF ~PartyGoldGT(0)~ THEN REPLY @28 DO ~TakePartyGold(1)~ + FHLBOY2_gold
+++ @29 + FHLBOY2_home
 END
 
 IF ~~ FHLBOY2_how
-SAY ~I dunno! They looked tired, I guess.~
-++ ~Thank you. Now, run along home.~ + FHLBOY2_home
-IF ~PartyGoldGT(0)~ THEN REPLY ~Here, have a gold piece for the trouble.~ DO ~TakePartyGold(1)~ + FHLBOY2_gold
-++ ~I don't know what you're talking about. Now, leave me alone.~ + FHLBOY2_home
+SAY @31
+++ @27 + FHLBOY2_home
+IF ~PartyGoldGT(0)~ THEN REPLY @28 DO ~TakePartyGold(1)~ + FHLBOY2_gold
+++ @29 + FHLBOY2_home
 END
 
 IF ~~ FHLBOY2_home
-SAY ~Okay, okay! I'll go away already!~
+SAY @32
 IF ~~ THEN DO ~EscapeArea()~ EXIT
 END
 
 IF ~~ FHLBOY2_gold
-SAY ~Yay! Thank you, <SIRMAAM>, thank you!~
+SAY @33
 IF ~~ THEN DO ~EscapeArea()~ EXIT
 END

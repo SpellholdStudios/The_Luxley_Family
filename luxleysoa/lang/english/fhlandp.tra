@@ -1,0 +1,14 @@
+@0    = ~Hello again, <CHARNAME>. How are things going?~ [FHLAP2]
+@1    = ~Fine, thanks. Would you care to join me again?~
+@2    = ~They're fine. Well, I'll see you around.~
+@3    = ~That would be nice. Come on, Sebastian.~
+@4    = ~Sorry, but I don't think I can leave when Sebastian's like this.~
+@5    = ~It's been pleasant travelling with you, but if you want us to go that's fine.~ [FHLAP3]
+@6    = ~No, I've changed my mind. I'd rather you stayed.~
+@7    = ~You're right - I don't have room for you in the group at the moment.~
+@8    = ~Then we should be getting going. Thank you, <CHARNAME>.~
+@9    = ~Of course. I think Sebastian wanted to do some more shopping, so we can meet in Waukeen's Promenade if you'd like.~
+@10   = ~All right. I'll see you there.~
+@11   = ~I'd rather you just waited here.~
+@12   = ~It would be nice to see you again - we'll see you there. Come on, Sebastian.~
+@13   = ~It would be nice to see you again - well, we'll be here if you need us. Come on, Sebastian.~

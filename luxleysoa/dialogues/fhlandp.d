@@ -7,13 +7,13 @@ Global("FHLKicked","GLOBAL",4)
 !InParty(Myself)
 Global("FHLJoined","GLOBAL",0)
 !Dead("FHLSEB")~ THEN BEGIN FHLAndRej
-SAY ~Hello again, <CHARNAME>. How are things going?~ [FHLAP2]
-++ ~Fine, thanks. Would you care to join me again?~ + FHLAndRej_join
-++ ~They're fine. Well, I'll see you around.~ EXIT
+SAY @0
+++ @1 + FHLAndRej_join
+++ @2 EXIT
 END
 
 IF ~~ FHLAndRej_join
-SAY ~That would be nice. Come on, Sebastian.~
+SAY @3
 IF ~~ THEN DO ~SetGlobal("FHLKicked","GLOBAL",0)
 SetGlobal("FHLJoined","GLOBAL",1)
 ActionOverride("FHLSEB",JoinParty())
@@ -22,24 +22,24 @@ EXIT
 END
 
 IF ~Global("FHLJoined","GLOBAL",1) Global("FHLKicked","GLOBAL",0) Global("FHLReturns","GLOBAL",0) Global("FHLReturns2","GLOBAL",0) Dead("FHLSEB") InPartyAllowDead("FHLSEB")~ THEN BEGIN FHLAndKickSebDead
-SAY ~Sorry, but I don't think I can leave when Sebastian's like this.~
+SAY @4
 IF ~~ THEN DO ~JoinParty()~
 EXIT
 END
 
 IF ~Global("FHLJoined","GLOBAL",1) Global("FHLKicked","GLOBAL",0) Global("FHLReturns","GLOBAL",0) Global("FHLReturns2","GLOBAL",0) !Dead("FHLSEB")~ THEN BEGIN FHLAndKick
-SAY ~It's been pleasant travelling with you, but if you want us to go that's fine.~ [FHLAP3]
-++ ~No, I've changed my mind. I'd rather you stayed.~ + FHLAndKick_stay
-++ ~You're right - I don't have room for you in the group at the moment.~ + FHLAndKick_go
+SAY @5
+++ @6 + FHLAndKick_stay
+++ @7 + FHLAndKick_go
 END
 
 IF ~~ FHLAndKick_stay
-SAY ~Then we should be getting going. Thank you, <CHARNAME>.~
+SAY @8
 IF ~~ THEN DO ~JoinParty()~ EXIT
 END
 
 IF ~~ FHLAndKick_go
-SAY ~Of course. I think Sebastian wanted to do some more shopping, so we can meet in Waukeen's Promenade if you'd like.~
+SAY @9
 IF ~!AreaCheck("AR0602")
 !AreaCheck("AR0603")
 !AreaCheck("AR0410")
@@ -86,7 +86,7 @@ IF ~!AreaCheck("AR0602")
 !AreaCheck("AR2903")
 !AreaCheck("AR2904")
 !AreaCheck("AR2905")
-!AreaCheck("AR2906")~ THEN REPLY ~All right. I'll see you there.~ + FHLAndKick_prom
+!AreaCheck("AR2906")~ THEN REPLY @10 + FHLAndKick_prom
 IF ~!AreaCheck("AR0301")
 !AreaCheck("AR0302")
 !AreaCheck("AR0303")
@@ -107,11 +107,11 @@ IF ~!AreaCheck("AR0301")
 !AreaCheck("AR1303")
 !AreaCheck("AR0604")
 !AreaCheck("AR0605")
-!AreaCheck("AR0606")~ THEN REPLY ~I'd rather you just waited here.~ + FHLAndKick_wait
+!AreaCheck("AR0606")~ THEN REPLY @11 + FHLAndKick_wait
 END
 
 IF ~~ FHLAndKick_prom
-SAY ~It would be nice to see you again - we'll see you there. Come on, Sebastian.~
+SAY @12
 IF ~~ THEN DO ~SetGlobal("FHLJoined","GLOBAL",0)
 SetGlobal("FHLKicked","GLOBAL",1)
 EscapeAreaMove("AR0700",2169,2452,0)~
@@ -119,7 +119,7 @@ EXIT
 END
 
 IF ~~ FHLAndKick_wait
-SAY ~It would be nice to see you again - well, we'll be here if you need us. Come on, Sebastian.~
+SAY @13
 IF ~~ THEN DO ~SetGlobal("FHLJoined","GLOBAL",0)
 SetGlobal("FHLKicked","GLOBAL",2)
 SetLeavePartyDialogFile()

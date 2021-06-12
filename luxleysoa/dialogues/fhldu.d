@@ -1,63 +1,63 @@
 BEGIN FHLDU
 
 CHAIN FHLDU FHLESTM1
-~Genevieve, dear girl, are these the people interested in the Luxleys?~ [FHLDU1]
+@0
 DO ~SetGlobal("FHLTellCurse","GLOBAL",2)~
 == FHLSEBJ
-~We are--~ [FHLSQ8]
+@1
 == FHLDU
-~No time for introductions! I have some fascinating facts to impart! Well, as far as facts can be facts--~ [FHLDU2]
+@2
 == FHLGEN
-~Durydil!~ [FHLG17]
+@3
 == FHLDU
-~There was a mage, some two hundred years ago, called Matthias Nicolai Luxley. He was a genius, by all accounts, and the favourite child of a large family, the Luxleys.~ [FHLDU3]
+@4
 == FHLSEBJ
-~How large? Where did they live?~
+@5
 == FHLDU
-~Oh, in the order of a hundred, easily. Records place them east of Amn, though it's very vague.~
+@6
 =
-~Where was I? Matthias Luxley was in a rivalry with a large family of wizardslayers...the Tierneys, I believe.~
+@7
 =
-~Now, this is where it gets really interesting. Matthias had a laboratory assistant named Liotre who recorded that the Luxleys refused to help Matthias destroy the opposing family.~
+@8
 =
-~Matthias, in a rage, developed a complex spell that he said would put 'the family' in line.~
+@9
 == FHLSEBJ
-~But--~
+@10
 == FHLDU
-~He attacked the Tierneys alone and of course lost, despite his power, and then - see here! - he used his own blood, and that of his sister (who was ignorant of all that was going on), to curse his own family!~
+@11
 =
-~And the best isn't over yet! Now, Liotre's account grows rather speculative here, but I've gathered from various other sources that he told his family that the Tierneys had cursed them. He got his family to destroy the Tierneys, and then all records and traces of the Luxley estate simply - vanish.~
+@12
 == FHLSEBJ
-~Vanish?~
+@13
 == FHLDU
-~Mmm, into thin air, as it were.~
+@14
 == FHLSEBJ
-~And the curse? How would it be cured?~
+@15
 == FHLDU
-~Of course, the cure! Let me just consult my notes...~
+@16
 =
-~Yes. The spell was highly complex, but drew its power from Matthias himself. Logically, he would have had the curse choose a new source of magic, as it were.~
+@17
 == FHLSEBJ
-~The head of the family.~
+@18
 == FHLDU
-~Probably something like that. This Matthias fellow seemed to have a craving for power.~
+@19
 == FHLSEBJ
-~The *cure*!~
+@20
 == FHLDU
-~Have I not-- well, I'd assume that by eliminating the source of the magic, the curse would have no power.~
+@21
 == FHLSEBJ
-~You mean, kill it.~
+@22
 == FHLDU
-~I do believe that's what I mean. Yes.~
+@23
 == FHLSEBJ
-~Are you sure?~
+@24
 == FHLDU
-~Of course I am!~
+@25
 == FHLGEN
-~Durydil, let's go. Sebastian, just - just look after yourself.~
+@26
 DO ~EscapeAreaMove("AR0700",3325,1969,14)~
 == FHLDU
-~Who are they, anyway?~
+@27
 DO ~SetGlobal("FHLTellCurse","GLOBAL",2)
 EscapeArea()~
 EXIT

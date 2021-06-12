@@ -1,0 +1,16 @@
+@0    = ~I hope you enjoy your stay. Xavier can be a little overwhelming at times.~ [FHLLEA2]
+@1    = ~Sorry, I can't talk at the moment. I'm a little busy.~ [FHLLEA1]
+@2    = ~That Rosanna has given me more work than all the other children combined - she does insist on sparring so with Lucas...~ [FHLLEA3]
+@3    = ~I'd love to hear your stories about outside, but I'm afraid I have work to do.~ [FHLLEA4]
+@4    = ~Welcome back, Sebastian! And you too, Andrei. Whatever have you been doing with yourselves?~ [FHLLEA5]
+@5    = ~It's been amazing! I've seen so many things since being away - but it's wonderful to be back.~
+@6    = ~Yes. Wonderful.~
+@7    = ~Cheer up, Sebastian, at least you get to go out sometimes. You know how Xavier is.~
+@8    = ~Lealia's our main healer, <CHARNAME>, and she does a great job. Xavier knows you can help the family best if you stay in the estate.~
+@9    = ~Yes, of course. Anyway, I should get back to cataloguing my supplies.~
+@10   = ~Hello, there. Is there anything you need?~ [FHLLEA6]
+@11   = ~We found Mietta - she got lost and I think she's ill. Can you take a look at her?~
+@12   = ~Oh, of course! Poor Katya must be worried sick. Thank you for bringing her here.~ [FHLLEA7]
+@13   = ~How sweet.~
+@14   = ~Sebastian! You wouldn't just leave her, would you?~
+@15   = ~No, no, but she should learn how to look after herself.~
