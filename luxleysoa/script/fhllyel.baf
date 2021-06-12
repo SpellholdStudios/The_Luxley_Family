@@ -1,0 +1,65 @@
+IF
+HPPercentLT(Myself,20)
+Global("FHLDogChange","LOCALS",0)
+!Dead("FHLXAV")
+THEN
+RESPONSE #100
+SetGlobal("FHLDogChange","LOCALS",1)
+SetGlobalTimer("FHLLyelChange","GLOBAL",90)
+ApplySpellRES("FHLLYEL",MYSELF)
+END
+
+IF
+Global("FHLDogChange","LOCALS",1)
+GlobalTimerExpired("FHLLyelChange","GLOBAL")
+THEN
+RESPONSE #100
+SetGlobal("FHLDogChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+Global("FHLDogChange","LOCALS",1)
+Dead("FHLXAV")
+THEN
+RESPONSE #100
+SetGlobal("FHLDogChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+Global("FHLLyelEstate","GLOBAL",1)
+AreaCheck("FH4800")
+THEN
+RESPONSE #100
+StartDialogNoSet(Player1)
+END
+
+IF
+Global("FHLMDP","GLOBAL",1)
+THEN
+RESPONSE #100
+EscapeArea()
+END
+
+//Moving to go to the estate
+IF
+Global("FHLReturn1Set","GLOBAL",1)
+Global("FHLLyelMoveEstate","GLOBAL",0)
+THEN
+RESPONSE #100
+ApplySpellRES("FHLDOOR",Myself)
+Wait(1)
+MoveBetweenAreas("FH4800",[2140.2409],4)
+SetGlobal("FHLLyelMoveEstate","GLOBAL",1)
+END
+
+//Moving Lyel to the upstairs floor of the main house
+IF
+GlobalGT("FHLTellCurse","GLOBAL",0)
+Global("FHLLyelMove2","GLOBAL",0)
+THEN
+RESPONSE #100
+MoveBetweenAreas("FHLMH2",[1304.1173],6)
+SetGlobal("FHLLyelMove2","GLOBAL",1)
+END

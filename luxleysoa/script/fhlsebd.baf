@@ -1,0 +1,32 @@
+IF
+RealGlobalTimerExpired("FHLLuxTalkTime","GLOBAL")
+!AreaCheck("FH4800")
+!AreaCheck("FHLMH1")
+!AreaCheck("FHLMH2")
+!AreaCheck("FHLUX1")
+!AreaCheck("FHLUX2")
+!AreaCheck("FHLUX3")
+!AreaCheck("FHLUX4")
+!AreaCheck("FHLUX5")
+!AreaCheck("FHLUX6")
+GlobalGT("FHLMDP","GLOBAL",1)
+Global("FHLSebTalk","GLOBAL",19)
+InParty(Myself)
+THEN
+RESPONSE #100
+SetGlobal("FHLLuxTalk","GLOBAL",2)
+IncrementGlobal("FHLSebTalk","GLOBAL",1)
+Interact(Player1)
+END
+
+IF
+InParty(Myself)
+InParty("Haerdalis")
+InParty("FHLAND")
+!StateCheck("Haerdalis",CD_STATE_NOTVALID)
+!StateCheck("FHLAND",CD_STATE_NOTVALID)
+Global("FHLSebHaerTalk","GLOBAL",2)
+THEN
+RESPONSE #100
+Interact("Haerdalis")
+END

@@ -1,0 +1,637 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <style type="text/css">
+    /*<![CDATA[*/
+    <!-- 
+      body {
+        margin: 0;
+        padding: 0;
+        cursor: default;
+        text-align: center;
+        color: #000;
+        background: #e3e3db url('http://spellholdstudios.net/images/sh_bg_main.jpg');
+      }
+      
+      #wrap {
+        text-align: left;
+        margin: 0 auto;
+        margin-top: 20px;
+        width: 88%;
+        font-family: Verdana, Tahoma, Arial, sans-serif;
+        font-size: 12px;
+        color: #333;
+      }
+      
+      #header {
+        text-align: center;
+        background: #e5e5e5;
+        border: 1px solid #781808;
+        border-top: 5px solid #781808;
+        border-bottom: 5px solid #781808;
+        padding: 5px 0 13px 0;
+      }
+      
+      #header .about {
+        margin: 7px 0 0 0;
+        padding: 0;
+        font-style: italic;
+        color: #555;
+      }
+      
+      #header .menu {
+        font-weight: bold;
+        margin: 0;
+        color: #999;
+      }
+      
+      #header .menu a:link,
+      #header .menu a:visited {
+        color: #333;
+      }
+      
+      #maindiv {
+        margin: 0 auto;
+        margin-top: -20px;
+        width: 80%;
+      }
+      
+      #maindiv .content {
+        counter-increment: kman;
+        counter-reset: h2;
+        background-color: #e8e8e6;
+        padding: 0 0 25px 0;
+        margin: 50px auto;
+        border-width: 1px 1px 4px 10px;
+        border-style: solid;
+        border-color: #781808;
+        position: relative;
+        display: block;
+      }
+      
+      #maindiv .content::before {
+        content: counter(kman, lower-roman);
+        font-size: 100%;
+        font-weight: bold;
+        text-align: center;
+        color: #eee;
+        background-color: #781808;
+        width: 35px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        display: block;
+      }
+      
+      h2 {
+        display: block;
+        font-family: Verdana, Trebuchet MS, Arial, serif;
+        text-align: left;
+        text-indent: 30px;
+        padding: 0px;
+        margin: 20px 0 0 0;
+        border-bottom: dotted 2px #d0d0d0;
+        border-top: dotted 2px #d0d0d0;
+        background: #deded9;
+        font-size: 160%;
+      }
+      
+      h2::first-letter {
+        color: #781808;
+        background-color: transparent;
+      }
+      
+      #maindiv p {
+        font-size: 100%;
+        font-style: normal;
+        line-height: 150%;
+        padding: 0px;
+        margin: 10px auto;
+        width: 90%;
+        display: block;
+      }
+      
+      #maindiv address a:link,
+      #maindiv address a:visited {
+        font-weight: bold;
+        text-decoration: underline;
+        background-color: transparent;
+        color: #eaeaea !important;
+        padding-right: 5px;
+        padding-left: 6px;
+      }
+      
+      #maindiv address a:focus,
+      #maindiv address a:hover {
+        text-decoration: none;
+        color: #F1F1F1;
+        border: 0;
+      }
+      
+      #maindiv address a:active {
+        color: #fff;
+        text-decoration: line-through;
+        border: none;
+      }
+      
+      #maindiv address {
+        font-size: 95%;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        color: #BBB;
+        background-color: #781808;
+        padding: 3px 0px 0px;
+        margin: 0px;
+        width: 100%;
+        position: absolute;
+        bottom: -1px;
+        left: 0px;
+        display: block;
+        text-align: right;
+      }
+      
+      #maindiv .important {
+        font-size: 95%;
+        font-family: Verdana;
+        text-align: left;
+        background-color: #F1F1F1;
+        border-top: solid 1px #aaa;
+        border-bottom: solid 1px #aaa;
+        border-left: solid 6px #aaa;
+        border-right: solid 6px #aaa;
+        padding: 10px;
+        margin: 20px auto;
+        width: 80%;
+        line-height: 160%;
+      }
+      
+      #maindiv .important::before {
+        display: none;
+      }
+      
+      #maindiv .important p {
+        font-size: 100%;
+        text-indent: 0px;
+        margin: 5px 0 10px 0;
+      }
+      
+      #maindiv ul {
+        margin: -10px 0 0 30px;
+        *margin-left: 65px;
+      }
+      
+      #maindiv ol {
+        margin: -10px 0 0 35px;
+        *margin-left: 70px;
+      }
+      
+      #maindiv .important ul {
+        margin: -10px 0 0 15px;
+      }
+      
+      #maindiv .important ol {
+        margin: -10px 0 0 20px;
+      }
+      
+      #maindiv ul li {
+        list-style-type: square;
+        line-height: 150%;
+      }
+      
+      #maindiv ol li {
+        line-height: 150%;
+      }
+      
+      .t1 {
+        font-weight: bold;
+        width: 26%;
+        text-align: right;
+        clear: right;
+        float: left;
+        *float: none;
+        *margin-left: 65px;
+        line-height: 22px;
+      }
+      
+      .t2 {
+        text-align: left;
+        width: 73%;
+        float: right;
+        *float: none;
+        line-height: 22px;
+      }
+      
+      hr {
+        margin: 10px 0 10px 0;
+        padding: 0;
+        height: 1px;
+        border: 0;
+        color: #aaa;
+        background-color: #aaa;
+      }
+      
+      hr.floatfix {
+        clear: both;
+        color: #e8e8e6;
+        background-color: #e8e8e6;
+        *margin: 0;
+        *padding: 0;
+      }
+      
+      h1 {
+        font-size: 225%;
+        color: #444;
+        padding: 5px 0 5px 0;
+        margin: 0;
+        width: 100%;
+      }
+      
+      h3,
+      h4,
+      h5 {
+        margin: 10px 40px 10px 40px;
+        padding: 0;
+      }
+      
+      h3 {
+        font-size: 125%;
+        font-style: italic;
+      }
+      
+      h4 {
+        font-size: 125%;
+      }
+      
+      h5 {
+        font-size: 100%;
+      }
+      
+      h6 {
+        width: 100%;
+        margin: 10px 0 15px 0;
+        background-color: #ECECEC;
+        text-align: left;
+        text-indent: 30px;
+        font-size: 100%;
+        font-style: italic;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        border-bottom: solid 1px #bbb;
+        border-top: solid 1px #bbb;
+      }
+      
+      a:link,
+      a:visited {
+        color: #781808;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:active {
+        color: #222;
+        border-bottom: 1px solid black;
+      }
+
+    -->
+    /*]]>*/
+    </style>
+    <title>SPELLHOLD STUDIOS - The Luxley Family</title>
+  </head>
+  <body>
+    <a name="top" id="top"></a>
+    <div id="wrap">
+      <div id="header">
+        
+    <h1>The Luxley Family</h1>
+        
+    <strong>A Spellhold Studios mod for Baldur's Gate 2: SoA</strong> 
+    <hr />
+        
+    <p class="about"> Authors: Feuille, Miss Sakaki</p>
+        
+    <p class="about"> <a href="http://spellholdstudios.net/ie/luxleys">Mod Website</a> 
+      &#8226; <a href="http://www.shsforums.net/index.php?showforum=324">Mod Forum</a> 
+      &#8226; Version: 1.2 </p>
+        <hr />
+        
+    <p class="menu"> <a href="#intro">Introduction</a> &middot; <a href="#installation">Installation</a> 
+      &middot; <a href="#faq">Mod Details</a> &middot; <a href="#credits">Credits</a> 
+      &middot; <a href="#version">Version History</a> </p>
+      </div>
+      <div id="maindiv">
+
+        <!-- ================== I n t r o d u c t i o n ================== -->
+        <a name="intro" id="intro"></a>
+        <div class="content">
+          <h2>Introduction</h2>
+          
+      <p>The Luxley Family introduces two joinable NPCs, Sebastian and Andrei 
+        Luxley, to your game. Sebastian is a Chaotic Neutral playwright with a 
+        rather idiosyncratic sense of humour who appears to take great delight 
+        in showing his cousin Andrei the world outside their family home. Andrei 
+        is a polite, Lawful Neutral young monk with a strong sense of self who 
+        has led a rather sheltered life until now. Throughout your journey with 
+        them, you will discover that their family is not all that meets the eye. 
+        You may have to make some tough decisions - and the path you choose will 
+        have repercussions.</p>
+      <p><br />
+        Though you do not need to start a new game to have them join your party, 
+        it is advisable to have them join early in order that their story arc 
+        is completed. Both banter with all the Bioware party NPCs and they comment 
+        on many of the quests in the game.</p>
+      <p><br />
+        Sebastian and Andrei both have detailed talk tracks with the PC; they 
+        also banter with each other extensively throughout the game. Note that 
+        there is adult content in this mod, but all of it is voluntary on the 
+        part of the player - nothing that you feel uncomfortable with is forced 
+        on you.</p>
+      <p>The mod contains:<br />
+      </p>
+      <ul>
+        <li> 
+          <p>A custom kit for Sebastian, giving him an additional spell per level 
+            but also combat penalties</p>
+        </li>
+        <li> 
+          <p>A special ability for Andrei, giving him a damage bonus with a Thac0 
+            penalty and wisdom drain</p>
+        </li>
+        <li> 
+          <p>A brand-new area, as well as a set edited from the original game 
+            areas, along with new non-joinable NPCs</p>
+        </li>
+        <li> 
+          <p>A three-stage quest with different paths for each segement</p>
+        </li>
+        <li> 
+          <p>A track of up to 9 interactions between the protagonist and both 
+            characters </p>
+        </li>
+        <li> 
+          <p>A talk track of up to 10 conversations between Sebastian and Andrei</p>
+        </li>
+        <li> 
+          <p>Extensive player-initiated-dialogue for both characters which changes 
+            depending how much they like the protagonist</p>
+        </li>
+        <li> 
+          <p>Custom portraits for Sebastian and Andrei, and optional portraits 
+            for various non-party NPCs</p>
+        </li>
+        <li> 
+          <p>Extensive voicing, including voicing for eleven non-party NPCs</p>
+        </li>
+        <li> 
+          <p>2-4 banters with the Bioware NPCs in your party</p>
+        </li>
+        <li> 
+          <p>Interjections about the player&#39;s conversations with non-party 
+            NPCs, and interactions with non-party NPCs</p>
+        </li>
+        <li> 
+          <p>Tree of Life dialogue with different options depending on the paths 
+            you have chosen</p>
+        </li>
+        <li> 
+          <p>String fixers (K) in the case of re-installations mixing up Andrei 
+            and Sebastian&#39;s name strings</p>
+        </li>
+        <li> 
+          <p>Custom items, some of which are more useful than others</p>
+        </li>
+      </ul>
+      <p>&nbsp;</p>
+      <p>If you want to write your own NPC talking about or with Sebastian or 
+        Andrei, or commenting about their quest, you don't have to ask our permission. 
+        However, if you'd like to get in contact and get some ideas going, we're 
+        more than willing to put the work in.</p>
+      <address> <span class="footer">The Luxley Family &gt; Introduction</span> 
+      &#8226;<a href="#top">BACK TO TOP</a> </address>
+        </div>
+
+        <!-- ================== I n s t a l l a t i o n ================== -->
+        <a name="installation" id="installation"></a>
+        <div class="content">
+          <h2>Installation</h2>
+          
+      <p>If you have not already done so, obtain and install the latest official 
+        Bioware patch from <a href="http://www.bioware.com">www.bioware.com</a>. 
+        If you have other mods already installed, uninstall them before installing 
+        the patch. Like the majority of mods created for the Infinity Engine, 
+        The Luxley Family is made using WeiDU, meaning that it adds to but does 
+        not overwrite game files. If you plan to install any non-WeiDU mods, install 
+        them before Faren and any other WeiDU mods.</p>
+      <p>&nbsp;</p>
+      <ol>
+        <li>Make sure that Baldur's Gate II or any related programs are not running.</li>
+        <li>Place LuxleySoA.exe anywhere on your drive.</li>
+        <li>Open LuxleySoA.exe and follow the on-screen instructions. The installer 
+          will extract the necessary files into your game directory.</li>
+        <li>A DOS window will open automatically and ask whether you want to install 
+          The Luxley Family.</li>
+        <li>WeiDU will copy the necessary files into the game and compile dialogues 
+          and scripts. This will take a few minutes.</li>
+        <li>WeiDU will decompress the audio files packaged with The Luxley Family. 
+          The window will fill with text.</li>
+        <li>Choose whichever optional components you wish to install.</li>
+        <li>Start playing! You do not need to start a new game to have Sebastian 
+          and Andrei in your party</li>
+      </ol>
+      <p>&nbsp;</p>
+      <h4><b>Uninstalling The Luxley Family</b></h4>
+      <p>If you wish to uninstall The Luxley Family, run Setup-LuxleySoA.exe again 
+        and select the U option. </p>
+      <address> <span class="footer">The Luxley Family &gt; Installation</span> 
+      <a href="#top">BACK TO TOP</a> </address>
+          
+      <p><!-- ================== F A Q ================== --> <a name="faq" id="faq"></a> 
+      </p>
+    </div>
+
+        <div class="content">
+          
+      <h2>Mod Details</h2>
+          
+      <p>Sebastian and Andrei can be found in the Bridge District of Athkatla.<br />
+        <br />
+        Andrei&#39;s abilities are the following:<br />
+        Str: 15<br />
+        Dex: 17<br />
+        Con: 16<br />
+        Int: 12<br />
+        Wis: 9<br />
+        Cha: 11<br />
+        Biography: Andrei smiles when you ask him about himself. Though he is 
+        willing to talk about his relatives and is forthright about his beliefs, 
+        he is politely evasive on some subjects. He is skilled in hand-to-hand 
+        combat, a skill he developed at a young age, and was trained by an older 
+        member of his family. Despite his combat expertise, Andrei has only just 
+        left the family estate and seems a little naive about certain aspects 
+        of everyday life that you, perhaps, take for granted. Nevertheless, he 
+        comes across as quietly confident and it is rare to see him stray from 
+        a path he has chosen.<br />
+        <br />
+        Sebastian&#39;s abilities are the following:<br />
+        Str: 10<br />
+        Dex: 12<br />
+        Con: 15<br />
+        Int: 16<br />
+        Wis: 15<br />
+        Cha: 17<br />
+        <br />
+        Biography: It is fair to say that whenever you question Sebastian about 
+        himself he is maddeningly elusive. He is a playwright by trade - or so 
+        he says, though he is secretive about his work and claims that a great 
+        deal of what he writes would go over your head. He has a keen sense of 
+        frivolity and seems to take little in life with any seriousness. Nevertheless, 
+        on occasion it appears that there is something else going on with him, 
+        and it would be unwise to underestimate his intelligence.</p>
+      <p>&nbsp;</p>
+      <p><b>PLAYER-INITIATED DIALOGUES</b><br />
+        You have the opportunity to initiate dialogue with Sebastian and Andrei 
+        if you click the Talk icon and click on their portraits or avatars. This 
+        option is available once they have had their first talk while in the party. 
+        Their reactions will depend on your behaviour during both scripted and 
+        player-initiated talks.<br />
+        <br />
+        Notes on flirting with Andrei:<br />
+        You can choose the option &quot;flirt with&quot; irrespective of race 
+        or gender. If the number of flirts he has accepted gets high enough, he 
+        will start a dialogue with you commenting on your behaviour and you can 
+        decide whether to try to take things further or remain friends.<br />
+        <br />
+        Notes on flirting with Sebastian:<br />
+        You can choose &quot;flirt with&quot; irrespective of race or gender. 
+        If the number of flirts he has accepted gets high enough, your Bioware 
+        loved one will object. Under certain circumstances, you can choose to 
+        try to take your relationship with Sebastian further.<br />
+        <br />
+        With both, you can choose the option &quot;I&#39;d like us to just be 
+        friends&quot; at any time, and &quot;flirt with&quot; will disappear from 
+        the response menu.</p>
+      <p>&nbsp;</p>
+      <p><b>COMPATIBILITY</b></p>
+      <p>This version contains content for Shadows of Amn only, so while Sebastian 
+        and Andrei will be functional in a Throne of Bhaal game they will not 
+        speak to you. Any non-WeiDU mods and patches they come with must be installed 
+        BEFORE the Luxley Family. Note that Virtue must be installed AFTER the 
+        Luxley Family. In addition, if you wish to alter Sebastian or Andrei using 
+        a tweak- or fixpack, you should install the pack after the Luxley Family. 
+      </p>
+      <address> <span class="footer">The Luxley Family &gt; Mod Details</span> 
+      &#8226;<a href="#top">BACK TO TOP</a> </address>
+        </div>
+
+        <!-- ================== C r e d i t s ================== -->
+        <a name="credits" id="credits"></a>
+        <div class="content">
+          <h2>Credits</h2>
+          
+      <p><strong>Authors:</strong><br />
+        Hannah Powell-Smith (Miss Sakaki)<br />
+        Fay Ikin (Feuille)<br />
+        <br />
+        <strong>Artwork:</strong><br />
+        Area artwork by Rabain<br />
+        Mietta BAM by Sir-Kill<br />
+        <br />
+        <strong>Voice actors:</strong><br />
+        Andrei: James Taylor<br />
+        Sebastian: Ross Cloney<br />
+        <br />
+        <strong>Non-joinable NPC actors:</strong><br />
+        Alexandra: Lizy Cooper<br />
+        Durydil: Richard Courcy<br />
+        Genevieve: Hannah Powell-Smith<br />
+        Josefyne: Mary Hamilton<br />
+        Lealia: Fay Ikin<br />
+        Lucas: Fred Groves<br />
+        Lyel: Tim Morgan<br />
+        Rosanna: Eleanor Hingley<br />
+        Samuel: Dan Mitrovic<br />
+        Simeon: Charlie Meigh<br />
+        Xavier: Andrew Kitchener<br />
+        <br />
+        <strong>Beta testers:</strong><br />
+        Berelinde, Clarion, CrazEeFan, K'aeloree, Kitana, Suspiria, toby_fowl, 
+        SteveThaiBinh<br />
+        <br />
+        <strong>Special thanks to:</strong><br />
+        The <a href="http://forums.spellholdstudios.net">Spellhold Studios</a> 
+        team for forum and download hosting.<br />
+        <a href="http://forums.chosenofmystra.net">Chosen of Mystra</a> for hosting 
+        when the mod was at the early development stage.<br />
+        Zyraen for his assistance with dialogue scripting.<br />
+        K&#39;aeloree for major moral support and the roof over our heads.<br />
+        CamDawg for letting us &quot;borrow&quot; pieces of code from the Fixpack.<br />
+        Sir-Kill for the BAM creation.<br />
+        Rabain for the area artwork.<br />
+        Our wonderful beta testers, both for helping to find bugs and dialogue 
+        inconsistencies, and their feedback and suggestions.</p>
+      <p>On the technical angle, we'd like to thank Westley Weimer (creation of 
+        WeiDU), the bigg (maintaining and adding to WeiDU), igi (maintaining IESDP), 
+        Jason Compton & Jesse Myers (player-initiated dialogue technology), Avenger 
+        (DLTCEP), Simding0, Ghreyfain, Blue, Rastor and CamDawg (tutorials), and 
+        everyone at the Q&amp;A forums who helped out when we were having difficulties.</p>
+      <p>&nbsp;</p>
+      <p><strong>The Luxley Family mod is built using the following tools and 
+        resources:</strong></p>
+      <p><strong> </strong><a href="http://weidu.org/">WeiDU</a> by Wesley Weimer, 
+        maintained by the bigg</p>
+      <p><a href="http://www.idi.ntnu.no/%7Ejoh/ni/">Near Infinity</a> (Infinity 
+        Engine browser and editor) by Jon Olav Hauglid</p>
+      <p><a href="http://infexp.sourceforge.net/">Infinity Explorer</a></p>
+      <p><a href="http://forums.gibberlings3.net/index.php?showforum=137">DLTCEP</a> 
+        by Avenger</p>
+      <p><a href="http://www.mud-master.com/shadowkeeper/">Shadow Keeper</a></p>
+      <p><a href="http://www.context.cx/">ConTEXT Programmers' Editor</a></p>
+      <p><a href="http://www.nch.com.au/wavepad/masters.html">WavePad</a> audio 
+        editing software</p>
+      <p><a href="http://www.adobe.com">Adobe Photoshop and Adobe Photoshop Elements</a> 
+        by Adobe</p>
+      <p><a href="http://iesdp.gibberlings3.net/main.htm">IESDP</a> maintained 
+        by igi</p>
+      <p><a href="http://www.pocketplane.net/mambo/index.php?option=com_content&amp;task=blogcategory&amp;id=137&amp;Itemid=96">Tispack</a> 
+        by Per Olofsson</p>
+      <p><a href="http://www.teamx.ru/eng/files/utils/">Snd2acm</a> by TeamX</p>
+      <p><a href="http://www.vorbis.com/">OggVorbis</a> audio encoder</p>
+      <p><a href="http://winlame.sourceforge.net/">winLAME</a> audio encode</p>
+      <p><!-- Don't remove the <hr /> unless you have text following the last "t2" in this <div>! --> 
+      </p>
+          
+      <address> <span class="footer">The Luxley Family &gt; Credits</span> &#8226;<a href="#top">BACK 
+      TO TOP</a> </address>
+        </div>
+
+        <!-- ================== V e r s i o n   H i s t o r y ================== -->
+        <a name="version" id="version"></a>
+        <div class="content">
+          <h2>Version history</h2>
+          
+      <h6>19 February 2013 - Version 1.2:</h6>
+      <ul>
+        <li>Fixed several typos</li>
+        <li>Fixed a variety of bugs thanks to the BWP Fixpack & Lollorian</li>
+      </ul>
+
+      <h6>7 February 2008 - Version 1.1:</h6>
+      <ul>
+        <li>Fixed minor banter bugs</li>
+        <li>Fixed a bug preventing the party leaving the Luxleys' home under certain 
+          circumstances</li>
+        <li>Fixed a bug preventing one of the quest portions' functioning properly 
+          under certain circumstances</li>
+      </ul>
+
+          <h6>5 January 2008 - Version 1</h6>
+          
+      <address> <span class="footer">The Luxley Family &gt; Version History</span> 
+      &#8226;<a href="#top">BACK TO TOP</a> </address>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+IF
+AttackedBy([ANYONE],DEFAULT)
+!Allegiance(Myself,ENEMY)
+THEN
+RESPONSE #100
+Enemy()
+END
+
+IF
+Allegiance("FHLXAV",ENEMY)
+!Allegiance(Myself,ENEMY)
+THEN
+RESPONSE #100
+Enemy()
+END
+
+IF
+HPPercentLT(Myself,20)
+!Dead("FHLXAV")
+Global("FHLRatChange","LOCALS",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLRatChange","LOCALS",1)
+SetGlobalTimer("FHLSamChange","GLOBAL",90)
+ApplySpellRES("FHLSAM",MYSELF)
+END
+
+IF
+Global("FHLRatChange","LOCALS",1)
+GlobalTimerExpired("FHLSamChange","GLOBAL")
+THEN
+RESPONSE #100
+SetGlobal("FHLRatChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+Global("FHLRatChange","LOCALS",1)
+Dead("FHLXAV")
+THEN
+RESPONSE #100
+SetGlobal("FHLRatChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+Global("FHLMDP","GLOBAL",1)
+!Allegiance(Myself,ENEMY)
+THEN
+RESPONSE #100
+Enemy()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("prep","LOCALS",0)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Myself,CLERIC_FREE_ACTION)
+		ReallyForceSpell(Myself,CLERIC_DRAW_UPON_HOLY_MIGHT)
+		Spell(Myself,NPC_BLADE_BARRIER)
+		Spell(Myself,CLERIC_PHYSICAL_MIRROR)
+		SetGlobal("prep","LOCALS",1)
+END
+
+IF
+HPPercentLT("FHLXAV",50)
+HaveSpell(CLERIC_CURE_SERIOUS_WOUNDS)
+THEN
+RESPONSE #100
+Spell("FHLXAV",CLERIC_CURE_SERIOUS_WOUNDS)
+END
+
+IF
+HPPercentLT("FHLXAV",50)
+HaveSpell(CLERIC_CURE_LIGHT_WOUNDS)
+THEN
+RESPONSE #100
+Spell("FHLXAV",CLERIC_CURE_LIGHT_WOUNDS)
+END
+
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("prep","LOCALS",0)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Myself,CLERIC_FREE_ACTION)
+		ReallyForceSpell(Myself,CLERIC_DRAW_UPON_HOLY_MIGHT)
+		Spell(Myself,NPC_BLADE_BARRIER)
+		Spell(Myself,CLERIC_PHYSICAL_MIRROR)
+		SetGlobal("prep","LOCALS",1)
+END
+
+IF
+	!See(NearestEnemyOf(Myself))
+	HaveSpell(CLERIC_INVISIBILITY_PURGE)
+THEN
+	RESPONSE #100
+		Spell(Myself,CLERIC_INVISIBILITY_PURGE)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(CLERIC_DEATH_WARD)
+THEN
+	RESPONSE #100
+		Spell(Myself,CLERIC_DEATH_WARD)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(CLERIC_FLAME_STRIKE)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),CLERIC_FLAME_STRIKE)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(CLERIC_CAUSE_SERIOUS_WOUNDS)
+THEN
+	RESPONSE #100
+		Spell(Myself,CLERIC_CAUSE_SERIOUS_WOUNDS)
+		AttackOneRound(NearestEnemyOf(Myself))
+		AttackOneRound(NearestEnemyOf(Myself))
+END
+
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		EquipMostDamagingMelee()
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END

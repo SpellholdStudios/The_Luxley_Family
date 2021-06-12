@@ -1,0 +1,177 @@
+IF
+AttackedBy([ANYONE],DEFAULT)
+!Allegiance(Myself,ENEMY)
+THEN
+RESPONSE #100
+Enemy()
+END
+
+IF
+Global("FHLRosGreet","GLOBAL",0)
+See("FHLSEB")
+See("FHLAND")
+Range([PC],6)
+THEN
+RESPONSE #100
+StartDialogueNoSet(Player1)
+END
+
+IF
+HPPercentLT(Myself,20)
+Global("FHLLionChange","LOCALS",0)
+!Dead("FHLXAV")
+THEN
+RESPONSE #100
+SetGlobal("FHLLionChange","LOCALS",1)
+SetGlobalTimer("FHLRosChange","GLOBAL",90)
+ApplySpellRES("FHLLROS",MYSELF)
+END
+
+IF
+Global("FHLLionChange","LOCALS",1)
+GlobalTimerExpired("FHLRosChange","GLOBAL")
+THEN
+RESPONSE #100
+SetGlobal("FHLLionChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+Global("FHLLionChange","LOCALS",1)
+Dead("FHLXAV")
+THEN
+RESPONSE #100
+SetGlobal("FHLLionChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+Global("FHLMDP","GLOBAL",1)
+Global("FHLRosMove","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLRosMove","GLOBAL",1)
+MoveBetweenAreas("FHLMH1",[1138.1008],9)
+END
+
+IF
+HPPercentLT(Myself,50)
+!RealGlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+HasItem("POTN52",Myself)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("DrankPotionTimer","LOCALS",10)
+DisplayStringHead(Myself,46150)
+UseItem("POTN52",Myself)
+END
+
+IF
+See(NearestEnemyOf(Myself))
+OR(2)
+Range(NearestMyGroupOfType,20)
+See(NearestMyGroupOfType([0.0.0.CLERIC_ALL]))
+HPPercentLT(Myself,35)
+!RealGlobalTimerNotExpired("CalledForHealing","LOCALS")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("CalledForHealing","LOCALS",10)
+Shout(HEALME)
+Continue()
+END
+
+IF
+Heard(NearestMyGroupOfType,HEALME)
+HPPercentGT(Myself,75)
+See(LastHeardBy(Myself))
+Range(LastHeardBy(Myself),10)
+!Range(NearestMyGroupOfType([0.0.0.CLERIC_ALL]),30)
+!NumItemsGT("POTN55",LastHeardBy(Myself),0)
+NumItemsGT("POTN55",Myself,1)
+!RealGlobalTimerNotExpired("GaveAwayPotion","LOCALS")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("GaveAwayPotion","LOCALS",10)
+GiveItem("POTN55",LastHeardBy(Myself))
+Continue()
+END
+
+IF
+HPPercentLT(Myself,60)
+Global("InvulnerabilityPotion","LOCALS",0)
+!RealGlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+HasItem("POTN11",Myself)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("DrankPotionTimer","LOCALS",10)
+SetGlobal("InvulnerabilityPotion","LOCALS",1)
+DisplayStringHead(Myself,46150)
+UseItem("POTN11",Myself)
+END
+
+IF
+HPPercentLT(Myself,60)
+HaveSpell("4815")
+!RealGlobalTimerNotExpired("LayOnHands","LOCALS")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("LayOnHands","LOCALS",10)
+Spell(Myself,"4815")
+END
+
+IF
+Allegiance(Myself,ENEMY)
+!RealGlobalTimerNotExpired("MonkTimer","LOCALS")
+See(NearestEnemyOf(Myself))
+HaveSpell("4820")
+RandomNum(2,1)
+THEN
+RESPONSE #100
+SetGlobalTimer("MonkTimer","LOCALS",SIX_MINUTES)
+Spell(Myself,"4820")
+AttackReevaluate(NearestEnemyOf(Myself),45)
+END
+
+IF
+Allegiance(Myself,ENEMY)
+!GlobalTimerNotExpired("MonkTimer","LOCALS")
+See(NearestEnemyOf(Myself))
+HaveSpell("4811")
+RandomNum(2,1)
+THEN
+RESPONSE #100
+SetGlobalTimer("MonkTimer","LOCALS",SIX_MINUTES)
+Spell(Myself,"4811")
+AttackReevaluate(NearestEnemyOf(Myself),45)
+END
+
+IF
+Allegiance(Myself,ENEMY)
+!HPPercentLT(Myself,20)
+THEN
+RESPONSE #100
+EquipMostDamagingMelee()
+AttackReevaluate(NearestEnemyOf(Myself),45)
+END
+
+IF
+HPPercentLT(Myself,20)
+OR(3)
+HasItem("POTN55",Myself)
+HaveSpell("4815")
+Range(NearestMyGroupOfType,20)
+THEN
+RESPONSE #100
+RunAwayFrom(NearestEnemyOf(Myself),45)
+END
+
+IF
+Allegiance(Myself,ENEMY)
+HPPercentLT(Myself,20)
+!HasItem("POTN52",Myself)
+!HaveSpell("4815")
+!Range(NearestMyGroupOfType,20)
+THEN
+RESPONSE #100
+EquipMostDamagingMelee()
+AttackReevaluate(NearestEnemyOf(Myself),45)
+END

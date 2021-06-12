@@ -1,0 +1,10 @@
+IF
+True()
+THEN
+RESPONSE #100
+CutSceneId("FHLLYEL2")
+ForceSpell(Myself,DRYAD_TELEPORT)
+SetGlobal("FHLSebPostLyel","GLOBAL",1)
+Wait(2)
+EndCutSceneMode()
+END

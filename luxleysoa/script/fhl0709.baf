@@ -1,0 +1,7 @@
+IF
+Global("FHLFredExists","AR0400",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLFredExists","AR0400",1)
+CreateCreature("FHLFRED",[1958.2789],1)
+END

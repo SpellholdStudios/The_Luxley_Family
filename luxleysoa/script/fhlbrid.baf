@@ -1,0 +1,46 @@
+IF
+Global("FHLMetParents","GLOBAL",0)
+See("FHLSEB")
+See("FHLAND")
+Range([PC],6)
+THEN
+RESPONSE #100
+StartDialogueNoSet(Player1)
+END
+
+IF
+HPPercentLT(Myself,20)
+Global("FHLLionChange","LOCALS",0)
+!Dead("FHLXAV")
+THEN
+RESPONSE #100
+SetGlobal("FHLLionChange","LOCALS",1)
+SetGlobalTimer("FHLRosChange","GLOBAL",90)
+ApplySpellRES("FHLLROS",MYSELF)
+END
+
+IF
+Global("FHLLionChange","LOCALS",1)
+GlobalTimerExpired("FHLRosChange","GLOBAL")
+THEN
+RESPONSE #100
+SetGlobal("FHLLionChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+Global("FHLLionChange","LOCALS",1)
+Dead("FHLXAV")
+THEN
+RESPONSE #100
+SetGlobal("FHLLionChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+Global("FHLMDP","GLOBAL",1)
+THEN
+RESPONSE #100
+Panic()
+END
+

@@ -1,0 +1,57 @@
+IF
+Global("FHLAndExists","AR0500",0)
+XPLT(Player1,100000)
+THEN
+RESPONSE #100
+SetGlobal("FHLAndlvl7","GLOBAL",1)
+SetGlobal("FHLAndExists","AR0500",1)
+CreateCreature("FHLAND07",[918.2437],5)
+END
+
+IF
+Global("FHLAndExists","AR0500",0)
+XPGT(Player1,99999)
+XPLT(Player1,300000)
+THEN
+RESPONSE #100
+SetGlobal("FHLAndlvl9","GLOBAL",1)
+SetGlobal("FHLAndExists","AR0500",1)
+CreateCreature("FHLAND09",[918.2437],5)
+END
+
+IF
+Global("FHLAndExists","AR0500",0)
+XPGT(Player1,299999)
+XPLT(Player1,850000)
+THEN
+RESPONSE #100
+SetGlobal("FHLAndlvl11","GLOBAL",1)
+SetGlobal("FHLAndExists","AR0500",1)
+CreateCreature("FHLAND11",[918.2437],5)
+END
+
+IF
+Global("FHLAndExists","AR0500",0)
+XPGT(Player1,849999)
+THEN
+RESPONSE #100
+SetGlobal("FHLAndlvl13","GLOBAL",1)
+SetGlobal("FHLAndExists","AR0500",1)
+CreateCreature("FHLAND13",[918.2437],5)
+END
+
+IF
+Global("FHLSebExists","AR0500",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLSebExists","AR0500",1)
+CreateCreature("FHLSEB08",[974.2430],5)
+END
+
+IF
+Global("FHLCrim1Exists","AR0500",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLCrim1Exists","AR0500",1)
+CreateCreature("FHLCRIM1",[810.2479],12)
+END

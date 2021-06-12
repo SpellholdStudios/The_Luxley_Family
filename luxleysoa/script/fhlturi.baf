@@ -1,0 +1,35 @@
+IF
+HPPercentLT(Myself,20)
+!Dead("FHLXAV")
+Global("FHLWolfChange","LOCALS",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLWolfChange","LOCALS",1)
+SetGlobalTimer("FHLTuriChange","GLOBAL",90)
+ApplySpellRES("FHLSIM",MYSELF)
+END
+
+IF
+Global("FHLWolfChange","LOCALS",1)
+GlobalTimerExpired("FHLTuriChange","GLOBAL")
+THEN
+RESPONSE #100
+SetGlobal("FHLWolfChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+Global("FHLWolfChange","LOCALS",1)
+Dead("FHLXAV")
+THEN
+RESPONSE #100
+SetGlobal("FHLWolfChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+Global("FHLMDP","GLOBAL",1)
+THEN
+RESPONSE #100
+Panic()
+END

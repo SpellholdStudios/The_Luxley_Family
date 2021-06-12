@@ -1,0 +1,24 @@
+IF
+Global("FHLMietSleep","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLMietSleep","GLOBAL",1)
+PlayDeadInterruptible(100000)
+END
+
+IF
+Global("FHLMietTalk","GLOBAL",0)
+See("FHLSEB")
+See("FHLAND")
+Range([PC],6)
+THEN
+RESPONSE #100
+StartDialogueNoSet(Player1)
+END
+
+IF
+Global("FHLMDP","GLOBAL",1)
+THEN
+RESPONSE #100
+Panic()
+END

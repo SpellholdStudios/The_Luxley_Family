@@ -1,0 +1,8 @@
+IF
+Dead("FHLXAV")
+Global("FHLFirstShake","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLFirstShake","GLOBAL",1)
+ScreenShake([1526.117],15)
+END

@@ -1,0 +1,35 @@
+IF
+HPPercentLT(Myself,20)
+Global("FHLSnakeChange","LOCALS",0)
+!Dead("FHLXAV")
+THEN
+RESPONSE #100
+SetGlobal("FHLSnakeChange","LOCALS",1)
+SetGlobalTimer("FHLM2Change","GLOBAL",90)
+ApplySpellRES("FHLAL",MYSELF)
+END
+
+IF
+Global("FHLSnakeChange","LOCALS",1)
+GlobalTimerExpired("FHLM2Change","GLOBAL")
+THEN
+RESPONSE #100
+SetGlobal("FHLSnakeChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+Global("FHLSnakeChange","LOCALS",1)
+Dead("FHLXAV")
+THEN
+RESPONSE #100
+SetGlobal("FHLSnakeChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+Global("FHLMDP","GLOBAL",1)
+THEN
+RESPONSE #100
+Panic()
+END

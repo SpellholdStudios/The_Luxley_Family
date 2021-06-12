@@ -1,0 +1,34 @@
+IF
+HPPercentLT(Myself,20)
+Global("FHLMooseChange","LOCALS",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLMooseChange","LOCALS",1)
+SetGlobalTimer("FHLMilChange","GLOBAL",90)
+ApplySpellRES("FHLMIL",MYSELF)
+END
+
+IF
+Global("FHLMooseChange","LOCALS",1)
+GlobalTimerExpired("FHLMilChange","GLOBAL")
+THEN
+RESPONSE #100
+SetGlobal("FHLMooseChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+GlobalGT("FHLArchieQuest","GLOBAL",1)
+THEN
+RESPONSE #100
+RandomWalk()
+END
+
+IF
+Global("FHLMDP","GLOBAL",1)
+THEN
+RESPONSE #100
+Panic()
+END
+
+

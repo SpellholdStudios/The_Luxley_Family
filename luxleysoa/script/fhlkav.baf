@@ -1,0 +1,27 @@
+IF
+Global("FHLKavLetter","GLOBAL",0)
+See("FHLSEB")
+InParty("FHLSEB")
+THEN
+RESPONSE #100
+SetGlobal("FHLKav","GLOBAL",1)
+MoveToObject("FHLSEB")
+StartDialogueNoSet(Player1)
+END
+
+IF
+Global("FHLKavLetter","GLOBAL",0)
+!See("FHLSEB")
+InParty("FHLSEB")
+THEN
+RESPONSE #100
+MoveToObject("FHLSEB")
+END
+
+IF
+!InParty("FHLSEB")
+THEN
+RESPONSE #100
+EscapeArea()
+END
+

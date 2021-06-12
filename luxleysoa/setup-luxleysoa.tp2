@@ -1,0 +1,788 @@
+BACKUP ~LuxleySoA/backup~
+
+AUTHOR ~feuille_sakaki@spellholdstudios.net~
+
+VERSION ~v1.2~
+
+README ~LuxleySoA/LuxleyReadme.htm~
+
+BEGIN ~Luxley Family Mod for BGII:SoA~
+
+//Appends a custom state for dialogue validity - courtesy of the BG2 Fixpack
+
+APPEND ~STATE.IDS~
+  ~0x80101FEF CD_STATE_NOTVALID~
+  UNLESS ~CD_STATE_NOTVALID~
+
+//Sorting out broken ids and gametimes - thanks to the Fixpack
+
+INCLUDE ~LuxleySoA/lib/fhlids.tph~
+INCLUDE ~LuxleySoA/lib/fhltimes.tph~
+
+//Giving Imoen a banter file if the Fixpack isn't installed
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~cdbehbla.pro~ //makes sure the fixpack isn't already installed
+THEN BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~saradush.mve~ THEN BEGIN
+  COPY_EXISTING ~interdia.2da~ ~override~
+    SET_2DA_ENTRY 17 1 2 ~BIMOEN2~ // fixes ToB version
+    BUT_ONLY_IF_IT_CHANGES
+END ELSE BEGIN
+  APPEND ~interdia.2da~ ~IMOEN       BIMOEN2~ // fixes SoA version
+    UNLESS ~BIMOEN2~
+END
+END
+
+//This goes before any Imoen banter files are compiled!
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~override/bimoen2.dlg~ THEN BEGIN
+  COMPILE ~LuxleySoA/lib/fhlinitimoen.d~
+END
+
+//Copying custom spells and graphics to game override
+
+PRINT ~Copying spells and graphics...~
+
+COPY ~LuxleySoA/spells~ ~override~
+
+COPY ~LuxleySoA/spells/fhlrage.spl~ ~override/fhlrage.spl~
+SAY NAME1 ~Dark Rage~
+SAY NAME2 ~Dark Rage~
+
+//Copying NPC portraits
+
+COPY ~LuxleySoA/portraits/FHSEBM.bmp~ ~override~
+COPY ~LuxleySoA/portraits/FHSEBS.bmp~ ~override~
+COPY ~LuxleySoA/portraits/FHANDREM.bmp~ ~override~
+COPY ~LuxleySoA/portraits/FHANDRES.bmp~ ~override~
+
+COPY ~LuxleySoA/bam~ ~override~
+
+//Copying audio to override
+
+PRINT ~Copying audio files...~
+
+COPY ~LuxleySoA/song/fhlblank.mus~ ~music~
+COPY ~LuxleySoA/song/fhlmu1.mus~ ~music~
+COPY ~LuxleySoA/song/fhlmu2.mus~ ~music~
+COPY_EXISTING ~songlist.2da~ ~override~
+SET_2DA_ENTRY 0 2 3 ~fhlblank.mus~
+ADD_MUSIC  ~Luxley1~    ~music/fhlmu1.mus~
+ADD_MUSIC  ~Luxley2~    ~music/fhlmu2.mus~
+
+COPY ~LuxleySoA/audio~ ~override~
+
+//Copying and adding notes for areas//
+
+PRINT ~Copying area files...~
+
+COPY ~LuxleySoA/areas~ ~override~
+
+COPY ~LuxleySoA/areas/FH4800.are~ ~override/FH4800.are~
+  ADD_MAP_NOTE #3041 #330 ~gray~
+  ~The Main House~
+  ADD_MAP_NOTE #3001 #2555 ~gray~
+  ~Training Ground~
+  ADD_MAP_NOTE #1579 #2416 ~gray~
+  ~Lealia's Home~
+  ADD_MAP_NOTE #365 #2667 ~gray~
+  ~Way Out~
+
+//Compiling scripts and dialogues
+
+PRINT ~Compiling dialogue and scripts...~
+
+COMPILE ~LuxleySoA/dialogues~
+        ~LuxleySoA/script~
+
+EXTEND_BOTTOM ~AERIE.bcs~ ~LuxleySoA/script/FHLAER.baf~
+EXTEND_BOTTOM ~ANOMEN.bcs~ ~LuxleySoA/script/FHLANO.baf~
+EXTEND_BOTTOM ~AR0700.bcs~ ~LuxleySoA/script/FHL0700.baf~
+EXTEND_BOTTOM ~AR0400.bcs~ ~LuxleySoA/script/FHL0400.baf~
+EXTEND_BOTTOM ~AR0513.bcs~ ~LuxleySoA/script/FHL0513.baf~
+EXTEND_BOTTOM ~AR0319.bcs~ ~LuxleySoA/script/FHL0319.baf~
+EXTEND_BOTTOM ~AR0810.bcs~ ~LuxleySoA/script/FHL0810.baf~
+EXTEND_BOTTOM ~AR0500.bcs~ ~LuxleySoA/script/FHL0500.baf~
+EXTEND_BOTTOM ~BALDUR.bcs~ ~LuxleySoA/script/FHLBALDUR.baf~
+EXTEND_BOTTOM ~JAHEIRA.bcs~ ~LuxleySoA/script/FHLJAH.baf~
+EXTEND_BOTTOM ~VICONIA.bcs~ ~LuxleySoA/script/FHLVIC.baf~
+
+//Copying and patching items, their names and their descriptions
+
+PRINT ~Copying custom items...~
+
+COPY ~LuxleySoA/items/fhlbook.itm~ ~override/fhlbook.itm~
+SAY NAME1 ~Sebastian's Book~
+SAY NAME2 ~Sebastian's Book~
+SAY DESC ~This book contains Sebastian's notes for his plays and anything else he cares to write while on the road. He guards it jealously and will not let it out of his possession.~
+
+COPY ~LuxleySoA/items/fhlbk2.itm~ ~override/fhlbk2.itm~
+SAY NAME1 ~Sebastian's Book~
+SAY NAME2 ~Sebastian's Book~
+SAY DESC ~This book contains various pieces of chapters, notes and doodles by Sebastian. It was bought for him by Andrei, as his last book was taken from him by Xavier.~
+
+COPY ~LuxleySoA/items/fhltig.itm~ ~override~
+SAY NAME1 ~Mietta~
+SAY NAME2 ~Mietta~
+SAY DESC ~This small tiger is, according to Andrei, his cousin Mietta. She bites weakly if you approach her but it is clear that she needs healing.~
+
+COPY ~LuxleySoA/items/fhlnote.itm~ ~override~
+SAY NAME1 ~Note~
+SAY NAME2 ~Note~
+SAY DESC ~Meet me in Delosar's Inn, in the Bridge District of Athkatla. I believe we can help one another.
+
+Genevieve.~
+
+COPY ~LuxleySoA/items/fhlsw.itm~ ~override~
+SAY NAME1 ~Old sword~
+SAY NAME2 ~Old sword~
+SAY DESC ~The two-handed sword is a derivative of the long sword.  Weaponsmiths have always looked for ways to improve existing weapons, and in an effort to improve the long sword, the blade was lengthened.  Eventually, the handle had to be extended and two hands became necessary to properly swing the sword.  The primary function of two-handed swords is cleaving mounted knights and breaking up pike formations.
+
+STATISTICS:
+
+Damage: 1D10
+Damage type: slashing
+Weight: 15
+Speed Factor: 10
+Proficiency Type: Two Handed Sword
+Type: 2-handed
+Requires: 14 Strength
+Not Usable By:
+ Druid
+ Cleric
+ Mage 
+ Thief
+ Monk
+ Beast Master~
+
+COPY ~LuxleySoA/items/fhlchr.itm~ ~override~
+SAY NAME1 ~Aegelfred's Chronicles~
+SAY NAME2 ~Aegelfred's Chronicles~
+SAY DESC ~Genevieve wishes to have this book in order to help her investigate the Luxley family curse.~
+
+
+//Adding Sebastian's custom Playwright kit - if the 2da isn't already there
+
+//Adding custom kit...
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~override/fhlplay.fh~ THEN BEGIN // add playwright kit
+
+COPY ~LuxleySoA/2da/FHLPLAY.2da~ ~override~
+
+INCLUDE ~LuxleySoA/lib/fhlplay.tph~
+
+END
+
+PRINT ~Copying creature files...~
+
+//Copying creature files to override, adding kit to Sebastian's and adding their items
+
+COPY ~LuxleySoA/characters/FHLSEB08.cre~ ~override~
+WRITE_SHORT 0x244 0
+WRITE_BYTE 0x246 ~%FHLPLAY%~
+WRITE_BYTE 0x247 0x40
+SAY NAME1 ~Sebastian~
+SAY NAME2 ~Sebastian~
+SAY INITIAL_MEETING ~~
+SAY MORALE ~There's nothing cowardly about self-preservation!~ [FHLSS1]
+SAY HAPPY ~Oh, I knew I'd have good times with you.~ [FHLSS2]
+SAY UNHAPPY_ANNOYED ~I'm older and wiser than you, so why aren't we doing what I want?~ [FHLSS4]
+SAY UNHAPPY_SERIOUS ~I'll name no names, but someone in this group needs a kick in the face...~ [FHLSS5]
+SAY UNHAPPY_BREAKING ~I don't owe you anything. I'm off.~ [FHLSS6]
+SAY LEADER ~All will submit to me!~ [FHLSS7]
+SAY TIRED ~I insist we stop. My feet are killing me.~ [FHLSS8]
+SAY BORED ~There are so many better things we could be doing. Shall I show you some?~ [FHLSS9]
+SAY BATTLE_CRY1 ~I'm sure this can be sorted out amicably!~ [FHLSS10]
+SAY BATTLE_CRY2 ~What are you waiting for? Attack them!~ [FHLSS11]
+SAY BATTLE_CRY3 ~You there! You look tense! How about a massage?~ [FHLSS12]
+SAY BATTLE_CRY4 ~Hit 'em in the groin, hit 'em in the knee, hit 'em in the eye so they can't see!~ [FHLSS13]
+SAY BATTLE_CRY5 ~You fight, I'll, er, guard the packs!~ [FHLSS14]
+SAY DAMAGE ~~ [FHLSS15]
+SAY DYING ~~ [FHLSS16]
+SAY HURT ~Ohh, I'm going to have to wash that out...~ [FHLSS17]
+SAY AREA_FOREST ~What a charming setting for a play. Now, where could I find some nymphs?~ [FHLSS18]
+SAY AREA_CITY ~Don't worry, I can protect you from the perils of the big city.~ [FHLSS19]
+SAY AREA_DUNGEON ~My, you have excellent taste in places to visit. What next? A dank hole? Oh, wait...~ [FHLSS20]
+SAY AREA_DAY ~Do we have to adventure today? Can't we just, you know, amuse ourselves?~ [FHLSS21]
+SAY AREA_NIGHT ~Ahh, the sky's so clear, the air's so pure, the stars are plentiful.~ [FHLSS22]
+SAY SELECT_COMMON1 ~Yes?~ [FHLSS23]
+SAY SELECT_COMMON2 ~At your service.~ [FHLSS24]
+SAY SELECT_COMMON3 ~Oh, ask someone else.~ [FHLSS25]
+SAY SELECT_COMMON4 ~I hope you're not about to order me around.~ [FHLSS26]
+SAY SELECT_COMMON5 ~Can it wait?~ [FHLSS27]
+SAY SELECT_COMMON6 ~What's wrong with you?~ [FHLSS28]
+SAY SELECT_ACTION1 ~If I must.~ [FHLSS29]
+SAY SELECT_ACTION2 ~With pleasure.~ [FHLSS30]
+SAY SELECT_ACTION3 ~I'm sure you'd do it better.~ [FHLSS31]
+SAY SELECT_ACTION4 ~Anything for you.~ [FHLSS32]
+SAY SELECT_ACTION5 ~Only if I get my reward.~ [FHLSS33]
+SAY SELECT_ACTION6 ~I'd better enjoy this.~ [FHLSS34]
+SAY SELECT_ACTION7 ~This isn't going to be boring, is it?~ [FHLSS35]
+SAY SELECT_RARE1 ~Hang on, I'm halfway through a stanza.~ [FHLSS36]
+SAY SELECT_RARE2 ~Would you like Uncle Sebastian to get you some candy? Maybe then I'll get some peace.~ [FHLSS37]
+SAY CRITICAL_HIT ~Did you see that?!~ [FHLSS38]
+SAY CRITICAL_MISS ~Meant to do it!~ [FHLSS39]
+SAY TARGET_IMMUNE ~I may as well read a book instead.~ [FHLSS40]
+SAY INVENTORY_FULL ~I'm not a mule.~ [FHLSS41]
+SAY PICKED_POCKET ~Ooh, pretty things for me. I mean...for all of us.~ [FHLSS42]
+SAY HIDDEN_IN_SHADOWS ~Boo!~ [FHLSS43]
+SAY SPELL_DISRUPTED ~I didn't want to cast that one anyway.~ [FHLSS44]
+SAY SET_A_TRAP ~I'm sure you'd do it better.~ [FHLSS31]
+SAY BIO ~It is fair to say that whenever you question SEBASTIAN about himself he is maddeningly elusive. He is a playwright by trade - or so he says, though he is secretive about his work and claims that a great deal of what he writes would go over your head. He has a keen sense of frivolity and seems to take little in life with any seriousness. Nevertheless, on occasion it appears that there is something else going on with him, and it would be unwise to underestimate his intelligence.~
+ADD_CRE_ITEM ~STAF01~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON1~
+ADD_CRE_ITEM ~FHLBOOK~ #0 #0 #0 ~IDENTIFIED&UNDROPPABLE~ ~INV1~
+ADD_CRE_ITEM ~POTN52~ #3 #0 #0 ~IDENTIFIED~ ~INV2~
+WRITE_ASCII 0x248 ~FHLSEB~ #8 // override
+WRITE_ASCII 0x2cc ~FHLSEB~ #8 // dialogue
+WRITE_ASCII 0x280 ~FHLSEB~ #32 //DV
+WRITE_ASCII 0X34 ~FHSEBS~ #8 //small portrait
+WRITE_ASCII 0x3c ~FHSEBM~ #8 //big portrait
+
+COPY ~LuxleySoA/characters/FHLAND07.cre~ ~override~
+SAY NAME1 ~Andrei~
+SAY NAME2 ~Andrei~
+SAY MORALE ~I don't want-- I should go back!~ [FHLASS1]
+SAY HAPPY ~Xavier would be proud of what we're doing.~ [FHLASS2]
+SAY UNHAPPY_ANNOYED ~What are you doing?~ [FHLASS3]
+SAY UNHAPPY_SERIOUS ~I don't know what you think you're doing, but this isn't right.~ [FHLASS4]
+SAY UNHAPPY_BREAKING ~Look, that's it.~ [FHLASS5]
+SAY LEADER ~I'll do my best to live up to your expectations.~ [FHLASS6]
+SAY TIRED ~I don't think it's a good idea for us to get too tired.~ [FHLASS7]
+SAY BORED ~I'd rather be in the estate.~ [FHLASS8]
+SAY BATTLE_CRY1 ~Hyah!~ [FHLASS9]
+SAY BATTLE_CRY2 ~Die!~ [FHLASS10]
+SAY BATTLE_CRY3 ~To the death!~ [FHLASS11]
+SAY BATTLE_CRY4 ~Take that!~ [FHLASS12]
+SAY BATTLE_CRY5 ~Attack!~ [FHLASS13]
+SAY DAMAGE ~~ [FHLASS14]
+SAY DYING ~Uh - I wish I could--~ [FHLASS15]
+SAY HURT ~I need some healing, quickly!~ [FHLASS16]
+SAY AREA_FOREST ~Er...you have got a map, haven't you?~ [FHLASS17]
+SAY AREA_CITY ~I never thought I'd see so many people...~ [FHLASS18]
+SAY AREA_DUNGEON ~Don't worry, I'm watching your back.~ [FHLASS19]
+SAY AREA_DAY ~The sunshine always looks so bright at home.~ [FHLASS20]
+SAY AREA_NIGHT ~Are we going to sleep anytime soon?~ [FHLASS21]
+SAY SELECT_COMMON1 ~~ [FHLASS22]
+SAY SELECT_COMMON2 ~Hmm?~ [FHLASS23]
+SAY SELECT_COMMON3 ~What is it?~ [FHLASS24]
+SAY SELECT_COMMON4 ~Do you need anything?~ [FHLASS25]
+SAY SELECT_COMMON5 ~What?~ [FHLASS26]
+SAY SELECT_COMMON6 ~What do you need?~ [FHLASS27]
+SAY SELECT_ACTION1 ~All right.~ [FHLASS28]
+SAY SELECT_ACTION2 ~Of course.~ [FHLASS29]
+SAY SELECT_ACTION3 ~Whatever you say.~ [FHLASS30]
+SAY SELECT_ACTION4 ~If it helps.~ [FHLASS31]
+SAY SELECT_ACTION5 ~Sure.~ [FHLASS32]
+SAY SELECT_ACTION6 ~If that's what you want.~ [FHLASS33]
+SAY SELECT_ACTION7 ~If you say so.~ [FHLASS34]
+SAY SELECT_RARE1 ~Andrei Turi Xavier Luxley, at your service.~ [FHLASS35]
+SAY SELECT_RARE2 ~As eventful as all this is, I do miss the estate.~ [FHLASS36]
+SAY CRITICAL_HIT ~Ha!~ [FHLASS37]
+SAY CRITICAL_MISS ~Dammit!~ [FHLASS38]
+SAY TARGET_IMMUNE ~I can't seem to do anything!~ [FHLASS39]
+SAY INVENTORY_FULL ~I can't carry all of that.~ [FHLASS40]
+SAY PICKED_POCKET ~~
+SAY HIDDEN_IN_SHADOWS ~Maybe I should get a hood.~ [FHLASS41]
+SAY SPELL_DISRUPTED ~Ah, dammit!~ [FHLASS42]
+SAY SET_A_TRAP ~~
+SAY BIO ~ANDREI smiles when you ask him about himself. Though he is willing to talk about his relatives and is forthright about his beliefs, he is politely evasive on some subjects. He is skilled in hand-to-hand combat, a skill he developed at a young age, and was trained by an older member of his family. Despite his combat expertise, Andrei has only just left the family estate and seems a little naive about certain aspects of everyday life that you, perhaps, take for granted. Nevertheless, he comes across as quietly confident and it is rare to see him stray from a path he has chosen.~
+ADD_CRE_ITEM ~AMUL14~ #0 #0 #0 ~IDENTIFIED~ ~AMULET~
+ADD_CRE_ITEM ~POTN52~ #2 #0 #0 ~IDENTIFIED~ ~INV1~
+WRITE_ASCII 0x248 ~FHLAND~ #8 // override
+WRITE_ASCII 0x2cc ~FHLAND~ #8 // dialogue
+WRITE_ASCII 0x280 ~FHLAND~ #32 //DV
+WRITE_ASCII 0X34 ~FHANDRES~ #8 //small portrait
+WRITE_ASCII 0x3c ~FHANDREM~ #8 //big portrait
+
+COPY ~LuxleySoA/characters/FHLAND09.cre~ ~override~
+SAY NAME1 ~Andrei~
+SAY NAME2 ~Andrei~
+SAY MORALE ~I don't want-- I should go back!~ [FHLASS1]
+SAY HAPPY ~Xavier would be proud of what we're doing.~ [FHLASS2]
+SAY UNHAPPY_ANNOYED ~What are you doing?~ [FHLASS3]
+SAY UNHAPPY_SERIOUS ~I don't know what you think you're doing, but this isn't right.~ [FHLASS4]
+SAY UNHAPPY_BREAKING ~Look, that's it.~ [FHLASS5]
+SAY LEADER ~I'll do my best to live up to your expectations.~ [FHLASS6]
+SAY TIRED ~I don't think it's a good idea for us to get too tired.~ [FHLASS7]
+SAY BORED ~I'd rather be in the estate.~ [FHLASS8]
+SAY BATTLE_CRY1 ~Hyah!~ [FHLASS9]
+SAY BATTLE_CRY2 ~Die!~ [FHLASS10]
+SAY BATTLE_CRY3 ~To the death!~ [FHLASS11]
+SAY BATTLE_CRY4 ~Take that!~ [FHLASS12]
+SAY BATTLE_CRY5 ~Attack!~ [FHLASS13]
+SAY DAMAGE ~~ [FHLASS14]
+SAY DYING ~Uh - I wish I could--~ [FHLASS15]
+SAY HURT ~I need some healing, quickly!~ [FHLASS16]
+SAY AREA_FOREST ~Er...you have got a map, haven't you?~ [FHLASS17]
+SAY AREA_CITY ~I never thought I'd see so many people...~ [FHLASS18]
+SAY AREA_DUNGEON ~Don't worry, I'm watching your back.~ [FHLASS19]
+SAY AREA_DAY ~The sunshine always looks so bright at home.~ [FHLASS20]
+SAY AREA_NIGHT ~Are we going to sleep anytime soon?~ [FHLASS21]
+SAY SELECT_COMMON1 ~Yes?~ [FHLASS22]
+SAY SELECT_COMMON2 ~Hmm?~ [FHLASS23]
+SAY SELECT_COMMON3 ~What is it?~ [FHLASS24]
+SAY SELECT_COMMON4 ~Do you need anything?~ [FHLASS25]
+SAY SELECT_COMMON5 ~What?~ [FHLASS26]
+SAY SELECT_COMMON6 ~What do you need?~ [FHLASS27]
+SAY SELECT_ACTION1 ~All right.~ [FHLASS28]
+SAY SELECT_ACTION2 ~Of course.~ [FHLASS29]
+SAY SELECT_ACTION3 ~Whatever you say.~ [FHLASS30]
+SAY SELECT_ACTION4 ~If it helps.~ [FHLASS31]
+SAY SELECT_ACTION5 ~Sure.~ [FHLASS32]
+SAY SELECT_ACTION6 ~If that's what you want.~ [FHLASS33]
+SAY SELECT_ACTION7 ~If you say so.~ [FHLASS34]
+SAY SELECT_RARE1 ~Andrei Turi Xavier Luxley, at your service.~ [FHLASS35]
+SAY SELECT_RARE2 ~As eventful as all this is, I do miss the estate.~ [FHLASS36]
+SAY CRITICAL_HIT ~Ha!~ [FHLASS37]
+SAY CRITICAL_MISS ~Dammit!~ [FHLASS38]
+SAY TARGET_IMMUNE ~I can't seem to do anything!~ [FHLASS39]
+SAY INVENTORY_FULL ~I can't carry all of that.~ [FHLASS40]
+SAY PICKED_POCKET ~~
+SAY HIDDEN_IN_SHADOWS ~Maybe I should get a hood.~ [FHLASS41]
+SAY SPELL_DISRUPTED ~Ah, dammit!~ [FHLASS42]
+SAY SET_A_TRAP ~~
+SAY BIO ~ANDREI smiles when you ask him about himself. Though he is willing to talk about his relatives and is forthright about his beliefs, he is politely evasive on some subjects. He is skilled in hand-to-hand combat, a skill he developed at a young age, and was trained by an older member of his family. Despite his combat expertise, Andrei has only just left the family estate and seems a little naive about certain aspects of everyday life that you, perhaps, take for granted. Nevertheless, he comes across as quietly confident and it is rare to see him stray from a path he has chosen.~
+ADD_CRE_ITEM ~AMUL14~ #0 #0 #0 ~IDENTIFIED~ ~AMULET~
+ADD_CRE_ITEM ~POTN52~ #2 #0 #0 ~IDENTIFIED~ ~INV1~
+WRITE_ASCII 0x248 ~FHLAND~ #8 // override
+WRITE_ASCII 0x2cc ~FHLAND~ #8 // dialogue
+WRITE_ASCII 0x280 ~FHLAND~ #32 //DV
+WRITE_ASCII 0X34 ~FHANDRES~ #8 //small portrait
+WRITE_ASCII 0x3c ~FHANDREM~ #8 //big portrait
+
+COPY ~LuxleySoA/characters/FHLAND11.cre~ ~override~
+SAY NAME1 ~Andrei~
+SAY NAME2 ~Andrei~
+SAY MORALE ~I don't want-- I should go back!~ [FHLASS1]
+SAY HAPPY ~Xavier would be proud of what we're doing.~ [FHLASS2]
+SAY UNHAPPY_ANNOYED ~What are you doing?~ [FHLASS3]
+SAY UNHAPPY_SERIOUS ~I don't know what you think you're doing, but this isn't right.~ [FHLASS4]
+SAY UNHAPPY_BREAKING ~Look, that's it.~ [FHLASS5]
+SAY LEADER ~I'll do my best to live up to your expectations.~ [FHLASS6]
+SAY TIRED ~I don't think it's a good idea for us to get too tired.~ [FHLASS7]
+SAY BORED ~I'd rather be in the estate.~ [FHLASS8]
+SAY BATTLE_CRY1 ~Hyah!~ [FHLASS9]
+SAY BATTLE_CRY2 ~Die!~ [FHLASS10]
+SAY BATTLE_CRY3 ~To the death!~ [FHLASS11]
+SAY BATTLE_CRY4 ~Take that!~ [FHLASS12]
+SAY BATTLE_CRY5 ~Attack!~ [FHLASS13]
+SAY DAMAGE ~~ [FHLASS14]
+SAY DYING ~Uh - I wish I could--~ [FHLASS15]
+SAY HURT ~I need some healing, quickly!~ [FHLASS16]
+SAY AREA_FOREST ~Er...you have got a map, haven't you?~ [FHLASS17]
+SAY AREA_CITY ~I never thought I'd see so many people...~ [FHLASS18]
+SAY AREA_DUNGEON ~Don't worry, I'm watching your back.~ [FHLASS19]
+SAY AREA_DAY ~The sunshine always looks so bright at home.~ [FHLASS20]
+SAY AREA_NIGHT ~Are we going to sleep anytime soon?~ [FHLASS21]
+SAY SELECT_COMMON1 ~Yes?~ [FHLASS22]
+SAY SELECT_COMMON2 ~Hmm?~ [FHLASS23]
+SAY SELECT_COMMON3 ~What is it?~ [FHLASS24]
+SAY SELECT_COMMON4 ~Do you need anything?~ [FHLASS25]
+SAY SELECT_COMMON5 ~What?~ [FHLASS26]
+SAY SELECT_COMMON6 ~What do you need?~ [FHLASS27]
+SAY SELECT_ACTION1 ~All right.~ [FHLASS28]
+SAY SELECT_ACTION2 ~Of course.~ [FHLASS29]
+SAY SELECT_ACTION3 ~Whatever you say.~ [FHLASS30]
+SAY SELECT_ACTION4 ~If it helps.~ [FHLASS31]
+SAY SELECT_ACTION5 ~Sure.~ [FHLASS32]
+SAY SELECT_ACTION6 ~If that's what you want.~ [FHLASS33]
+SAY SELECT_ACTION7 ~If you say so.~ [FHLASS34]
+SAY SELECT_RARE1 ~Andrei Turi Xavier Luxley, at your service.~ [FHLASS35]
+SAY SELECT_RARE2 ~As eventful as all this is, I do miss the estate.~ [FHLASS36]
+SAY CRITICAL_HIT ~Ha!~ [FHLASS37]
+SAY CRITICAL_MISS ~Dammit!~ [FHLASS38]
+SAY TARGET_IMMUNE ~I can't seem to do anything!~ [FHLASS39]
+SAY INVENTORY_FULL ~I can't carry all of that.~ [FHLASS40]
+SAY PICKED_POCKET ~~
+SAY HIDDEN_IN_SHADOWS ~Maybe I should get a hood.~ [FHLASS41]
+SAY SPELL_DISRUPTED ~Ah, dammit!~ [FHLASS42]
+SAY SET_A_TRAP ~~
+SAY BIO ~ANDREI smiles when you ask him about himself. Though he is willing to talk about his relatives and is forthright about his beliefs, he is politely evasive on some subjects. He is skilled in hand-to-hand combat, a skill he developed at a young age, and was trained by an older member of his family. Despite his combat expertise, Andrei has only just left the family estate and seems a little naive about certain aspects of everyday life that you, perhaps, take for granted. Nevertheless, he comes across as quietly confident and it is rare to see him stray from a path he has chosen.~
+ADD_CRE_ITEM ~AMUL14~ #0 #0 #0 ~IDENTIFIED~ ~AMULET~
+ADD_CRE_ITEM ~POTN52~ #2 #0 #0 ~IDENTIFIED~ ~INV1~
+WRITE_ASCII 0x248 ~FHLAND~ #8 // override
+WRITE_ASCII 0x2cc ~FHLAND~ #8 // dialogue
+WRITE_ASCII 0x280 ~FHLAND~ #32 //DV
+WRITE_ASCII 0X34 ~FHANDRES~ #8 //small portrait
+WRITE_ASCII 0x3c ~FHANDREM~ #8 //big portrait
+
+COPY ~LuxleySoA/characters/FHLAND13.cre~ ~override~
+SAY NAME1 ~Andrei~
+SAY NAME2 ~Andrei~
+SAY MORALE ~I don't want-- I should go back!~ [FHLASS1]
+SAY HAPPY ~Xavier would be proud of what we're doing.~ [FHLASS2]
+SAY UNHAPPY_ANNOYED ~What are you doing?~ [FHLASS3]
+SAY UNHAPPY_SERIOUS ~I don't know what you think you're doing, but this isn't right.~ [FHLASS4]
+SAY UNHAPPY_BREAKING ~Look, that's it.~ [FHLASS5]
+SAY LEADER ~I'll do my best to live up to your expectations.~ [FHLASS6]
+SAY TIRED ~I don't think it's a good idea for us to get too tired.~ [FHLASS7]
+SAY BORED ~I'd rather be in the estate.~ [FHLASS8]
+SAY BATTLE_CRY1 ~Hyah!~ [FHLASS9]
+SAY BATTLE_CRY2 ~Die!~ [FHLASS10]
+SAY BATTLE_CRY3 ~To the death!~ [FHLASS11]
+SAY BATTLE_CRY4 ~Take that!~ [FHLASS12]
+SAY BATTLE_CRY5 ~Attack!~ [FHLASS13]
+SAY DAMAGE ~~ [FHLASS14]
+SAY DYING ~Uh - I wish I could--~ [FHLASS15]
+SAY HURT ~I need some healing, quickly!~ [FHLASS16]
+SAY AREA_FOREST ~Er...you have got a map, haven't you?~ [FHLASS17]
+SAY AREA_CITY ~I never thought I'd see so many people...~ [FHLASS18]
+SAY AREA_DUNGEON ~Don't worry, I'm watching your back.~ [FHLASS19]
+SAY AREA_DAY ~The sunshine always looks so bright at home.~ [FHLASS20]
+SAY AREA_NIGHT ~Are we going to sleep anytime soon?~ [FHLASS21]
+SAY SELECT_COMMON1 ~Yes?~ [FHLASS22]
+SAY SELECT_COMMON2 ~Hmm?~ [FHLASS23]
+SAY SELECT_COMMON3 ~What is it?~ [FHLASS24]
+SAY SELECT_COMMON4 ~Do you need anything?~ [FHLASS25]
+SAY SELECT_COMMON5 ~What?~ [FHLASS26]
+SAY SELECT_COMMON6 ~What do you need?~ [FHLASS27]
+SAY SELECT_ACTION1 ~All right.~ [FHLASS28]
+SAY SELECT_ACTION2 ~Of course.~ [FHLASS29]
+SAY SELECT_ACTION3 ~Whatever you say.~ [FHLASS30]
+SAY SELECT_ACTION4 ~If it helps.~ [FHLASS31]
+SAY SELECT_ACTION5 ~Sure.~ [FHLASS32]
+SAY SELECT_ACTION6 ~If that's what you want.~ [FHLASS33]
+SAY SELECT_ACTION7 ~If you say so.~ [FHLASS34]
+SAY SELECT_RARE1 ~Andrei Turi Xavier Luxley, at your service.~ [FHLASS35]
+SAY SELECT_RARE2 ~As eventful as all this is, I do miss the estate.~ [FHLASS36]
+SAY CRITICAL_HIT ~Ha!~ [FHLASS37]
+SAY CRITICAL_MISS ~Dammit!~ [FHLASS38]
+SAY TARGET_IMMUNE ~I can't seem to do anything!~ [FHLASS39]
+SAY INVENTORY_FULL ~I can't carry all of that.~ [FHLASS40]
+SAY PICKED_POCKET ~~
+SAY HIDDEN_IN_SHADOWS ~Maybe I should get a hood.~ [FHLASS41]
+SAY SPELL_DISRUPTED ~Ah, dammit!~ [FHLASS42]
+SAY SET_A_TRAP ~~
+SAY BIO ~ANDREI smiles when you ask him about himself. Though he is willing to talk about his relatives and is forthright about his beliefs, he is politely evasive on some subjects. He is skilled in hand-to-hand combat, a skill he developed at a young age, and was trained by an older member of his family. Despite his combat expertise, Andrei has only just left the family estate and seems a little naive about certain aspects of everyday life that you, perhaps, take for granted. Nevertheless, he comes across as quietly confident and it is rare to see him stray from a path he has chosen.~
+ADD_CRE_ITEM ~AMUL14~ #0 #0 #0 ~IDENTIFIED~ ~AMULET~
+ADD_CRE_ITEM ~POTN52~ #2 #0 #0 ~IDENTIFIED~ ~INV1~
+WRITE_ASCII 0x248 ~FHLAND~ #8 // override
+WRITE_ASCII 0x2cc ~FHLAND~ #8 // dialogue
+WRITE_ASCII 0x280 ~FHLAND~ #32 //DV
+WRITE_ASCII 0X34 ~FHANDRES~ #8 //small portrait
+WRITE_ASCII 0x3c ~FHANDREM~ #8 //big portrait
+
+COPY ~LuxleySoA/characters/FHLBEAR.cre~ ~override~
+SAY NAME1 ~Andrei~
+SAY NAME2 ~Andrei~
+
+COPY ~LuxleySoA/characters/FHLCAT.cre~ ~override~
+SAY NAME1 ~Sebastian~
+SAY NAME2 ~Sebastian~
+
+//Copying non-joinable characters to game override
+
+COPY ~LuxleySoA/characters/FHLAL.cre~ ~override~
+SAY NAME1 ~Alexandra~
+SAY NAME2 ~Alexandra~
+ADD_CRE_ITEM ~HELMNOAN~ #0 #0 #0 ~NONE~ ~HELMET~
+ADD_CRE_ITEM ~CLCK13~ #0 #0 #0 ~NONE~ ~ARMOR~
+ADD_CRE_ITEM ~BRAC02~ #0 #0 #0 ~NONE~ ~GLOVES~
+ADD_CRE_ITEM ~POTN52~ #4 #0 #0 ~NONE~ ~INV1~
+ADD_CRE_ITEM ~WAND10~ #0 #0 #0 ~NONE~ ~INV2~
+ADD_CRE_ITEM ~SCRL71~ #0 #0 #0 ~NONE~ ~INV5~
+ADD_CRE_ITEM ~RNDTRE04~ #0 #0 #0 ~NONE~ ~INV6~
+ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~NONE~ ~INV7~
+
+COPY ~LuxleySoA/characters/FHLALI.cre~ ~override~
+SAY NAME1 ~Alyssia~
+SAY NAME2 ~Alyssia~
+
+COPY ~LuxleySoA/characters/FHLARCH.cre~ ~override~
+SAY NAME1 ~Archie~
+SAY NAME2 ~Archie~
+
+COPY ~LuxleySoA/characters/FHLBOY.cre~ ~override~
+SAY NAME1 ~Robin~
+SAY NAME2 ~Robin~
+
+COPY ~LuxleySoA/characters/FHLBOY2.cre~ ~override~
+SAY NAME1 ~Thomas~
+SAY NAME2 ~Thomas~
+
+COPY ~LuxleySoA/characters/FHLBOY3.cre~ ~override~
+SAY NAME1 ~Boy~
+SAY NAME2 ~Boy~
+
+COPY ~LuxleySoA/characters/FHLBRID.cre~ ~override~
+SAY NAME1 ~Brid~
+SAY NAME2 ~Brid~
+// ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+
+COPY ~LuxleySoA/characters/FHLCHICK.cre~ ~override~
+SAY NAME1 ~Edward~
+SAY NAME2 ~Edward~
+
+COPY ~LuxleySoA/characters/FHLCRIM1.cre~ ~override~
+SAY NAME1 ~Mugger~
+SAY NAME2 ~Mugger~
+
+COPY ~LuxleySoA/characters/FHLDU.cre~ ~override~
+SAY NAME1 ~Durydil~
+SAY NAME2 ~Durydil~
+
+COPY ~LuxleySoA/characters/FHLFRED.cre~ ~override~
+SAY NAME1 ~Commoner~
+SAY NAME2 ~Commoner~
+
+COPY ~LuxleySoA/characters/FHLGEN.cre~ ~override~
+SAY NAME1 ~Genevieve~
+SAY NAME2 ~Genevieve~
+SAY SELECT_COMMON1 ~Hello, there.~ [FHLG4]
+
+COPY ~LuxleySoA/characters/FHLGIRL.cre~ ~override~
+SAY NAME1 ~Clara~
+SAY NAME2 ~Clara~
+
+COPY ~LuxleySoA/characters/FHLGIRL2.cre~ ~override~
+SAY NAME1 ~Lianne~
+SAY NAME2 ~Lianne~
+
+COPY ~LuxleySoA/characters/FHLJOS.cre~ ~override~
+SAY NAME1 ~Josefyne~
+SAY NAME2 ~Josefyne~
+ADD_CRE_ITEM ~STAF18~ #0 #0 #0 ~NONE~ ~WEAPON1~
+ADD_CRE_ITEM ~HELMNOAN~ #0 #0 #0 ~NONE~ ~HELMET~
+ADD_CRE_ITEM ~POTN52~ #2 #0 #0 ~IDENTIFIED~ ~QITEM1~
+ADD_CRE_ITEM ~SCRL71~ #0 #0 #0 ~IDENTIFIED~ ~INV5~
+ADD_CRE_ITEM ~RNDTRE04~ #0 #0 #0 ~NONE~ ~INV6~
+ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~NONE~ ~INV7~
+ADD_CRE_ITEM ~MINHP1~ #0 #0 #0 ~NONE~ ~AMULET~
+
+COPY ~LuxleySoA/characters/FHLKAV.cre~ ~override~
+SAY NAME1 ~Kavyn~
+SAY NAME2 ~Kavyn~
+
+COPY ~LuxleySoA/characters/FHLLEAL.cre~ ~override~
+SAY NAME1 ~Lealia~
+SAY NAME2 ~Lealia~
+SAY SELECT_COMMON1 ~Hello, there. Is there anything you need?~ [FHLLEA6]
+ADD_CRE_ITEM ~CHAN01~ #0 #0 #0 ~NONE~ ~ARMOR~
+ADD_CRE_ITEM ~POTN52~ #3 #0 #0 ~NONE~ ~QITEM1~
+ADD_CRE_ITEM ~BLUN03~ #0 #0 #0 ~NONE~ ~WEAPON1~
+ADD_CRE_ITEM ~SHLD04~ #0 #0 #0 ~NONE~ ~SHIELD~
+
+COPY ~LuxleySoA/characters/FHLLUC.cre~ ~override~
+SAY NAME1 ~Lucas~
+SAY NAME2 ~Lucas~
+ADD_CRE_ITEM ~RNDTRE02~ #0 #0 #0 ~NONE~ ~INV6~
+SAY SELECT_COMMON1 ~What do you think you're looking at?~ [FHLLUC3]
+ADD_CRE_ITEM ~POTN52~ #3 #0 #0 ~NONE~ ~INV1~
+ADD_CRE_ITEM ~POTN11~ #0 #0 #0 ~NONE~ ~INV2~
+
+COPY ~LuxleySoA/characters/FHLLYEL.cre~ ~override~
+SAY NAME1 ~Lyel~
+SAY NAME2 ~Lyel~
+ADD_CRE_ITEM ~CHAN05~ #0 #0 #0 ~NONE~ ~ARMOR~
+
+COPY ~LuxleySoA/characters/FHLLYEL2.cre~ ~override~
+SAY NAME1 ~Lyel~
+SAY NAME2 ~Lyel~
+ADD_CRE_ITEM ~CHAN05~ #0 #0 #0 ~NONE~ ~ARMOR~
+ADD_CRE_ITEM ~SHLD04~ #0 #0 #0 ~NONE~ ~SHIELD~
+ADD_CRE_ITEM ~SW1H14~ #0 #0 #0 ~NONE~ ~WEAPON1~
+
+COPY ~LuxleySoA/characters/FHLM1.cre~ ~override~
+SAY NAME1 ~Alistair~
+SAY NAME2 ~Alistair~
+// ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+
+COPY ~LuxleySoA/characters/FHLM2.cre~ ~override~
+SAY NAME1 ~Lantro~
+SAY NAME2 ~Lantro~
+// ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+
+COPY ~LuxleySoA/characters/FHLM3.cre~ ~override~
+SAY NAME1 ~Jonathen~
+SAY NAME2 ~Jonathen~
+// ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+
+COPY ~LuxleySoA/characters/FHLM4.cre~ ~override~
+SAY NAME1 ~Katrin~
+SAY NAME2 ~Katrin~
+// ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+
+COPY ~LuxleySoA/characters/FHLM5.cre~ ~override~
+SAY NAME1 ~Nicolai~
+SAY NAME2 ~Nicolai~
+// ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+
+COPY ~LuxleySoA/characters/FHLM6.cre~ ~override~
+SAY NAME1 ~Farris~
+SAY NAME2 ~Farris~
+// ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+
+COPY ~LuxleySoA/characters/FHLMIE1.cre~ ~override~
+SAY NAME1 ~Tiger~
+SAY NAME2 ~Tiger~
+
+COPY ~LuxleySoA/characters/FHLMIET.cre~ ~override~
+SAY NAME1 ~Mietta~
+SAY NAME2 ~Mietta~
+
+COPY ~LuxleySoA/characters/FHLMIL.cre~ ~override~
+SAY NAME1 ~Miles~
+SAY NAME2 ~Miles~
+
+COPY ~LuxleySoA/characters/FHLMW.cre~ ~override~
+SAY NAME1 ~Katya~
+SAY NAME2 ~Katya~
+
+COPY ~LuxleySoA/characters/FHLNGRL.cre~ ~override~
+SAY NAME1 ~Nari~
+SAY NAME2 ~Nari~
+
+COPY ~LuxleySoA/characters/FHLQUEN.cre~ ~override~
+SAY NAME1 ~Quennell~
+SAY NAME2 ~Quennell~
+ADD_CRE_ITEM ~FHLCHR~ #0 #0 #0 ~NONE~ ~INV6~
+
+COPY ~LuxleySoA/characters/FHLROS.cre~ ~override~
+SAY NAME1 ~Rosanna~
+SAY NAME2 ~Rosanna~
+ADD_CRE_ITEM ~RNDTRE02~ #0 #0 #0 ~NONE~ ~INV6~
+ADD_CRE_ITEM ~POTN52~ #3 #0 #0 ~NONE~ ~INV1~
+ADD_CRE_ITEM ~POTN11~ #0 #0 #0 ~NONE~ ~INV2~
+SAY SELECT_COMMON1 ~Hello again.~ [FHLROS5]
+
+COPY ~LuxleySoA/characters/FHLSAM.cre~ ~override~
+SAY NAME1 ~Samuel~
+SAY NAME2 ~Samuel~
+SAY SELECT_COMMON1 ~Hello again.~ [FHLSAM2]
+ADD_CRE_ITEM ~PLAT04~ #0 #0 #0 ~IDENTIFIED~ ~ARMOR~
+ADD_CRE_ITEM ~SHLD05~ #0 #0 #0 ~IDENTIFIED~ ~SHIELD~
+ADD_CRE_ITEM ~HAMM03~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON1~
+
+COPY ~LuxleySoA/characters/FHLSIM.cre~ ~override~
+SAY NAME1 ~Simeon~
+SAY NAME2 ~Simeon~
+ADD_CRE_ITEM ~MFIST5~ #0 #0 #0 ~NONE~ ~WEAPON1~
+ADD_CRE_ITEM ~POTN52~ #3 #0 #0 ~NONE~ ~INV1~
+ADD_CRE_ITEM ~POTN11~ #0 #0 #0 ~NONE~ ~INV2~
+ADD_CRE_ITEM ~RNDTRE02~ #0 #0 #0 ~NONE~ ~INV6~
+
+COPY ~LuxleySoA/characters/FHLSKL1.cre~ ~override~
+SAY NAME1 ~Skeleton Warrior~
+SAY NAME2 ~Skeleton Warrior~
+
+COPY ~LuxleySoA/characters/FHLSKL2.cre~ ~override~
+SAY NAME1 ~Skeleton Warrior~
+SAY NAME2 ~Skeleton Warrior~
+
+COPY ~LuxleySoA/characters/FHLTURI.cre~ ~override~
+SAY NAME1 ~Turi~
+SAY NAME2 ~Turi~
+// ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+
+COPY ~LuxleySoA/characters/FHLW1.cre~ ~override~
+SAY NAME1 ~Katryna~
+SAY NAME2 ~Katryna~
+ADD_CRE_ITEM ~LEAT02~ #0 #0 #0 ~NONE~ ~ARMOR~
+ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+
+COPY ~LuxleySoA/characters/FHLW2.cre~ ~override~
+SAY NAME1 ~Siri~
+SAY NAME2 ~Siri~
+ADD_CRE_ITEM ~CHAN01~ #0 #0 #0 ~NONE~ ~ARMOR~
+ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+
+COPY ~LuxleySoA/characters/FHLW3.cre~ ~override~
+SAY NAME1 ~Danica~
+SAY NAME2 ~Danica~
+ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+
+COPY ~LuxleySoA/characters/FHLW4.cre~ ~override~
+SAY NAME1 ~Erinne~
+SAY NAME2 ~Erinne~
+ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+
+COPY ~LuxleySoA/characters/FHLW5.cre~ ~override~
+SAY NAME1 ~Serah~
+SAY NAME2 ~Serah~
+ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
+
+COPY ~LuxleySoA/characters/FHLXAV.cre~ ~override~
+SAY NAME1 ~Xavier~
+SAY NAME2 ~Xavier~
+ADD_CRE_ITEM ~HELMNOAN~ #0 #0 #0 ~NONE~ ~HELMET~
+ADD_CRE_ITEM ~CLCK10~ #0 #0 #0 ~NONE~ ~ARMOR~
+ADD_CRE_ITEM ~RING06~ #0 #0 #0 ~NONE~ ~LRING~
+ADD_CRE_ITEM ~POTN52~ #4 #0 #0 ~IDENTIFIED~ ~QITEM1~
+ADD_CRE_ITEM ~RNDTRE04~ #0 #0 #0 ~NONE~ ~INV6~
+ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~NONE~ ~INV7~
+
+
+//Adding Sebastian and Andrei's dialogue files into the game
+
+PRINT ~Adding dialogue files to the game...~
+
+APPEND ~pdialog.2da~
+~FHLSEB FHLSEBP FHLSEBJ FHLSEBD~
+UNLESS ~FHLSEB~
+UNLESS ~25POST~
+
+APPEND ~pdialog.2da~
+~FHLAND FHLANDP FHLANDJ FHLANDD~
+UNLESS ~FHLAND~
+UNLESS ~25POST~
+
+APPEND ~interdia.2da~
+~FHLSEB BFHLSEB~
+UNLESS ~FHLSEB~
+UNLESS ~25POST~
+
+APPEND ~interdia.2da~
+~FHLAND BFHLAND~
+UNLESS ~FHLAND~
+UNLESS ~25POST~
+
+APPEND ~pdialog.2da~
+~FHLSEB FHLSEBP FHLSEBJ FHLSEBD FHLS25P FHLS25J FHLS25D FHLS25~
+UNLESS ~FHLSEB~
+IF ~25POST~
+
+APPEND ~pdialog.2da~
+~FHLAND FHLANDP FHLANDJ FHLANDD FHLA25P FHLA25J FHLA25D FHLA25~
+UNLESS ~FHLAND~
+IF ~25POST~
+
+APPEND ~interdia.2da~
+~FHLSEB BFHLSEB BFHSEB25~
+UNLESS ~FHLSEB~
+IF ~25POST~
+
+APPEND ~interdia.2da~
+~FHLAND BFHLAND BFHLAND~
+UNLESS ~FHLAND~
+IF ~25POST~
+
+//Adding the main area to the master area file
+
+APPEND ~mastarea.2da~
+~FH4800 value~
+
+//Decoding the audio and unpacking the area files
+
+AT_NOW ~LuxleySoA/luxaudiotiz.bat~
+PRINT ~The audio and area files for the Luxley Family mod have been unpacked to your computer.~
+AT_UNINSTALL ~LuxleySoA/luxuninstall.bat~
+
+//Optional component: install this if you want custom portraits for various non-joinable NPCs
+
+BEGIN ~Portraits for non-joinable NPCs~
+COPY ~LuxleySoA/portraits~ ~override~
+
+//Optional components: these will be deprecated by a future release of the Crossmod Banter Pack
+
+BEGIN ~Nathaniel Content~
+REQUIRE_FILE ~override/fhnat.dlg~ ~You do not appear to have Nathaniel installed~
+COMPILE ~LuxleySoA/crossmod/fhlnath.d~
+EXTEND_BOTTOM ~fhnat.bcs~ ~LuxleySoA/crossmod/fhlnath.baf~

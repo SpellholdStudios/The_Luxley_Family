@@ -1,0 +1,15 @@
+IF
+Global("FHLAliExists","AR0700",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLAliExists","AR0700",1)
+CreateCreature("FHLALI",[2230.2912],4)
+END
+
+//IF
+//Global("FHLGenExists","GLOBAL",0)
+//THEN
+//RESPONSE #100
+//SetGlobal("FHLGenExists","GLOBAL",1)
+//CreateCreature("FHLGEN",[3325.1969],6)
+//END

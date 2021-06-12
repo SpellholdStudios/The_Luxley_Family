@@ -1,0 +1,15 @@
+IF
+True()
+THEN
+RESPONSE #100
+CutSceneId(Player1)
+ApplySpellRES("FHLDOOR",Player1)
+ApplySpellRES("FHLDOOR",Player2)
+ApplySpellRES("FHLDOOR",Player3)
+ApplySpellRES("FHLDOOR",Player4)
+ApplySpellRES("FHLDOOR",Player5)
+ApplySpellRES("FHLDOOR",Player6)
+Wait(4)
+RestorePartyLocations()
+EndCutSceneMode()
+END

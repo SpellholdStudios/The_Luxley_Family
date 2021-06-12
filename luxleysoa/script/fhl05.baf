@@ -1,0 +1,20 @@
+IF
+True()
+THEN
+RESPONSE #100
+CutSceneId("FHLLYEL")
+SetGlobal("FHLJoined","GLOBAL",0)
+ActionOverride("FHLAND",LeaveParty())
+ActionOverride("FHLAND",SetLeavePartyDialogFile())
+ActionOverride("FHLAND",ChangeAIScript("",DEFAULT))
+ActionOverride("FHLSEB",LeaveParty())
+ActionOverride("FHLSEB",SetLeavePartyDialogFile())
+ActionOverride("FHLSEB",ChangeAIScript("",DEFAULT))
+ApplySpellRES("FHLDOOR",Myself)
+ApplySpellRES("FHLDOOR","FHLAND")
+ApplySpellRES("FHLDOOR","FHLSEB")
+EscapeAreaMove("AR0700",2140,2409,0)
+ActionOverride("FHLAND",EscapeAreaMove("FH4800",2140,2409,0))
+ActionOverride("FHLSEB",EscapeAreaMove("FH4800",2140,2409,0))
+EndCutSceneMode()
+END

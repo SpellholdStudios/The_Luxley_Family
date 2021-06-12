@@ -1,0 +1,22 @@
+IF
+True()
+THEN
+RESPONSE #100
+CutSceneId(Player1)
+ApplySpellRES("FHLDOOR",Player1)
+ApplySpellRES("FHLDOOR",Player2)
+ApplySpellRES("FHLDOOR",Player3)
+ApplySpellRES("FHLDOOR",Player4)
+ApplySpellRES("FHLDOOR",Player5)
+ApplySpellRES("FHLDOOR",Player6)
+ActionOverride("FHLLYEL",MoveBetweenAreas("FH4800",[244.3010],1)
+Wait(4)
+ActionOverride(Player1,LeaveAreaLUA("FH4800","",[150.3034],11))
+ActionOverride(Player2,LeaveAreaLUA("FH4800","",[181.3073],11))
+ActionOverride(Player3,LeaveAreaLUA("FH4800","",[98.3068],11))
+ActionOverride(Player4,LeaveAreaLUA("FH4800","",[147.3097],11))
+ActionOverride(Player5,LeaveAreaLUA("FH4800","",[64.3097],11))
+ActionOverride(Player6,LeaveAreaLUA("FH4800","",[82.3118],11))
+StorePartyLocations()
+EndCutSceneMode()
+END

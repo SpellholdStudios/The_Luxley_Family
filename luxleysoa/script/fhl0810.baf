@@ -1,0 +1,9 @@
+IF
+Global("FHLSwordQuest","GLOBAL",1)
+Global("FHLSkelExist","AR0810",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLSkelExist","AR0810",1)
+CreateCreature("FHLSkl1",[430.287],1)
+CreateCreature("FHLSkl2",[639.432],1)
+END

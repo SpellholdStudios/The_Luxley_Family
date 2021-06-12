@@ -1,0 +1,16 @@
+IF
+Global("FHLLyelMove3","GLOBAL",1)
+Exists("FHLLYEL")
+THEN
+RESPONSE #100
+ActionOverride("FHLLYEL",DestroySelf())
+END
+
+IF
+Dead("FHLLEAL")
+Global("FHLSecondShake","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLSecondShake","GLOBAL",1)
+ScreenShake([2415.813],15)
+END

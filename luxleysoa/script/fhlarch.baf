@@ -1,0 +1,45 @@
+IF
+HPPercentLT(Myself,20)
+Global("FHLRabChange","LOCALS",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLRabChange","LOCALS",1)
+SetGlobalTimer("FHLArchieChange","GLOBAL",90)
+ApplySpellRES("FHLARCH",MYSELF)
+END
+
+IF
+Global("FHLRabChange","LOCALS",1)
+GlobalTimerExpired("FHLArchieChange","GLOBAL")
+THEN
+RESPONSE #100
+SetGlobal("FHLRabChange","LOCALS",0)
+ApplySpellRES("FHL491",MYSELF)
+END
+
+IF
+See("FHLSEB")
+See("FHLAND")
+Global("FHLJoined","GLOBAL",1)
+Global("FHLArchieQuest","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLArchieQuest","GLOBAL",1)
+MoveToObject("FHLSEB")
+StartDialogueNoSet(Player1)
+END
+
+IF
+Global("FHLArchieQuest","GLOBAL",2)
+THEN
+RESPONSE #100
+RandomWalk()
+END
+
+IF
+Global("FHLMDP","GLOBAL",1)
+THEN
+RESPONSE #100
+Panic()
+END
+

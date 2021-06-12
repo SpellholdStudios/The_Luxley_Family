@@ -1,0 +1,9 @@
+IF
+True()
+THEN
+RESPONSE #100
+CutSceneId("FHLAND")
+ForceSpell(Myself,DRYAD_TELEPORT)
+Wait(2)
+EndCutSceneMode()
+END

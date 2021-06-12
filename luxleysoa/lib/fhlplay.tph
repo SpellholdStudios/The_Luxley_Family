@@ -1,0 +1,43 @@
+COPY ~LuxleySoA/fhlplay.xx~ ~override/fhlplay.fh~
+
+ADD_KIT ~FHLPLAY~
+//appended to CLASWEAP.2da
+~FHLPLAY                  1           1           1           1           1           1           1           1~
+//appended column-wise to WEAPPROF.2da~
+~FHLPLAY 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+//appended to ABCLASRQ.2da
+~FHLPLAY 	0	9	0	15	0	14~
+//appended to ABCLSMOD.2da
+~FHLPLAY		0	0	0	0	0	0~
+//appended to ABDCDSRQ.2da
+~FHLPLAY        0       0      0       0       0       0~
+//appended to ABDCSCRQ.2da
+~FHLPLAY	0	0	0	0	0	0~
+//appended to ALIGNMNT.2da
+~FHLPLAY         1       1       1       1       1       1       1       1       1~
+//appended to DUALCLAS.2da
+~FHLPLAY        0       0       0       0       0       0~
+//path to 2da file
+~LuxleySoA/2da/FHLPLAY.2da~
+//races and classes allowed to use kit
+~~
+//usability flags
+~0x00004000	5~
+//HLA table
+~Ba0~
+//appended to 25stweap.2da
+~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL20 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+//appended to kitlist.2da
+SAY ~Playwright~
+SAY ~Playwright~
+
+SAY ~PLAYWRIGHT: This class consists of a bard who has chosen to spend his time studying and researching for artistic works-in-progress. They appreciate knowledge for its own sake as well as for use in a stage production, and eschew the combative aspects of adventuring.
+
+Advantages:
+-  +10% Lore bonus
+-  One bonus spell slot per spell level
+
+Disadvantages:
+-  -2 THACO penalty
+-  -20% pickpocketing penalty
+-  -2 damage penalty~

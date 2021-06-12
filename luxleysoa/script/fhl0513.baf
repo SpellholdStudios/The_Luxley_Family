@@ -1,0 +1,16 @@
+IF
+Global("FHLGenExists","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLGenExists","GLOBAL",1)
+CreateCreature("FHLGEN",[805.564],1)
+END
+
+IF
+Global("FHLSpawnD","AR0513",0)
+Global("FHLTellCurse","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("FHLSpawnD","AR0513",1)
+CreateCreature("FHLDU",[863.540],1)
+END

@@ -1,0 +1,112 @@
+//Lyel's appearance
+IF
+Global("FHLJoined","GLOBAL",1)
+InParty("FHLAND")
+InParty("FHLSEB")
+!StateCheck("FHLSEB",CD_STATE_NOTVALID)
+!StateCheck("FHLAND",CD_STATE_NOTVALID)
+GlobalTimerExpired("FHLLyelArrive","GLOBAL")
+Global("FHLSpawnLyel","GLOBAL",0)
+AreaType(OUTDOOR)
+THEN
+RESPONSE #100
+SetGlobal("FHLSpawnLyel","GLOBAL",1)
+CreateCreatureObjectDoor("FHLLYEL","FHLAND",0,0,0)
+Wait(4)
+ActionOverride("FHLLYEL",MoveToObject("FHLAND"))
+ActionOverride("FHLLYEL",StartDialogueNoSet(Player1))
+END
+
+//Ensures that Sebastian and Andrei appear once more after temporarily leaving for the estate
+
+IF
+GlobalTimerExpired("FHLReturn1","GLOBAL")
+Global("FHLReturns","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLReturns","GLOBAL",1)
+MoveGlobal("AR0700","FHLSEB",[2140.2409])
+MoveGlobal("AR0700","FHLAND",[2169.2452])
+END
+
+//Spawning messenger
+IF
+GlobalTimerExpired("FHLKavArrive","GLOBAL")
+Global("FHLKavSpawn","GLOBAL",0)
+Global("FHLKavLetter","GLOBAL",0)
+!Global("Chapter","GLOBAL",4)
+!Global("Chapter","GLOBAL",5)
+!Global("Chapter","GLOBAL",7)
+!AreaCheck("AR2500")
+!AreaCheck("AR2600")
+!AreaCheck("AR2601")
+!AreaCheck("AR2800")
+!AreaCheck("AR0500")
+AreaType(OUTDOOR)
+THEN
+RESPONSE #100
+CreateCreatureObjectOffScreen("FHLKAV","FHLSEB",0,0,0)
+SetGlobal("FHLKavSpawn","GLOBAL",1)
+END
+
+//leaving for the second time
+IF
+Global("FHLReturn2Timer","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobalTimer("FHLReturn2","GLOBAL",ONE_DAY)
+SetGlobal("FHLReturn2Timer","GLOBAL",2)
+SetGlobal("FHLKicked","GLOBAL",4)
+END
+
+//returning for the second time//
+IF
+GlobalTimerExpired("FHLReturn2","GLOBAL")
+Global("FHLReturns2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("FHLReturns2","GLOBAL",1)
+MoveGlobal("AR0704","FHLSEB",[171.600])
+MoveGlobal("AR0704","FHLAND",[193.574])
+ActionOverride("FHLAND",Face(2))
+END
+
+//Spawning the messenger boy
+IF
+GlobalTimerExpired("FHLReturn2","GLOBAL")
+Global("FHLReturns2","GLOBAL",1)
+Global("FHLSpawnBoy","GLOBAL",0)
+AreaType(OUTDOOR)
+THEN
+RESPONSE #100
+CreateCreatureObjectOffScreen("FHLBOY3",Player1,0,0,0)
+SetGlobal("FHLSpawnBoy","GLOBAL",1)
+END
+
+//Moving Genevieve to Delosar's Inn
+
+//IF
+//Global("FHLGenMove","GLOBAL",0)
+//Global("FHLKavLetter","GLOBAL",1)
+//THEN
+//RESPONSE #100
+//ActionOverride("FHLGEN",MoveBetweenAreas("AR0513",[805.564],1))
+//SetGlobal("FHLGenMove","GLOBAL",1)
+//END
+
+//Virtue change
+IF
+Global("FHLVirtueChange","GLOBAL",0)
+Global("FHLMDP","GLOBAL",1)
+GlobalGT("D0Virtue","GLOBAL",15)
+THEN
+RESPONSE #100
+SetGlobal("FHLVirtueChange","GLOBAL",1)
+IncrementGlobal("D0Change","GLOBAL",-3)
+END
+
+
+
+
+
+
