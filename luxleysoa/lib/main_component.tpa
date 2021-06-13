@@ -98,19 +98,33 @@ END ELSE BEGIN
 END
 
 
-// Copying audio to override
+/* ------------------------ *
+ *  Installing audio files  *
+ * ------------------------ */
 
 PRINT @21 // ~Installing audio files...~
+SILENT
 
-COPY ~luxleysoa/song/fhlblank.mus~ ~music~
-COPY ~luxleysoa/song/fhlmu1.mus~ ~music~
-COPY ~luxleysoa/song/fhlmu2.mus~ ~music~
+// Installing  music files
+// -----------------------
+COPY ~%MOD_FOLDER%/song/fhlblank.mus~ ~music~
+     ~%MOD_FOLDER%/song/fhlmu1.mus~   ~music~
+     ~%MOD_FOLDER%/song/fhlmu2.mus~   ~music~
+MKDIR ~music/fhlmu~
+COPY ~%MOD_FOLDER%/song/fhlmu1.acm~ ~music/fhlmu~
+     ~%MOD_FOLDER%/song/fhlmu1.acm~ ~music/fhlmu~
+
 COPY_EXISTING ~songlist.2da~ ~override~
-SET_2DA_ENTRY 0 2 3 ~fhlblank.mus~
+	SET_2DA_ENTRY 0 2 3 ~fhlblank.mus~
+
 ADD_MUSIC  ~Luxley1~    ~music/fhlmu1.mus~
 ADD_MUSIC  ~Luxley2~    ~music/fhlmu2.mus~
 
-COPY ~luxleysoa/audio~ ~override~
+// Installing  audio files
+// -----------------------
+LAF HANDLE_AUDIO END
+
+
 
 // Copying and adding notes for areas
 
