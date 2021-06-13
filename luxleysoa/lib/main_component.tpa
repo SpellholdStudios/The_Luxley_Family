@@ -59,10 +59,12 @@ ACTION_IF NOT (is_ee) BEGIN
 END
 
 
-
-// Copying custom spells and graphics to game override
+/* -------------------------------------- *
+ *  Installing spells and graphics files  *
+ * -------------------------------------- */
 
 PRINT @11 // ~Installing spells and graphics...~
+SILENT
 
 COPY ~luxleysoa/spells/copy~ ~override~
 
@@ -70,6 +72,8 @@ COPY ~luxleysoa/spells/copy~ ~override~
 COPY ~luxleysoa/spells/fhlrage.spl~ ~override~
 	SAY NAME1 @12
 	SAY NAME2 @12
+
+
 
 // Installing NPC portraits
 
