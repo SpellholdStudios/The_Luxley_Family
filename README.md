@@ -108,7 +108,7 @@ P.S. I did not add the EET_TRANSITION function, because it does not make sense -
     - Provided NPCs portraits for EE games.
     - Rewrote install procedure to use WeiDU's built-in `HANDLE_AUDIO` function and converted music files to acm.
     - Provided alternative TIS and PVRZ files for EE games (used Tipun's function to find free PVRZ-files indexes on EE-games).
-    - Removed useless audio decoding and tiz unpacking bat processes.
+    - Removed useless audio decoding and tiz unpacking bat `AT_NOW` and `AT_UNINSTALL` processes.
     - .
 - ...
 - ...
@@ -124,7 +124,6 @@ P.S. I did not add the EET_TRANSITION function, because it does not make sense -
 - Updated WeiDU installer to v247.
 
 ## 
-
 
 ## 
 

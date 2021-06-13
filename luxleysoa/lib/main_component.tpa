@@ -717,8 +717,3 @@ IF ~25POST~
 APPEND ~mastarea.2da~
 ~FH4800 value~
 
-//Decoding the audio and unpacking the area files
-
-AT_NOW ~luxleysoa/luxaudiotiz.bat~
-PRINT ~The audio and area files for the Luxley Family mod have been unpacked to your computer.~
-AT_UNINSTALL ~luxleysoa/luxuninstall.bat~
