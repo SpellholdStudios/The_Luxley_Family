@@ -125,18 +125,40 @@ ADD_MUSIC  ~Luxley2~    ~music/fhlmu2.mus~
 LAF HANDLE_AUDIO END
 
 
-
-// Copying and adding notes for areas
+/* --------------------- *
+ *  Installing new area  *
+ * --------------------- */
 
 PRINT @31 // ~Installing area files...~
+SILENT
 
-COPY ~luxleysoa/areas~ ~override~
+COPY ~%MOD_FOLDER%/areas/copy~ ~override~
 
-COPY ~luxleysoa/areas/fh4800.are~ ~override~
+// Adding notes
+// ------------
+COPY ~%MOD_FOLDER%/areas/fh4800.are~ ~override~
 	ADD_MAP_NOTE #3041 #330  ~gray~ @32 // ~The Main House~
 	ADD_MAP_NOTE #3001 #2555 ~gray~ @33 // ~Training Ground~
 	ADD_MAP_NOTE #1579 #2416 ~gray~ @34 // ~Lealia's Home~
 	ADD_MAP_NOTE #365  #2667 ~gray~ @35 // ~Way Out~
+
+
+// Installing tis files according to the game
+// ------------------------------------------
+ACTION_IF is_ee BEGIN
+	INCLUDE ~%MOD_FOLDER%/lib/functions.tph~
+	ACTION_FOR_EACH tis_name_all IN fh4800 fhlmh1 fhlmh2 fhlux1 fhlux2 fhlux3 fhlux4 fhlux5 fhlux6 BEGIN
+		LAF ~FC_COPY_TIS_PVRZ~ // We use a function that finds free pvrz indices
+			STR_VAR
+				tis_pvrz_path = EVAL "%MOD_FOLDER%/tis/ee"
+				path_to_vanilla_tis = EVAL "%MOD_FOLDER%\tis\vanilla"
+				tis_name = EVAL "%tis_name_all%"
+		END
+	END
+END ELSE BEGIN
+	COPY ~%MOD_FOLDER%\tis\vanilla~ ~override~
+END
+
 
 // Compiling scripts and dialogues
 

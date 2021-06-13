@@ -78,12 +78,8 @@ Note that there is adult content in this mod, but all of it is voluntary on the 
 
 23 February 2021 - Version 1.3:
 
-    Mod traified
-    Added native EE-EET compatibility
     Areas, portraits and journal entries are adapted for EE
-    Rewrote install procedure to use WeiDU's built-in `HANDLE_AUDIO` function
     Added Gwendolyne's function which automatically removes usability restrictions for EE games.
-    Added Tipun's function to find free PVRZ-files indexes on EE-games
     Added `HANDLE_CHARSETS` function to convert string entries for EE games
     Fixed a bug that Kaeloree wrote about: http://www.shsforums.net/topic/35897-dialogue-bugs/#entry412277
 
@@ -92,10 +88,8 @@ I indicated the list of changes in the readme file. I tried to take into account
 P.S. I did not add the EET_TRANSITION function, because it does not make sense - the mod does not have a ToB-part and you cannot call these NPCs through the Fate Spirit.
 
 - Re-formated, updated and moved readme files into new :file_folder: "*readme*" folder.
-- Added archive libiconv-1.9.2-1-src.7z with iconv licence info.
 - Replaced `AUTHOR` keyword with `SUPPORT`.
 - Added *yoshimo.ini* metadata file to support AL|EN's "Project Infinity".
-- tp2 file: added credits for translations and replaced old-school `DECOMPILE_DLG_TO_D` plus `COMPILE_D_TO_DLG` process with more accurate `DECOMPILE_AND_PATCH` command.
 - Added `REQUIRE_PREDICATE` process to avoid installing the mod in inaccurate games.
 - Added component `DESIGNATED` number and "*yoshimo_friendship*" `LABEL`.
 - `README` command now accepts translated files.
@@ -112,14 +106,21 @@ P.S. I did not add the EET_TRANSITION function, because it does not make sense -
 - Added native EE-EET compatibility:
     - Converted inventory BAMs to EE: This feature attempts to modify original inventory BAMs so that both the large and small icons are utilized by the EE games. The inventory BAM must have two sequences, the first containing the "large" inventory icon frame and the second containing the "small" inventory icon frame to be processed. Inventory icon BAMs in the bam folder that meet these requirements are patched and saved back to the *override* folder
     - Provided NPCs portraits for EE games.
-- ...
+    - Rewrote install procedure to use WeiDU's built-in `HANDLE_AUDIO` function and converted music files to acm.
+    - Provided alternative TIS and PVRZ files for EE games (used Tipun's function to find free PVRZ-files indexes on EE-games).
+    - Removed useless audio decoding and tiz unpacking bat processes.
+    - .
 - ...
 - ...
 - Cleaned up old ids entries patch replaced with more recent BG2 Fixpack one.
 - ...
+- TRAified the mod.
 - Removed useless :file_folder: "*backup*" folder.
 - Lower cased files.
 - ...
+- ...
+- Updated OggDec to v1.9.7 and added sox v14.4.1 for mac.
+- Added archive libiconv-1.9.2-1-src.7z with iconv licence info.
 - Updated WeiDU installer to v247.
 
 ## 
