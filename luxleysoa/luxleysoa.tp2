@@ -6,6 +6,37 @@ VERSION ~v1.2~
 
 README ~luxleysoa/LuxleyReadme.htm~
 
+ALWAYS
+
+	ACTION_IF NOT VARIABLE_IS_SET always_once_section BEGIN // Always block must run only once per install!
+
+		OUTER_SET always_once_section = 1
+
+		/* ----------------------------------------- *
+		 *    Determines which game is installed.    *
+		 * ----------------------------------------- */
+
+		OUTER_SET is_tob   = (GAME_IS ~bgt tob tutu tutu_totsc~) ? 1 : 0  // based on vanilla ToB engine
+		OUTER_SET is_bg2ee = (GAME_IS "bg2ee") ? 1 : 0                    // b2gee
+		OUTER_SET is_eet   = (GAME_IS "eet") ? 1 : 0                      // eet
+		OUTER_SET is_ee    = (GAME_IS ~bg2ee eet~) ? 1 : 0                // EE game
+
+
+		/* ------------------------------------------------------- *
+		 *    Sets default variables if they're not set already    *
+		 * ------------------------------------------------------- */
+
+		ACTION_IF (is_ee) BEGIN
+			OUTER_SPRINT ee_file "_ee"
+		END ELSE BEGIN
+			OUTER_SPRINT ee_file ""
+		END
+
+
+	END
+
+END
+
 
 // Languages
 LANGUAGE ~English~

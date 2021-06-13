@@ -13,30 +13,40 @@ SILENT
  * -------------------------------------------------------------------------------------------------- */
 APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~ UNLESS ~CD_STATE_NOTVALID~
 
+
+
+/* ---------------------------- *
+ *  Fixing Imoen's banter file  *
+ * ---------------------------- */
+
+// Add Imoen's banter file if Fixpack isn't installed
+// --------------------------------------------------
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~cdbehbla.pro~ BEGIN
+	ACTION_IF (is_tob OR is_ee) BEGIN 
+		COPY_EXISTING ~interdia.2da~ ~override~
+			SET_2DA_ENTRY 17 1 2 ~BIMOEN2~ // fixes ToB version
+		BUT_ONLY
+	END ELSE BEGIN
+		APPEND ~interdia.2da~ ~IMOEN       BIMOEN2~ UNLESS ~[ %TAB%]BIMOEN2[ %TAB%%LNL%%MNL%%WNL%]~ // fixes SoA version
+	END
+END
+
+// Gives Imoen a banter file if there isn't one already
+// ----------------------------------------------------
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~bimoen2.dlg~ BEGIN
+	<<<<<<<< luxleysoa/dialogues/bimoen2.d
+  BEGIN BIMOEN2
+>>>>>>>>
+	COMPILE ~luxleysoa/dialogues/bimoen2.d~
+END
+
+
 //Sorting out broken ids and gametimes - thanks to the Fixpack
 
 INCLUDE ~luxleysoa/lib/fhlids.tph~
 INCLUDE ~luxleysoa/lib/fhltimes.tph~
 
 
-//Giving Imoen a banter file if the Fixpack isn't installed
-
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~cdbehbla.pro~ //makes sure the fixpack isn't already installed
-THEN BEGIN
-ACTION_IF FILE_EXISTS_IN_GAME ~saradush.mve~ THEN BEGIN
-  COPY_EXISTING ~interdia.2da~ ~override~
-    SET_2DA_ENTRY 17 1 2 ~BIMOEN2~ // fixes ToB version
-    BUT_ONLY_IF_IT_CHANGES
-END ELSE BEGIN
-  APPEND ~interdia.2da~ ~IMOEN       BIMOEN2~ // fixes SoA version
-    UNLESS ~BIMOEN2~
-END
-END
-
-//This goes before any Imoen banter files are compiled!
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~override/bimoen2.dlg~ THEN BEGIN
-  COMPILE ~luxleysoa/lib/fhlinitimoen.d~
-END
 
 // Copying custom spells and graphics to game override
 
