@@ -32,14 +32,16 @@ Genevieve.~
 
 STATISTICS:
 
-Damage: 1D10
+Damage: 1d10
 Damage type: slashing
-Weight: 15
 Speed Factor: 10
-Proficiency Type: Two Handed Sword
-Type: 2-handed
+Proficiency Type: Two-handed Sword
+Type: Two-handed
 Requires: 14 Strength
-Not Usable By:
+
+Weight: 15
+
+Not usable by:
  Druid
  Cleric
  Mage 
@@ -219,8 +221,10 @@ Disadvantages:
 
 
 
-/* ================= *
- *  Usability flags  *
- * ================= */
+/* ============================================================================================================= *
+ *  Usability flags                                                                                              *
+ * ------------------------------------------------------------------------------------------------------------- *
+ * Note for translators: you will find usability flags REGEXP expressions in other items mods (Rolles, Ruad...)  *
+ * ============================================================================================================= */
 @9001 = ~\([Oo]nly[ %tab%]+\)?[Uu]sable[ %tab%]+[Bb]y[ %tab%]*:~
 @9002 = ~\(Not[ %tab%]+\|Un\)[Uu]sable[ %tab%]+[Bb]y[ %tab%]*:~

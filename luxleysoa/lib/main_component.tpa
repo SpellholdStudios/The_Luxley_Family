@@ -14,6 +14,13 @@ SILENT
 APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~ UNLESS ~CD_STATE_NOTVALID~
 
 
+/* -------------------------------- *
+ *    Loads macros and functions    *
+ * -------------------------------- */
+
+INCLUDE ~%MOD_FOLDER%/lib/gw_functions.tpa~ // Loads macros and functions library dealing with tooltip appending, specific EE items descriptions, and more...
+
+
 /* ---------------------------- *
  *  Fixing Imoen's banter file  *
  * ---------------------------- */
@@ -146,9 +153,9 @@ COPY ~%MOD_FOLDER%/areas/fh4800.are~ ~override~
 // Installing tis files according to the game
 // ------------------------------------------
 ACTION_IF is_ee BEGIN
-	INCLUDE ~%MOD_FOLDER%/lib/functions.tph~
+	INCLUDE ~%MOD_FOLDER%/lib/functions.tph~ // For new locations in EE: checks if there are already pvrz files with the same name so that there are no conflicts with other mods
 	ACTION_FOR_EACH tis_name_all IN fh4800 fhlmh1 fhlmh2 fhlux1 fhlux2 fhlux3 fhlux4 fhlux5 fhlux6 BEGIN
-		LAF ~FC_COPY_TIS_PVRZ~ // We use a function that finds free pvrz indices
+		LAF ~FC_COPY_TIS_PVRZ~ // Finds free pvrz indices
 			STR_VAR
 				tis_pvrz_path = EVAL "%MOD_FOLDER%/tis/ee"
 				path_to_vanilla_tis = EVAL "%MOD_FOLDER%\tis\vanilla"
@@ -214,7 +221,7 @@ COPY ~luxleysoa/items/fhlnote.itm~ ~override~
 COPY ~luxleysoa/items/fhlsw.itm~ ~override~
 	SAY NAME1 @59
 	SAY NAME2 @59
-	SAY DESC @60
+	LPF ~GW_WRITE_EE_ITM_DESCRIPTIONS~ STR_VAR GW_desc_to_update = "@60" END
 
 // Aegelfred's Chronicles
 COPY ~luxleysoa/items/fhlchr.itm~ ~override~
