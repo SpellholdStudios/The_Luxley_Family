@@ -14,7 +14,6 @@ SILENT
 APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~ UNLESS ~CD_STATE_NOTVALID~
 
 
-
 /* ---------------------------- *
  *  Fixing Imoen's banter file  *
  * ---------------------------- */
@@ -41,10 +40,23 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~bimoen2.dlg~ BEGIN
 END
 
 
-//Sorting out broken ids and gametimes - thanks to the Fixpack
+/* ------------------------------------------ *
+ *  Fixing .ids, courtesy of the BG2 Fixpack  *
+ * ------------------------------------------ */
 
-INCLUDE ~luxleysoa/lib/fhlids.tph~
-INCLUDE ~luxleysoa/lib/fhltimes.tph~
+// Adds ToB trigger/actions to SoA
+// -------------------------------
+INCLUDE ~%MOD_FOLDER%/lib/tob2soa.tph~
+
+// Adds timers entry in gtimes.ids
+// -------------------------------
+INCLUDE ~%MOD_FOLDER%/lib/ids_entries_gtimes.tph~
+
+// Adds kit.ids fixer for classical games
+// --------------------------------------
+ACTION_IF NOT (is_ee) BEGIN
+	INCLUDE ~%MOD_FOLDER%/lib/kit_ids_fixer.tpa~
+END
 
 
 
