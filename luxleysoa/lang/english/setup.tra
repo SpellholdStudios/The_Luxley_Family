@@ -1,0 +1,224 @@
+/* ======================= *
+ *  Installation messages  *
+ * ======================= */
+
+@1    = ~Luxley Family Mod for BGII:SoA~
+
+@11   = ~Installing spells and graphics...~
+@12   = ~Dark Rage~
+@21   = ~Installing audio files...~
+@31   = ~Installing area files...~
+@32   = ~The Main House~
+@33   = ~Training Ground~
+@34   = ~Lealia's Home~
+@35   = ~Way Out~
+
+@41   = ~Compiling dialogues and scripts...~
+
+@51   = ~Installing custom items...~
+@52   = ~Sebastian's Book~
+@53   = ~This book contains Sebastian's notes for his plays and anything else he cares to write while on the road. He guards it jealously and will not let it out of his possession.~
+@54   = ~This book contains various pieces of chapters, notes and doodles by Sebastian. It was bought for him by Andrei, as his last book was taken from him by Xavier.~
+@55   = ~Mietta~
+@56   = ~This small tiger is, according to Andrei, his cousin Mietta. She bites weakly if you approach her but it is clear that she needs healing.~
+@57   = ~Note~
+@58   = ~Meet me in Delosar's Inn, in the Bridge District of Athkatla. I believe we can help one another.
+
+Genevieve.~
+@59   = ~Old sword~
+@60   = ~The two-handed sword is a derivative of the long sword. Weaponsmiths have always looked for ways to improve existing weapons, and in an effort to improve the long sword, the blade was lengthened. Eventually, the handle had to be extended and two hands became necessary to properly swing the sword. The primary function of two-handed swords is cleaving mounted knights and breaking up pike formations.
+
+STATISTICS:
+
+Damage: 1D10
+Damage type: slashing
+Weight: 15
+Speed Factor: 10
+Proficiency Type: Two Handed Sword
+Type: 2-handed
+Requires: 14 Strength
+Not Usable By:
+ Druid
+ Cleric
+ Mage 
+ Thief
+ Monk
+ Beast Master~
+@61   = ~Aegelfred's Chronicles~
+@62   = ~Genevieve wishes to have this book in order to help her investigate the Luxley family curse.~
+
+@71   = ~Installing Playwright Kit...~
+@72   = ~playwright~
+@73   = ~Playwright~
+@74   = ~PLAYWRIGHT: This class consists of a bard who has chosen to spend his time studying and researching for artistic works-in-progress. They appreciate knowledge for its own sake as well as for use in a stage production, and eschew the combative aspects of adventuring.
+
+Advantages:
+- +10% Lore bonus
+- One bonus spell slot per spell level
+
+Disadvantages:
+- -2 THACO penalty
+- -20% pickpocketing penalty
+- -2 damage penalty~
+
+@81   = ~Installing creature files...~
+@82   = ~Sebastian~
+@84   = ~There's nothing cowardly about self-preservation!~ [FHLSS1]
+@85   = ~Oh, I knew I'd have good times with you.~ [FHLSS2]
+@86   = ~I'm older and wiser than you, so why aren't we doing what I want?~ [FHLSS4]
+@87   = ~I'll name no names, but someone in this group needs a kick in the face...~ [FHLSS5]
+@88   = ~I don't owe you anything. I'm off.~ [FHLSS6]
+@89   = ~All will submit to me!~ [FHLSS7]
+@90   = ~I insist we stop. My feet are killing me.~ [FHLSS8]
+@91   = ~There are so many better things we could be doing. Shall I show you some?~ [FHLSS9]
+@92   = ~I'm sure this can be sorted out amicably!~ [FHLSS10]
+@93   = ~What are you waiting for? Attack them!~ [FHLSS11]
+@94   = ~You there! You look tense! How about a massage?~ [FHLSS12]
+@95   = ~Hit 'em in the groin, hit 'em in the knee, hit 'em in the eye so they can't see!~ [FHLSS13]
+@96   = ~You fight, I'll, er, guard the packs!~ [FHLSS14]
+@97   = ~~ [FHLSS15]
+@98   = ~~ [FHLSS16]
+@99   = ~Ohh, I'm going to have to wash that out...~ [FHLSS17]
+@100  = ~What a charming setting for a play. Now, where could I find some nymphs?~ [FHLSS18]
+@101  = ~Don't worry, I can protect you from the perils of the big city.~ [FHLSS19]
+@102  = ~My, you have excellent taste in places to visit. What next? A dank hole? Oh, wait...~ [FHLSS20]
+@103  = ~Do we have to adventure today? Can't we just, you know, amuse ourselves?~ [FHLSS21]
+@104  = ~Ahh, the sky's so clear, the air's so pure, the stars are plentiful.~ [FHLSS22]
+@105  = ~Yes?~ [FHLSS23]
+@106  = ~At your service.~ [FHLSS24]
+@107  = ~Oh, ask someone else.~ [FHLSS25]
+@108  = ~I hope you're not about to order me around.~ [FHLSS26]
+@109  = ~Can it wait?~ [FHLSS27]
+@110  = ~What's wrong with you?~ [FHLSS28]
+@111  = ~If I must.~ [FHLSS29]
+@112  = ~With pleasure.~ [FHLSS30]
+@113  = ~I'm sure you'd do it better.~ [FHLSS31]
+@114  = ~Anything for you.~ [FHLSS32]
+@115  = ~Only if I get my reward.~ [FHLSS33]
+@116  = ~I'd better enjoy this.~ [FHLSS34]
+@117  = ~This isn't going to be boring, is it?~ [FHLSS35]
+@118  = ~Hang on, I'm halfway through a stanza.~ [FHLSS36]
+@119  = ~Would you like Uncle Sebastian to get you some candy? Maybe then I'll get some peace.~ [FHLSS37]
+@120  = ~Did you see that?!~ [FHLSS38]
+@121  = ~Meant to do it!~ [FHLSS39]
+@122  = ~I may as well read a book instead.~ [FHLSS40]
+@123  = ~I'm not a mule.~ [FHLSS41]
+@124  = ~Ooh, pretty things for me. I mean...for all of us.~ [FHLSS42]
+@125  = ~Boo!~ [FHLSS43]
+@126  = ~I didn't want to cast that one anyway.~ [FHLSS44]
+@127  = ~It is fair to say that whenever you question SEBASTIAN about himself he is maddeningly elusive. He is a playwright by trade - or so he says, though he is secretive about his work and claims that a great deal of what he writes would go over your head. He has a keen sense of frivolity and seems to take little in life with any seriousness. Nevertheless, on occasion it appears that there is something else going on with him, and it would be unwise to underestimate his intelligence.~
+
+@130  = ~Andrei~
+@131  = ~I don't want-- I should go back!~ [FHLASS1]
+@132  = ~Xavier would be proud of what we're doing.~ [FHLASS2]
+@133  = ~What are you doing?~ [FHLASS3]
+@134  = ~I don't know what you think you're doing, but this isn't right.~ [FHLASS4]
+@135  = ~Look, that's it.~ [FHLASS5]
+@136   = ~I'll do my best to live up to your expectations.~ [FHLASS6]
+@137  = ~I don't think it's a good idea for us to get too tired.~ [FHLASS7]
+@138  = ~I'd rather be in the estate.~ [FHLASS8]
+@139  = ~Hyah!~ [FHLASS9]
+@140  = ~Die!~ [FHLASS10]
+@141  = ~To the death!~ [FHLASS11]
+@142  = ~Take that!~ [FHLASS12]
+@143  = ~Attack!~ [FHLASS13]
+@144  = ~~ [FHLASS14]
+@145  = ~Uh - I wish I could--~ [FHLASS15]
+@146  = ~I need some healing, quickly!~ [FHLASS16]
+@147  = ~Er... you have got a map, haven't you?~ [FHLASS17]
+@148  = ~I never thought I'd see so many people...~ [FHLASS18]
+@149  = ~Don't worry, I'm watching your back.~ [FHLASS19]
+@150  = ~The sunshine always looks so bright at home.~ [FHLASS20]
+@151  = ~Are we going to sleep anytime soon?~ [FHLASS21]
+@152  = 
+@153  = ~Hmm?~ [FHLASS23]
+@154  = ~What is it?~ [FHLASS24]
+@155  = ~Do you need anything?~ [FHLASS25]
+@156  = ~What?~ [FHLASS26]
+@157  = ~What do you need?~ [FHLASS27]
+@158  = ~All right.~ [FHLASS28]
+@159  = ~Of course.~ [FHLASS29]
+@160  = ~Whatever you say.~ [FHLASS30]
+@161  = ~If it helps.~ [FHLASS31]
+@162  = ~Sure.~ [FHLASS32]
+@163  = ~If that's what you want.~ [FHLASS33]
+@164  = ~If you say so.~ [FHLASS34]
+@165  = ~Andrei Turi Xavier Luxley, at your service.~ [FHLASS35]
+@166  = ~As eventful as all this is, I do miss the estate.~ [FHLASS36]
+@167  = ~Ha!~ [FHLASS37]
+@168  = ~Dammit!~ [FHLASS38]
+@169  = ~I can't seem to do anything!~ [FHLASS39]
+@170  = ~I can't carry all of that.~ [FHLASS40]
+@171  = ~Maybe I should get a hood.~ [FHLASS41]
+@172  = ~Ah, dammit!~ [FHLASS42]
+@173  = ~ANDREI smiles when you ask him about himself. Though he is willing to talk about his relatives and is forthright about his beliefs, he is politely evasive on some subjects. He is skilled in hand-to-hand combat, a skill he developed at a young age, and was trained by an older member of his family. Despite his combat expertise, Andrei has only just left the family estate and seems a little naive about certain aspects of everyday life that you, perhaps, take for granted. Nevertheless, he comes across as quietly confident and it is rare to see him stray from a path he has chosen.~
+@114  = ~Yes?~ [FHLASS22]
+
+@181  = ~Alexandra~
+@182  = ~Alyssia~
+@183  = ~Archie~
+@184  = ~Robin~
+@185  = ~Thomas~
+@186  = ~Boy~
+@187  = ~Brid~
+@188  = ~Edward~
+@189  = ~Mugger~
+@190  = ~Durydil~
+@191  = ~Commoner~
+@192  = ~Genevieve~
+@193  = ~Hello, there.~ [FHLG4]
+@194  = ~Clara~
+@195  = ~Lianne~
+@196  = ~Josefyne~
+@197  = ~Kavyn~
+@198  = ~Lealia~
+@199  = ~Hello, there. Is there anything you need?~ [FHLLEA6]
+@200  = ~Lucas~
+@201  = ~What do you think you're looking at?~ [FHLLUC3]
+@202  = ~Lyel~
+@203  = ~Alistair~
+@204  = ~Lantro~
+@205  = ~Jonathen~
+@206  = ~Katrin~
+@207  = ~Nicolai~
+@208  = ~Farris~
+@209  = ~Tiger~
+@210  = ~Miles~
+@211  = ~Katya~
+@212  = ~Nari~
+@213  = ~Quennell~
+@214  = ~Rosanna~
+@215  = ~Hello again.~ [FHLROS5]
+@216  = ~Samuel~
+@217  = ~Hello again.~ [FHLSAM2]
+@218  = ~Simeon~
+@219  = ~Skeleton Warrior~
+@220  = ~Turi~
+@221  = ~Katryna~
+@222  = ~Siri~
+@223  = ~Danica~
+@224  = ~Erinne~
+@225  = ~Serah~
+@226  = ~Xavier~
+
+
+@231  = ~Adding dialogue files to the game...~
+//@162  = ~The audio and area files for the Luxley Family mod have been unpacked to your computer.~
+
+@168  = ~Whenever you question SEBASTIAN about himself he is maddeningly elusive. He is a playwright by trade - or so he says, though he is secretive about his writings and claims that a great deal of what he writes is too much for you to cope with. Since his part in the murder of the head of his family, he has become distinctly more melancholy, and it seems that some of his former frivolous spirit has gone.~
+@171  = ~It is fair to say that whenever you question SEBASTIAN about himself he is maddeningly elusive. He is a playwright by trade - or so he says, though he is secretive about his writings and claims that a great deal of what he writes would go over your head. He has a keen sense of frivolity and seems to take little in life with any seriousness. Nevertheless, on occasion it appears that there is something else going on with him, and it would be unwise to underestimate his intelligence.~
+@172  = ~I'm sure you'd do it better.~ [FHNSS31]
+
+
+@300  = ~Portraits for non-joinable NPCs~
+
+@400  = ~Nathaniel Content~
+@401  = ~You do not appear to have Nathaniel installed.~
+
+
+
+/* ================= *
+ *  Usability flags  *
+ * ================= */
+@9001 = ~\([Oo]nly[ %tab%]+\)?[Uu]sable[ %tab%]+[Bb]y[ %tab%]*:~
+@9002 = ~\(Not[ %tab%]+\|Un\)[Uu]sable[ %tab%]+[Bb]y[ %tab%]*:~
