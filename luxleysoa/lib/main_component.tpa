@@ -73,16 +73,30 @@ COPY ~luxleysoa/spells/fhlrage.spl~ ~override~
 	SAY NAME1 @12
 	SAY NAME2 @12
 
-
-
 // Installing NPC portraits
+// ------------------------
+COPY ~luxleysoa/portraits%ee_file%~ ~override~
 
-COPY ~luxleysoa/portraits/FHSEBM.bmp~ ~override~
-COPY ~luxleysoa/portraits/FHSEBS.bmp~ ~override~
-COPY ~luxleysoa/portraits/FHANDREM.bmp~ ~override~
-COPY ~luxleysoa/portraits/FHANDRES.bmp~ ~override~
+// Copy BAMs or convert them to EE
+// -------------------------------
+ACTION_IF is_ee BEGIN
+	INCLUDE ~%MOD_FOLDER%/lib/gw_convert_inventory_bam_to_ee.tpa~ // Loads function converting inventory BAMs to EE.
+	OUTER_SPRINT file-exc ~tigid ~                                // Special case: description bams don't need to be converted.
+	ACTION_BASH_FOR ~%MOD_FOLDER%/bam/~ ~^.+\.bam$~ BEGIN
+		ACTION_TO_LOWER %BASH_FOR_FILE%
+		ACTION_TO_LOWER %BASH_FOR_RES%
+		ACTION_IF (~%file-exc%~ STRING_CONTAINS_REGEXP ~%BASH_FOR_RES%~ = 1) BEGIN
+			COPY ~%BASH_FOR_FILESPEC%~ ~override/%BASH_FOR_FILE%~
+				LPF ~gw_convert_inventory_bam_to_ee~ END
+			BUT_ONLY
+		END ELSE BEGIN
+			COPY ~%BASH_FOR_FILESPEC%~ ~override/%BASH_FOR_FILE%~
+		END
+	END
+END ELSE BEGIN
+	COPY ~%MOD_FOLDER%/bam~	~override~
+END
 
-COPY ~luxleysoa/bam~ ~override~
 
 // Copying audio to override
 
