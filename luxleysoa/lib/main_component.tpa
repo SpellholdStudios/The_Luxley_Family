@@ -179,9 +179,13 @@ EXTEND_BOTTOM ~anomen.bcs~  ~luxleysoa/script/fhlano.baf~
 EXTEND_BOTTOM ~jaheira.bcs~ ~luxleysoa/script/fhljah.baf~
 EXTEND_BOTTOM ~viconia.bcs~ ~luxleysoa/script/fhlvic.baf~
 
-// Copying and patching items, their names and their descriptions
+
+/* ------------------ *
+ *  Installing items  *
+ * ------------------ */
 
 PRINT @51 // ~Installing custom items...~
+SILENT
 
 // Sebastian's Book
 COPY ~luxleysoa/items/fhlbook.itm~ ~override~
@@ -219,16 +223,13 @@ COPY ~luxleysoa/items/fhlchr.itm~ ~override~
 	SAY DESC @62
 
 
-// Adding Sebastian's custom Playwright kit - if the 2da isn't already there
+/* ----------------------------- *
+ *  Adding Bard Kit: Playwright  *
+ * ----------------------------- */
 
-// Adding custom kit...
-
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~override/fhlplay.fh~ BEGIN // add playwright kit
-
-	COPY ~luxleysoa/2da/fhlplay.2da~ ~override~
-
-	INCLUDE ~luxleysoa/lib/fhlplay.tph~
-
+// Only if the kit isn't already installed (don't ask me why!!!)
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~fhlplay.fh~ BEGIN
+	INCLUDE ~%MOD_FOLDER%/lib/fhlplay.tph~
 END
 
 
