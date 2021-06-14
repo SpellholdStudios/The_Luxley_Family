@@ -218,6 +218,7 @@ TODO
     - Removed useless audio decoding and tiz unpacking bat `AT_NOW` and `AT_UNINSTALL` processes.
     - `ADD_KIT` process: added missing lower kit strref and fl#add_kit_ee `WeiDU function` for EE games.
 - ...
+- "*Portraits for non-joinable NPCs*" component: Does not anymore overwrite joinable NPCs portraits.
 - Moved extended scripts into new :file_folder: scriptsext to avoid compiling useless baf files.
 - *bfhlseb.d*: Fixed the <a href="http://www.shsforums.net/topic/35897-dialogue-bugs/#entry412277">dialogue teasing Aerie not ending bug</a>.
 - Sebastian and Andrei soundsets: harmonized string references and removed duplicated ones (due to typos).

@@ -80,7 +80,7 @@ INCLUDE ~%MOD_FOLDER%/lib/main_component.tpa~
 
 BEGIN @300 // ~Portraits for non-joinable NPCs~
 
-COPY ~luxleysoa/portraits~ ~override~
+COPY ~%MOD_FOLDER%//portraits_others~ ~override~
 
 
 
