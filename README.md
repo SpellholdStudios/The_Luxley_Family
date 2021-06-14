@@ -29,7 +29,7 @@ Baldur's Gate Trilogy and EET<h3>
 ## 
 
 <div align="center">
-<a href="#intro">Overview</a> &#8226; <a href="#compat">Compatibility</a> &#8226; <a href="#installation">Installation</a> &#8226; <a href="#details">Details</a> &#8226; <a href="#credits">Credits and Acknowledgements</a> &#8226; <a href="#versions">Version History</a></br>
+<a href="#intro">Overview</a> &#8226; <a href="#compat">Compatibility</a> &#8226; <a href="#installation">Installation</a> &#8226; <a href="#details">Details</a> &#8226; <a href="#components">Components</a> &#8226; <a href="#credits">Credits and Acknowledgements</a> &#8226; <a href="#versions">Version History</a></br>
 </div>
 
 <hr>
@@ -72,6 +72,7 @@ If you want to write your own NPC talking about or with Sebastian or Andrei, or 
 
 ## <a name="compat" id="compat"></a>Compatibility
 
+This version contains content for Shadows of Amn only, so while Sebastian and Andrei will be functional in a Throne of Bhaal game they will not speak to you. Any non-WeiDU mods and patches they come with must be installed BEFORE the Luxley Family. Note that Virtue must be installed AFTER the Luxley Family. In addition, if you wish to alter Sebastian or Andrei using a tweak- or fixpack, you should install the pack after the Luxley Family. 
 
 <hr>
 
@@ -122,7 +123,7 @@ If you want to write your own NPC talking about or with Sebastian or Andrei, or 
 		<td><div align="center">11</div></td>
 	</tr>
 		<td colspan="7">
-		<strong>Biography:</strong>
+		<strong>Biography:</strong><br>
 		Andrei smiles when you ask him about himself. Though he is willing to talk about his relatives and is forthright about his beliefs, he is politely evasive on some subjects. He is skilled in hand-to-hand combat, a skill he developed at a young age, and was trained by an older member of his family. Despite his combat expertise, Andrei has only just left the family estate and seems a little naive about certain aspects of everyday life that you, perhaps, take for granted. Nevertheless, he comes across as quietly confident and it is rare to see him stray from a path he has chosen.</td>
 	</tr>
 </table>
@@ -133,11 +134,11 @@ If you want to write your own NPC talking about or with Sebastian or Andrei, or 
 
 You have the opportunity to initiate dialogue with Sebastian and Andrei if you click the *Talk* icon and click on their portraits or avatars. This option is available once they have had their first talk while in the party. Their reactions will depend on your behaviour during both scripted and player-initiated talks.
 
-<ins>Notes on flirting with Andrei:</ins>
+ <ins>Notes on flirting with Andrei:</ins>
 
 You can choose the option "*flirt with*" irrespective of race or gender. If the number of flirts he has accepted gets high enough, he will start a dialogue with you commenting on your behaviour and you can decide whether to try to take things further or remain friends.
 
-<ins>Notes on flirting with Sebastian:</ins>
+ <ins>Notes on flirting with Sebastian:</ins>
 
 You can choose "*flirt with*" irrespective of race or gender. If the number of flirts he has accepted gets high enough, your Bioware loved one will object. Under certain circumstances, you can choose to try to take your relationship with Sebastian further.
 
@@ -181,7 +182,7 @@ With both, you can choose the option "*I'd like us to just be friends*" at any t
 
     Areas, portraits and journal entries are adapted for EE
     Added `HANDLE_CHARSETS` function to convert string entries for EE games
-    Fixed a bug that Kaeloree wrote about: http://www.shsforums.net/topic/35897-dialogue-bugs/#entry412277
+    
 
     - Re-formated, updated and moved readme files into new :file_folder: "*readme*" folder.
     - Replaced `AUTHOR` keyword with `SUPPORT`.
@@ -192,7 +193,7 @@ With both, you can choose the option "*I'd like us to just be friends*" at any t
     - Reg-formated, updated, renamed readme file to *luxleysoa-readme-%LANGUAGE%.html*, than moved it into new :file_folder: "*readme*" folder.
     - Included Linux and macOS versions in the same package (thanks AL|EN!).
 
-
+TRAified .d files and EET chapters continuity compatibility
 TODO
 
 
@@ -216,6 +217,7 @@ TODO
     - Removed useless audio decoding and tiz unpacking bat `AT_NOW` and `AT_UNINSTALL` processes.
     - `ADD_KIT` process: added missing lower kit strref and fl#add_kit_ee `WeiDU function` for EE games.
 - ...
+- *bfhlseb.d*: Fixed the <a href="http://www.shsforums.net/topic/35897-dialogue-bugs/#entry412277">dialogue teasing Aerie not ending bug</a>.
 - Sebastian and Andrei soundsets: harmonized string references and removed duplicated ones (due to typos).
 - Added a more robust workaround than <a href="https://www.gibberlings3.net/forums/topic/21964-add_kit-and-tobex/?do=findComment&comment=183270">BWP Fixpack cmorgan's ToBEx compatible ADD_KIT fix</a> to fix Sebastian creature file installation issue with classic games if TobEx is not installed and there are more and 256 kits installed. I know, pretty rare case, but who knows... :wink:
 - Cleaned up old ids entries patch replaced with more recent BG2 Fixpack one.
