@@ -20,7 +20,6 @@ ALWAYS
 		OUTER_SET is_ee    = (GAME_IS ~bg2ee eet~) ? 1 : 0                   // EE game
 		OUTER_SET is_tobex = (FILE_EXISTS ~tobex_ini/tobexcore.ini~) ? 1 : 0 // ToBEx is installed
 
-
 		/* ------------------------------------------------------- *
 		 *    Sets default variables if they're not set already    *
 		 * ------------------------------------------------------- */
@@ -53,6 +52,24 @@ ALWAYS
 			OUTER_SET EVAL ~%name_source%~ = bg2_chapter
 		END
 
+		/* --------------------------------------------------------------------------------------------- *
+		 *    Convert strings to UTF-8 for BGEE/BG2EE                                                    *
+		 *    No exception, everything needs to be converted                                             *
+		 *    setup.tra contains in game texts as well as installation texts and needs to be converted   *
+		 * --------------------------------------------------------------------------------------------- */
+		ACTION_DEFINE_ARRAY fhl#noconvert BEGIN END
+		// any tra files used in LANGUAGE need to be reloaded after UTF-8 conversion
+		ACTION_DEFINE_ARRAY fhl#reload BEGIN setup END
+
+		LAF HANDLE_CHARSETS
+			INT_VAR
+				infer_charsets = 1
+			STR_VAR
+				tra_path = EVAL ~%MOD_FOLDER%/lang~
+				noconvert_array = fhl#noconvert
+				reload_array = fhl#reload
+		END
+
 	END
 
 END
@@ -80,16 +97,16 @@ INCLUDE ~%MOD_FOLDER%/lib/main_component.tpa~
 
 BEGIN @300 // ~Portraits for non-joinable NPCs~
 
-COPY ~%MOD_FOLDER%//portraits_others~ ~override~
+COPY ~%MOD_FOLDER%/portraits_others~ ~override~
 
 
 
-/* ========================================================================================================================== *
- *    Nathaniel Content  (optional component)  :  these will be deprecated by a future release of the Crossmod Banter Pack    *
- * ========================================================================================================================== */
+/* =================================================================================================================================== *
+ *    Nathaniel Crossmod content  (optional component)  :  these will be deprecated by a future release of the Crossmod Banter Pack    *
+ * =================================================================================================================================== */
 
-BEGIN @400                             // ~Nathaniel Content~
+BEGIN @400                             // ~Nathaniel Crossmod content~
 REQUIRE_FILE ~override/fhnat.dlg~ @401 // ~You do not appear to have Nathaniel installed.~
 
-COMPILE ~luxleysoa/crossmod/fhlnath.d~
-EXTEND_BOTTOM ~fhnat.bcs~ ~luxleysoa/crossmod/fhlnath.baf~
+COMPILE ~%MOD_FOLDER%/crossmod/fhlnath.d~
+EXTEND_BOTTOM ~fhnat.bcs~ ~%MOD_FOLDER%/crossmod/fhlnath.baf~

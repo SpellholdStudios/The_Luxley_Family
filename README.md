@@ -178,12 +178,6 @@ With both, you can choose the option "*I'd like us to just be friends*" at any t
 
 
 
-23 February 2021 - Version 1.3:
-
-    Areas, portraits and journal entries are adapted for EE
-    Added `HANDLE_CHARSETS` function to convert string entries for EE games
-    
-
     - Re-formated, updated and moved readme files into new :file_folder: "*readme*" folder.
     - Replaced `AUTHOR` keyword with `SUPPORT`.
     - Added `REQUIRE_PREDICATE` process to avoid installing the mod in inaccurate games.
@@ -193,7 +187,6 @@ With both, you can choose the option "*I'd like us to just be friends*" at any t
     - Reg-formated, updated, renamed readme file to *luxleysoa-readme-%LANGUAGE%.html*, than moved it into new :file_folder: "*readme*" folder.
     - Included Linux and macOS versions in the same package (thanks AL|EN!).
 
-TRAified .d files and EET chapters continuity compatibility
 TODO
 
 
@@ -208,17 +201,19 @@ TODO
 - Added dynamic install order syntax and global `LABELS` to support AL|EN's "Project Infinity".
 - Renamed *Setup-LuxleySoa.tp2* -> *luxleysoa.tp2* to support AL|EN's "Project Infinity".
 - ...
+- Added `HANDLE_CHARSETS` function to convert string entries for EE games.
+- ...
 - Externalized tp2 code into *main_component.tpa* library for more comfortable readability and maintenance.
 - Added native EE and EET compatibility:
     - Converted inventory BAMs to EE: This feature attempts to modify original inventory BAMs so that both the large and small icons are utilized by the EE games. The inventory BAM must have two sequences, the first containing the "large" inventory icon frame and the second containing the "small" inventory icon frame to be processed. Inventory icon BAMs in the bam folder that meet these requirements are patched and saved back to the *override* folder
-    - .
+    - Added `ADD_JOURNAL` entries.
     - Provided NPCs portraits for EE games.
     - Rewrote install procedure to use WeiDU's built-in `HANDLE_AUDIO` function and converted music files to acm.
     - Provided alternative TIS and PVRZ files for EE games (used Tipun's function to find free PVRZ-files indexes on EE-games).
     - Removed useless audio decoding and tiz unpacking bat `AT_NOW` and `AT_UNINSTALL` processes.
     - `ADD_KIT` process: added missing lower kit strref and fl#add_kit_ee `WeiDU function` for EE games.
 - ...
-- "*Portraits for non-joinable NPCs*" component: Does not anymore overwrite joinable NPCs portraits.
+- "*Portraits for non-joinable NPCs*" optional component: Does not anymore overwrite joinable NPCs portraits.
 - Moved extended scripts into new :file_folder: scriptsext to avoid compiling useless baf files.
 - *bfhlseb.d*: Fixed the <a href="http://www.shsforums.net/topic/35897-dialogue-bugs/#entry412277">dialogue teasing Aerie not ending bug</a>.
 - Sebastian and Andrei soundsets: harmonized string references and removed duplicated ones (due to typos).
