@@ -177,18 +177,15 @@ With both, you can choose the option "*I'd like us to just be friends*" at any t
 ## <a name="versions" id="versions"></a>Version History
 
 
-
-    - Re-formated, updated and moved readme files into new :file_folder: "*readme*" folder.
     - Replaced `AUTHOR` keyword with `SUPPORT`.
     - Added `REQUIRE_PREDICATE` process to avoid installing the mod in inaccurate games.
     - Added components `DESIGNATED` numbers and "*yoshimo_friendship*" `LABELS`.
     - `README` command now accepts translated files.
     - Updated deprecated modding tools links.
-    - Reg-formated, updated, renamed readme file to *luxleysoa-readme-%LANGUAGE%.html*, than moved it into new :file_folder: "*readme*" folder.
+    - Reg-formated, updated, renamed readme file to *luxleysoa-readme-english.html*, then moved it into new :file_folder: "*readme*" folder.
     - Included Linux and macOS versions in the same package (thanks AL|EN!).
 
-TODO
-
+**TODO**
 
     Sebastian soundset: SET_A_TRAP and SELECT_ACTION3 share the same strref (@113 = ~I'm sure you'd do it better.~ [FHLSS31])
     Andrei soundset: SELECT_COMMON1 strref differs in 3 crea files (~~ [FHLASS22] or ~Yes?~ [FHLASS22]). Moreover, there is no FHLASS22.ogg file in audio folder...
@@ -214,6 +211,7 @@ TODO
     - `ADD_KIT` process: added missing lower kit strref and fl#add_kit_ee `WeiDU function` for EE games.
 - ...
 - "*Portraits for non-joinable NPCs*" optional component: Does not anymore overwrite joinable NPCs portraits.
+- *fhlseb.baf*: Fixed wrong Gavin romance active variable (set to *`B!GavRA`*, was *`B!GavinRomanceActive`*).
 - Moved extended scripts into new :file_folder: scriptsext to avoid compiling useless baf files.
 - *bfhlseb.d*: Fixed the <a href="http://www.shsforums.net/topic/35897-dialogue-bugs/#entry412277">dialogue teasing Aerie not ending bug</a>.
 - Sebastian and Andrei soundsets: harmonized string references and removed duplicated ones (due to typos).

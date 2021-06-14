@@ -368,7 +368,7 @@ GlobalGT("FHLMDP","GLOBAL",0)
 Global("FHLSebBioChange","GLOBAL",0)
 THEN
 RESPONSE #100
-SetPlayerSound(Myself,~Whenever you question SEBASTIAN about himself he is maddeningly elusive. He is a playwright by trade - or so he says, though he is secretive about his writings and claims that a great deal of what he writes is too much for you to cope with. Since his part in the murder of the head of his family, he has become distinctly more melancholy, and it seems that some of his former frivolous spirit has gone.~,EXISTANCE5)
+SetPlayerSound(Myself,@128,EXISTANCE5)
 SetGlobal("FHLSebBioChange","GLOBAL",1)
 END
 
@@ -390,7 +390,7 @@ GlobalGT("FHLMDP","GLOBAL",1)
 OR(14)
 Global("ChloeRomanceActiveCR","GLOBAL",2)
 Global("E3FadeRomanceActive","GLOBAL",2)
-Global("B!GavinRomanceActive","GLOBAL",2)
+Global("B!GavRA","GLOBAL",2)
 Global("imoenromanceactive","GLOBAL",2)
 Global("J#KelseyRomanceActive","GLOBAL",2)
 Global("KiaraRomanceActive","GLOBAL",2)
