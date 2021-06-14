@@ -1,0 +1,5 @@
+
+- What about fhl0709.baf???
+
+- Sebastian soundset: SET_A_TRAP and SELECT_ACTION3 share the same strref (@113 = ~I'm sure you'd do it better.~ [FHLSS31])
+- Andrei soundset: SELECT_COMMON1 strref differs in 3 crea files (~~ [FHLASS22] or ~Yes?~ [FHLASS22]). Moreover, there is no FHLASS22.ogg file in audio folder...
