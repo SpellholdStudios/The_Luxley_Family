@@ -199,6 +199,7 @@ TODO
 
     Sebastian soundset: SET_A_TRAP and SELECT_ACTION3 share the same strref (@113 = ~I'm sure you'd do it better.~ [FHLSS31])
     Andrei soundset: SELECT_COMMON1 strref differs in 3 crea files (~~ [FHLASS22] or ~Yes?~ [FHLASS22]). Moreover, there is no FHLASS22.ogg file in audio folder...
+	What about fhl0709.baf???
 
 
 ##### Version 1.3 &nbsp;(June , 2021)
@@ -217,6 +218,7 @@ TODO
     - Removed useless audio decoding and tiz unpacking bat `AT_NOW` and `AT_UNINSTALL` processes.
     - `ADD_KIT` process: added missing lower kit strref and fl#add_kit_ee `WeiDU function` for EE games.
 - ...
+- Moved extended scripts into new :file_folder: scriptsext to avoid compiling useless baf files.
 - *bfhlseb.d*: Fixed the <a href="http://www.shsforums.net/topic/35897-dialogue-bugs/#entry412277">dialogue teasing Aerie not ending bug</a>.
 - Sebastian and Andrei soundsets: harmonized string references and removed duplicated ones (due to typos).
 - Added a more robust workaround than <a href="https://www.gibberlings3.net/forums/topic/21964-add_kit-and-tobex/?do=findComment&comment=183270">BWP Fixpack cmorgan's ToBEx compatible ADD_KIT fix</a> to fix Sebastian creature file installation issue with classic games if TobEx is not installed and there are more and 256 kits installed. I know, pretty rare case, but who knows... :wink:

@@ -166,25 +166,31 @@ END ELSE BEGIN
 	COPY ~%MOD_FOLDER%\tis\vanilla~ ~override~
 END
 
+// Adding the main area to the master area file
+// --------------------------------------------
+APPEND ~mastarea.2da~ ~FH4800 value~
 
-// Compiling scripts and dialogues
+
+/* --------------------------------- *
+ *  Compiling scripts and dialogues  *
+ * --------------------------------- */
 
 PRINT @41 // ~Compiling dialogues and scripts...~
 
-COMPILE ~%MOD_FOLDER%/dialogues~
-        ~%MOD_FOLDER%/script~
+COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogues~
+COMPILE ~%MOD_FOLDER%/scripts~
 
-EXTEND_BOTTOM ~ar0319.bcs~  ~%MOD_FOLDER%/script/fhl0319.baf~
-EXTEND_BOTTOM ~ar0400.bcs~  ~%MOD_FOLDER%/script/fhl0400.baf~
-EXTEND_BOTTOM ~ar0500.bcs~  ~%MOD_FOLDER%/script/fhl0500.baf~
-EXTEND_BOTTOM ~ar0513.bcs~  ~%MOD_FOLDER%/script/fhl0513.baf~
-EXTEND_BOTTOM ~ar0700.bcs~  ~%MOD_FOLDER%/script/fhl0700.baf~
-EXTEND_BOTTOM ~ar0810.bcs~  ~%MOD_FOLDER%/script/fhl0810.baf~
-EXTEND_BOTTOM ~baldur.bcs~  ~%MOD_FOLDER%/script/fhlbaldur.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~aerie.bcs~   ~%MOD_FOLDER%/script/fhlaer.baf~
-EXTEND_BOTTOM ~anomen.bcs~  ~%MOD_FOLDER%/script/fhlano.baf~
-EXTEND_BOTTOM ~jaheira.bcs~ ~%MOD_FOLDER%/script/fhljah.baf~
-EXTEND_BOTTOM ~viconia.bcs~ ~%MOD_FOLDER%/script/fhlvic.baf~
+EXTEND_BOTTOM ~ar0319.bcs~  ~%MOD_FOLDER%/scriptsext/fhl0319.baf~
+EXTEND_BOTTOM ~ar0400.bcs~  ~%MOD_FOLDER%/scriptsext/fhl0400.baf~
+EXTEND_BOTTOM ~ar0500.bcs~  ~%MOD_FOLDER%/scriptsext/fhl0500.baf~
+EXTEND_BOTTOM ~ar0513.bcs~  ~%MOD_FOLDER%/scriptsext/fhl0513.baf~
+EXTEND_BOTTOM ~ar0700.bcs~  ~%MOD_FOLDER%/scriptsext/fhl0700.baf~
+EXTEND_BOTTOM ~ar0810.bcs~  ~%MOD_FOLDER%/scriptsext/fhl0810.baf~
+EXTEND_BOTTOM ~baldur.bcs~  ~%MOD_FOLDER%/scriptsext/fhlbaldur.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~aerie.bcs~   ~%MOD_FOLDER%/scriptsext/fhlaer.baf~
+EXTEND_BOTTOM ~anomen.bcs~  ~%MOD_FOLDER%/scriptsext/fhlano.baf~
+EXTEND_BOTTOM ~jaheira.bcs~ ~%MOD_FOLDER%/scriptsext/fhljah.baf~
+EXTEND_BOTTOM ~viconia.bcs~ ~%MOD_FOLDER%/scriptsext/fhlvic.baf~
 
 
 /* ------------------ *
@@ -706,52 +712,24 @@ COPY ~%MOD_FOLDER%/cre/fhlxav.cre~ ~override~
 	ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~NONE~ ~INV7~
 
 
-//Adding Sebastian and Andrei's dialogue files into the game
+/* ------------------------------------------------- *
+ *  Appending Sebastian and Andrei's dialogue files  *
+ * ------------------------------------------------- */
 
-PRINT @231 // ~Adding dialogue files to the game...~
+PRINT @231 // ~Appending Sebastian and Andrei's dialogue files to the game...~
 
-APPEND ~pdialog.2da~
-~FHLSEB FHLSEBP FHLSEBJ FHLSEBD~
-UNLESS ~FHLSEB~
-UNLESS ~25POST~
+// BG2 game without ToB
+// --------------------
+APPEND ~pdialog.2da~ ~FHLSEB FHLSEBP FHLSEBJ FHLSEBD~ UNLESS ~FHLSEB~ UNLESS ~25POST~
+APPEND ~pdialog.2da~ ~FHLAND FHLANDP FHLANDJ FHLANDD~ UNLESS ~FHLAND~ UNLESS ~25POST~
 
-APPEND ~pdialog.2da~
-~FHLAND FHLANDP FHLANDJ FHLANDD~
-UNLESS ~FHLAND~
-UNLESS ~25POST~
+APPEND ~interdia.2da~ ~FHLSEB BFHLSEB~ UNLESS ~FHLSEB~ UNLESS ~25POST~
+APPEND ~interdia.2da~ ~FHLAND BFHLAND~ UNLESS ~FHLAND~ UNLESS ~25POST~
 
-APPEND ~interdia.2da~
-~FHLSEB BFHLSEB~
-UNLESS ~FHLSEB~
-UNLESS ~25POST~
+// ToB based game
+// --------------
+APPEND ~pdialog.2da~ ~FHLSEB FHLSEBP FHLSEBJ FHLSEBD FHLS25P FHLS25J FHLS25D FHLS25~ UNLESS ~FHLSEB~ IF ~25POST~
+APPEND ~pdialog.2da~ ~FHLAND FHLANDP FHLANDJ FHLANDD FHLA25P FHLA25J FHLA25D FHLA25~ UNLESS ~FHLAND~ IF ~25POST~
 
-APPEND ~interdia.2da~
-~FHLAND BFHLAND~
-UNLESS ~FHLAND~
-UNLESS ~25POST~
-
-APPEND ~pdialog.2da~
-~FHLSEB FHLSEBP FHLSEBJ FHLSEBD FHLS25P FHLS25J FHLS25D FHLS25~
-UNLESS ~FHLSEB~
-IF ~25POST~
-
-APPEND ~pdialog.2da~
-~FHLAND FHLANDP FHLANDJ FHLANDD FHLA25P FHLA25J FHLA25D FHLA25~
-UNLESS ~FHLAND~
-IF ~25POST~
-
-APPEND ~interdia.2da~
-~FHLSEB BFHLSEB BFHSEB25~
-UNLESS ~FHLSEB~
-IF ~25POST~
-
-APPEND ~interdia.2da~
-~FHLAND BFHLAND BFHLAND~
-UNLESS ~FHLAND~
-IF ~25POST~
-
-//Adding the main area to the master area file
-
-APPEND ~mastarea.2da~
-~FH4800 value~
-
+APPEND ~interdia.2da~ ~FHLSEB BFHLSEB BFHSEB25~ UNLESS ~FHLSEB~ IF ~25POST~
+APPEND ~interdia.2da~ ~FHLAND BFHLAND BFHLAND~ UNLESS ~FHLAND~ IF ~25POST~
