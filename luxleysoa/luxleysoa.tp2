@@ -8,9 +8,7 @@ README ~luxleysoa/LuxleyReadme.htm~
 
 ALWAYS
 
-	ACTION_IF NOT VARIABLE_IS_SET always_once_section BEGIN // Always block must run only once per install!
-
-		OUTER_SET always_once_section = 1
+	ACTION_IF NOT VARIABLE_IS_SET bg2_chapter BEGIN // Always block must run only once per install!
 
 		/* ----------------------------------------- *
 		 *    Determines which game is installed.    *
@@ -41,6 +39,19 @@ ALWAYS
 			OUTER_SET kits_lim_256  = 1
 		END
 
+		/* ------------------------------------------- *
+		 *    EET chapters continuity compatibility    *
+		 * ------------------------------------------- */
+		ACTION_IF is_eet BEGIN
+			OUTER_SET bg2_chapter = 12
+		END ELSE BEGIN
+			OUTER_SET bg2_chapter = 0
+		END
+		OUTER_FOR (i = 1 ; i <= 10 ; ++i) BEGIN
+			OUTER_SET bg2_chapter = bg2_chapter + 1
+			OUTER_SPRINT name_source ~bg2_chapter_%i%~
+			OUTER_SET EVAL ~%name_source%~ = bg2_chapter
+		END
 
 	END
 
