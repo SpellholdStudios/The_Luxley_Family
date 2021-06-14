@@ -138,4 +138,10 @@ LAF fl#add_kit_ee
 		//crippstr	= ~~
 END
 
+
+/* -------------------------------------------------------------- *
+ *  Workaround to fix Sebastian creature file installation issue  * 
+ * -------------------------------------------------------------- */
+OUTER_SET playwright_kit_id = IDS_OF_SYMBOL(~kit~ ~FHLPLAY~)
+
 SILENT

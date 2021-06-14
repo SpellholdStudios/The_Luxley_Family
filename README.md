@@ -45,22 +45,22 @@ Sebastian and Andrei both have detailed talk tracks with the PC; they also bante
 
 Note that there is adult content in this mod, but all of it is voluntary on the part of the player - nothing that you feel uncomfortable with is forced on you. :wink:
 
-Key features:
+**Key features:**
 
-    - A custom Playwright kit for Sebastian, giving him an additional spell per level but also combat penalties.
-    - A special ability for Andrei, giving him a damage bonus with a Thac0 penalty and wisdom drain.
-    - A brand-new area, as well as a set edited from the original game areas, along with new non-joinable NPCs.
-    - A three-stage quest with different paths for each segment.
-    - A track of up to 9 interactions between the protagonist and both characters.
-    - A talk track of up to 10 conversations between Sebastian and Andrei.
-    - Extensive player-initiated-dialogue for both characters which changes depending how much they like the protagonist.
-    - Custom portraits for Sebastian and Andrei, and optional portraits for various non-party NPCs.
-    - Extensive voicing, including voicing for eleven non-party NPCs.
-    - 2-4 banters with the Bioware NPCs in your party.
-    - Interjections about the player's conversations with non-party NPCs, and interactions with non-party NPCs.
-    - Tree of Life dialogue with different options depending on the paths you have chosen.
-    - String fixers (K) in the case of re-installations mixing up Andrei and Sebastian's name strings.
-    - Custom items, some of which are more useful than others.
+- A custom Playwright kit for Sebastian, giving him an additional spell per level but also combat penalties.
+- A special ability for Andrei, giving him a damage bonus with a Thac0 penalty and wisdom drain.
+- A brand-new area, as well as a set edited from the original game areas, along with new non-joinable NPCs.
+- A three-stage quest with different paths for each segment.
+- A track of up to 9 interactions between the protagonist and both characters.
+- A talk track of up to 10 conversations between Sebastian and Andrei.
+- Extensive player-initiated-dialogue for both characters which changes depending how much they like the protagonist.
+- Custom portraits for Sebastian and Andrei, and optional portraits for various non-party NPCs.
+- Extensive voicing, including voicing for eleven non-party NPCs.
+- 2-4 banters with the Bioware NPCs in your party.
+- Interjections about the player's conversations with non-party NPCs, and interactions with non-party NPCs.
+- Tree of Life dialogue with different options depending on the paths you have chosen.
+- String fixers (K) in the case of re-installations mixing up Andrei and Sebastian's name strings.
+- Custom items, some of which are more useful than others.
 
  
 
@@ -85,6 +85,19 @@ If you want to write your own NPC talking about or with Sebastian or Andrei, or 
 
 ## <a name="details" id="details"></a>Details
 
+<table cellpadding=0 cellspacing=0 style="margin-top: 1%; margin-left: 80px">
+	<tr>
+	<td style="font-size: 90%;text-align:right;border:none"><img width=500 src="readme/images/fhsebm.png.jpg" title="Menace sur le Royaume de Diamant Éternel"><br>Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</td>
+	<td width=20 style="border:none"></td>
+	<td style="border:none;text-align: justify;font-size: 110%;line-height: 150%;">
+	<strong>Menace sur le royaume de Diamant Éternel</strong> is a French mod designed to provide more than a huge quest, without being a total conversion. A tiny part takes place in BG2 Shadows of Amn, but the main part is played in the Throne of Bhaal extension. fhandrem.png<br><br>
+	You liked Excalibur, did not you? But have you ever wondered why every woman character is treated as a pest? Guinevere adultery, Morgane the wicked... Why do Paladin Orders recrute only men?<br><br>
+	And what if those tales were nothing but a fable spread by men to hide the truth?<br><br>
+	This mod tries to restore the truth, at least <em>ITS TRUTH</em>...<br><br>
+	The adventure takes place in a parallel dimension, both 'near' and 'far away' from Faerûn, more precisely in the Kingdom of Eternal Diamond, ruled by a dynasty of paladin kings that a renegade paladin attempts to overthrow. To carry out her betrayal, she has made a pact with rather 'special evil forces'...<br><br>
+	The kingdom derives its wealth from its minings and its power from the protection of the silver dragon Diamantor, worshipped by some as a demigod.</td>
+	</tr>
+</table><br>
 
 <div align="right"><a href="#top">Back to top</a></div>
 
@@ -126,19 +139,27 @@ If you want to write your own NPC talking about or with Sebastian or Andrei, or 
     Added `HANDLE_CHARSETS` function to convert string entries for EE games
     Fixed a bug that Kaeloree wrote about: http://www.shsforums.net/topic/35897-dialogue-bugs/#entry412277
 
-- Re-formated, updated and moved readme files into new :file_folder: "*readme*" folder.
-- Replaced `AUTHOR` keyword with `SUPPORT`.
-- Added `REQUIRE_PREDICATE` process to avoid installing the mod in inaccurate games.
-- Added component `DESIGNATED` number and "*yoshimo_friendship*" `LABEL`.
-- `README` command now accepts translated files.
-- Updated deprecated modding tools links.
-- Updated and renamed readme files to *yoshimofriendship-readme-%LANGUAGE%.html*.
-- Included Linux and macOS versions in the same package (thanks AL|EN!).
+    - Re-formated, updated and moved readme files into new :file_folder: "*readme*" folder.
+    - Replaced `AUTHOR` keyword with `SUPPORT`.
+    - Added `REQUIRE_PREDICATE` process to avoid installing the mod in inaccurate games.
+    - Added components `DESIGNATED` numbers and "*yoshimo_friendship*" `LABELS`.
+    - `README` command now accepts translated files.
+    - Updated deprecated modding tools links.
+    - Reg-formated, updated, renamed readme file to *luxleysoa-readme-%LANGUAGE%.html*, than moved it into new :file_folder: "*readme*" folder.
+    - Included Linux and macOS versions in the same package (thanks AL|EN!).
+
+
+TODO
+
+
+    Sebastian soundset: SET_A_TRAP and SELECT_ACTION3 share the same strref (@113 = ~I'm sure you'd do it better.~ [FHLSS31])
+    Andrei soundset: SELECT_COMMON1 strref differs in 3 crea files (~~ [FHLASS22] or ~Yes?~ [FHLASS22]). Moreover, there is no FHLASS22.ogg file in audio folder...
+
 
 ##### Version 1.3 &nbsp;(June , 2021)
 
 - Added *luxleysoa.ini* metadata file to support AL|EN's "Project Infinity".
-- Added dynamic install order syntax and global labels to support AL|EN's "Project Infinity".
+- Added dynamic install order syntax and global `LABELS` to support AL|EN's "Project Infinity".
 - Renamed *Setup-LuxleySoa.tp2* -> *luxleysoa.tp2* to support AL|EN's "Project Infinity".
 - ...
 - Externalized tp2 code into *main_component.tpa* library for more comfortable readability and maintenance.
@@ -151,13 +172,14 @@ If you want to write your own NPC talking about or with Sebastian or Andrei, or 
     - Removed useless audio decoding and tiz unpacking bat `AT_NOW` and `AT_UNINSTALL` processes.
     - `ADD_KIT` process: added missing lower kit strref and fl#add_kit_ee `WeiDU function` for EE games.
 - ...
+- Sebastian and Andrei soundsets: harmonized string references and removed duplicated ones (due to typos).
+- Added a more robust workaround than <a href="https://www.gibberlings3.net/forums/topic/21964-add_kit-and-tobex/?do=findComment&comment=183270">BWP Fixpack cmorgan's ToBEx compatible ADD_KIT fix</a> to fix Sebastian creature file installation issue with classic games if TobEx is not installed and there are more and 256 kits installed. I know, pretty rare case, but who knows... :wink:
 - Cleaned up old ids entries patch replaced with more recent BG2 Fixpack one.
 - ...
 - Updated *setup.tra* file for compatibility with `GW_UPDATE_ITM_DESCRIPTION_TO_EE` WeiDU function requirements which automatically removes items usability restrictions for EE games.
 - TRAified the mod.
 - Removed useless :file_folder: "*backup*" folder.
 - Lower cased files.
-- ...
 - ...
 - Updated OggDec to v1.9.7 and added sox v14.4.1 for mac.
 - Added archive libiconv-1.9.2-1-src.7z with iconv licence info.

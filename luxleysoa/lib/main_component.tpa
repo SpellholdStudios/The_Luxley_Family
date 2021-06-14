@@ -73,16 +73,16 @@ END
 PRINT @11 // ~Installing spells and graphics...~
 SILENT
 
-COPY ~luxleysoa/spells/copy~ ~override~
+COPY ~%MOD_FOLDER%/spells/copy~ ~override~
 
 // Dark Rage
-COPY ~luxleysoa/spells/fhlrage.spl~ ~override~
+COPY ~%MOD_FOLDER%/spells/fhlrage.spl~ ~override~
 	SAY NAME1 @12
 	SAY NAME2 @12
 
 // Installing NPC portraits
 // ------------------------
-COPY ~luxleysoa/portraits%ee_file%~ ~override~
+COPY ~%MOD_FOLDER%/portraits%ee_file%~ ~override~
 
 // Copy BAMs or convert them to EE
 // -------------------------------
@@ -171,20 +171,20 @@ END
 
 PRINT @41 // ~Compiling dialogues and scripts...~
 
-COMPILE ~luxleysoa/dialogues~
-        ~luxleysoa/script~
+COMPILE ~%MOD_FOLDER%/dialogues~
+        ~%MOD_FOLDER%/script~
 
-EXTEND_BOTTOM ~ar0319.bcs~  ~luxleysoa/script/fhl0319.baf~
-EXTEND_BOTTOM ~ar0400.bcs~  ~luxleysoa/script/fhl0400.baf~
-EXTEND_BOTTOM ~ar0500.bcs~  ~luxleysoa/script/fhl0500.baf~
-EXTEND_BOTTOM ~ar0513.bcs~  ~luxleysoa/script/fhl0513.baf~
-EXTEND_BOTTOM ~ar0700.bcs~  ~luxleysoa/script/fhl0700.baf~
-EXTEND_BOTTOM ~ar0810.bcs~  ~luxleysoa/script/fhl0810.baf~
-EXTEND_BOTTOM ~baldur.bcs~  ~luxleysoa/script/fhlbaldur.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~aerie.bcs~   ~luxleysoa/script/fhlaer.baf~
-EXTEND_BOTTOM ~anomen.bcs~  ~luxleysoa/script/fhlano.baf~
-EXTEND_BOTTOM ~jaheira.bcs~ ~luxleysoa/script/fhljah.baf~
-EXTEND_BOTTOM ~viconia.bcs~ ~luxleysoa/script/fhlvic.baf~
+EXTEND_BOTTOM ~ar0319.bcs~  ~%MOD_FOLDER%/script/fhl0319.baf~
+EXTEND_BOTTOM ~ar0400.bcs~  ~%MOD_FOLDER%/script/fhl0400.baf~
+EXTEND_BOTTOM ~ar0500.bcs~  ~%MOD_FOLDER%/script/fhl0500.baf~
+EXTEND_BOTTOM ~ar0513.bcs~  ~%MOD_FOLDER%/script/fhl0513.baf~
+EXTEND_BOTTOM ~ar0700.bcs~  ~%MOD_FOLDER%/script/fhl0700.baf~
+EXTEND_BOTTOM ~ar0810.bcs~  ~%MOD_FOLDER%/script/fhl0810.baf~
+EXTEND_BOTTOM ~baldur.bcs~  ~%MOD_FOLDER%/script/fhlbaldur.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~aerie.bcs~   ~%MOD_FOLDER%/script/fhlaer.baf~
+EXTEND_BOTTOM ~anomen.bcs~  ~%MOD_FOLDER%/script/fhlano.baf~
+EXTEND_BOTTOM ~jaheira.bcs~ ~%MOD_FOLDER%/script/fhljah.baf~
+EXTEND_BOTTOM ~viconia.bcs~ ~%MOD_FOLDER%/script/fhlvic.baf~
 
 
 /* ------------------ *
@@ -195,36 +195,36 @@ PRINT @51 // ~Installing custom items...~
 SILENT
 
 // Sebastian's Book
-COPY ~luxleysoa/items/fhlbook.itm~ ~override~
+COPY ~%MOD_FOLDER%/items/fhlbook.itm~ ~override~
 	SAY NAME1 @52
 	SAY NAME2 @52
 	SAY DESC @53
 
-COPY ~luxleysoa/items/fhlbk2.itm~ ~override~
+COPY ~%MOD_FOLDER%/items/fhlbk2.itm~ ~override~
 	SAY NAME1 @52
 	SAY NAME2 @52
 	SAY DESC @54
 
 // Mietta
-COPY ~luxleysoa/items/fhltig.itm~ ~override~
+COPY ~%MOD_FOLDER%/items/fhltig.itm~ ~override~
 	SAY NAME1 @55
 	SAY NAME2 @55
 	SAY DESC @56
 
 // Note
-COPY ~luxleysoa/items/fhlnote.itm~ ~override~
+COPY ~%MOD_FOLDER%/items/fhlnote.itm~ ~override~
 	SAY NAME1 @57
 	SAY NAME2 @57
 	SAY DESC @58
 
 // Old sword
-COPY ~luxleysoa/items/fhlsw.itm~ ~override~
+COPY ~%MOD_FOLDER%/items/fhlsw.itm~ ~override~
 	SAY NAME1 @59
 	SAY NAME2 @59
 	LPF ~GW_WRITE_EE_ITM_DESCRIPTIONS~ STR_VAR GW_desc_to_update = "@60" END
 
 // Aegelfred's Chronicles
-COPY ~luxleysoa/items/fhlchr.itm~ ~override~
+COPY ~%MOD_FOLDER%/items/fhlchr.itm~ ~override~
 	SAY NAME1 @61
 	SAY NAME2 @61
 	SAY DESC @62
@@ -240,17 +240,28 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~fhlplay.fh~ BEGIN
 END
 
 
-PRINT @81 // ~Installing creature files...~
+/* ---------------------- *
+ *  Installing creatures  *
+ * ---------------------- */
 
-//Copying creature files to override, adding kit to Sebastian's and adding their items
+PRINT @81 // ~Installing creature files...~
+SILENT
 
 // Sebastian
-COPY ~luxleysoa/cre/fhlseb08.cre~ ~override~
+// ---------
+COPY ~%MOD_FOLDER%/cre/fhlseb08.cre~ ~override~
 	SAY NAME1 @82
 	SAY NAME2 @82
-WRITE_SHORT 0x244 0
-WRITE_BYTE 0x246 ~%FHLPLAY%~
-WRITE_BYTE 0x247 0x40
+	WRITE_ASCII 0x34  ~FHSEBS~ #8  // small portrait
+	WRITE_ASCII 0x3c  ~FHSEBM~ #8  // large portrait
+	// Workaround to fix Sebastian creature file installation issue with classic games if TobEx is not installed and there are more and 256 kits installed (I know, pretty rare case, but who knows...)
+	PATCH_IF kits_lim_256 BEGIN
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 0x4000 + ~%FHLPLAY%~ // the internal name of the kit, surrounded by %
+	END ELSE BEGIN
+		WRITE_SHORT 0x244 (playwright_kit_id >> 16) & 0xffff
+		WRITE_SHORT 0x246 playwright_kit_id & 0xffff 
+	END
 	SAY INITIAL_MEETING   ~~
 	SAY MORALE            @84  // ~There's nothing cowardly about self-preservation!~ [FHLSS1]
 	SAY HAPPY             @85  // ~Oh, I knew I'd have good times with you.~ [FHLSS2]
@@ -297,31 +308,28 @@ WRITE_BYTE 0x247 0x40
 	SAY SPELL_DISRUPTED   @126 // ~I didn't want to cast that one anyway.~ [FHLSS44]
 	SAY SET_A_TRAP        @113 // ~I'm sure you'd do it better.~ [FHLSS31]
 	SAY BIO               @127 // ~It is fair to say that whenever you question SEBASTIAN about himself he is maddeningly elusive. He is a playwright by trade - or so he says, though he is secretive about his work and claims that a great deal of what he writes would go over your head. He has a keen sense of frivolity and seems to take little in life with any seriousness. Nevertheless, on occasion it appears that there is something else going on with him, and it would be unwise to underestimate his intelligence.~
-	WRITE_ASCII 0x248 ~FHLSEB~ #8  // override
-	WRITE_ASCII 0x2cc ~FHLSEB~ #8  // dialogue
-	WRITE_ASCII 0x280 ~FHLSEB~ #32 // DV
-	WRITE_ASCII 0x34  ~FHSEBS~ #8  // small portrait
-	WRITE_ASCII 0x3c  ~FHSEBM~ #8  // big portrait
-	ADD_CRE_ITEM ~STAF01~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON1~
+	WRITE_ASCII SCRIPT_OVERRIDE ~FHLSEB~ #8  // override
+	WRITE_ASCII DIALOG          ~FHLSEB~ #8  // dialogue
+	WRITE_ASCII DEATHVAR        ~FHLSEB~ #32
+	ADD_CRE_ITEM ~STAF01~  #0 #0 #0 ~IDENTIFIED~ ~WEAPON1~
 	ADD_CRE_ITEM ~FHLBOOK~ #0 #0 #0 ~IDENTIFIED&UNDROPPABLE~ ~INV1~
-	ADD_CRE_ITEM ~POTN52~ #3 #0 #0 ~IDENTIFIED~ ~INV2~
+	ADD_CRE_ITEM ~POTN52~  #3 #0 #0 ~IDENTIFIED~ ~INV2~
 BUT_ONLY
 
-SCRIPT_OVERRIDE 0x248
-SCRIPT_CLASS 0x250
-SCRIPT_RACE 0x258
-SCRIPT_GENERAL 0x260
-SCRIPT_DEFAULT 0x268
-DEATHVAR 0x280
-DIALOG 0x2cc
+COPY ~%MOD_FOLDER%/cre/fhlcat.cre~ ~override~
+	SAY NAME1 @82
+	SAY NAME2 @82
 
 // Andrei
-COPY ~luxleysoa/cre/fhland07.cre~ ~override~
-     ~luxleysoa/cre/fhland09.cre~ ~override~
-     ~luxleysoa/cre/fhland11.cre~ ~override~
-     ~luxleysoa/cre/fhland13.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhland07.cre~ ~override~
+     ~%MOD_FOLDER%/cre/fhland09.cre~ ~override~
+     ~%MOD_FOLDER%/cre/fhland11.cre~ ~override~
+     ~%MOD_FOLDER%/cre/fhland13.cre~ ~override~
 	SAY NAME1 @130
 	SAY NAME2 @130
+	WRITE_ASCII 0x34 ~FHANDRES~ #8 // small portrait
+	WRITE_ASCII 0x3c ~FHANDREM~ #8 // large portrait
 	SAY MORALE            @131 // ~I don't want-- I should go back!~ [FHLASS1]
 	SAY HAPPY             @132 // ~Xavier would be proud of what we're doing.~ [FHLASS2]
 	SAY UNHAPPY_ANNOYED   @133 // ~What are you doing?~ [FHLASS3]
@@ -343,7 +351,7 @@ COPY ~luxleysoa/cre/fhland07.cre~ ~override~
 	SAY AREA_DUNGEON      @149 // ~Don't worry, I'm watching your back.~ [FHLASS19]
 	SAY AREA_DAY          @150 // ~The sunshine always looks so bright at home.~ [FHLASS20]
 	SAY AREA_NIGHT        @151 // ~Are we going to sleep anytime soon?~ [FHLASS21]
-SAY SELECT_COMMON1    @152 // ~~ [FHLASS22]
+	SAY SELECT_COMMON1    @152 // ~Yes?~ [FHLASS22]
 	SAY SELECT_COMMON2    @153 // ~Hmm?~ [FHLASS23]
 	SAY SELECT_COMMON3    @154 // ~What is it?~ [FHLASS24]
 	SAY SELECT_COMMON4    @155 // ~Do you need anything?~ [FHLASS25]
@@ -367,128 +375,132 @@ SAY SELECT_COMMON1    @152 // ~~ [FHLASS22]
 	SAY SPELL_DISRUPTED   @172 // ~Ah, dammit!~ [FHLASS42]
 	SAY SET_A_TRAP        ~~
 	SAY BIO               @173 // ~ANDREI smiles when you ask him about himself. Though he is willing to talk about his relatives and is forthright about his beliefs, he is politely evasive on some subjects. He is skilled in hand-to-hand combat, a skill he developed at a young age, and was trained by an older member of his family. Despite his combat expertise, Andrei has only just left the family estate and seems a little naive about certain aspects of everyday life that you, perhaps, take for granted. Nevertheless, he comes across as quietly confident and it is rare to see him stray from a path he has chosen.~
+	WRITE_ASCII SCRIPT_OVERRIDE ~FHLAND~ #8
+	WRITE_ASCII DIALOG          ~FHLAND~ #8
+	WRITE_ASCII DEATHVAR        ~FHLAND~ #32
 	ADD_CRE_ITEM ~AMUL14~ #0 #0 #0 ~IDENTIFIED~ ~AMULET~
 	ADD_CRE_ITEM ~POTN52~ #2 #0 #0 ~IDENTIFIED~ ~INV1~
-WRITE_ASCII 0x248 ~FHLAND~ #8 // override
-WRITE_ASCII 0x2cc ~FHLAND~ #8 // dialogue
-WRITE_ASCII 0x280 ~FHLAND~ #32 //DV
-WRITE_ASCII 0x34 ~FHANDRES~ #8 //small portrait
-WRITE_ASCII 0x3c ~FHANDREM~ #8 //big portrait
 
-SAY SELECT_COMMON1 ~~
-SAY SELECT_COMMON1 @114
-SAY SELECT_COMMON1 ~Yes?~ [FHLASS22]
-
-COPY ~luxleysoa/cre/fhlbear.cre~ ~override~
+COPY ~%MOD_FOLDER%/cre/fhlbear.cre~ ~override~
 	SAY NAME1 @130
 	SAY NAME2 @130
 
-COPY ~luxleysoa/cre/fhlcat.cre~ ~override~
-	SAY NAME1 @82
-	SAY NAME2 @82
-
-//Copying non-joinable characters to game override
-
 // Alexandra
-COPY ~luxleysoa/cre/fhlal.cre~ ~override~
+// ---------
+COPY ~%MOD_FOLDER%/cre/fhlal.cre~ ~override~
 	SAY NAME1 @181
 	SAY NAME2 @181
 	ADD_CRE_ITEM ~HELMNOAN~ #0 #0 #0 ~NONE~ ~HELMET~
-	ADD_CRE_ITEM ~CLCK13~ #0 #0 #0 ~NONE~ ~ARMOR~
-	ADD_CRE_ITEM ~BRAC02~ #0 #0 #0 ~NONE~ ~GLOVES~
-	ADD_CRE_ITEM ~POTN52~ #4 #0 #0 ~NONE~ ~INV1~
-	ADD_CRE_ITEM ~WAND10~ #0 #0 #0 ~NONE~ ~INV2~
-	ADD_CRE_ITEM ~SCRL71~ #0 #0 #0 ~NONE~ ~INV5~
+	ADD_CRE_ITEM ~CLCK13~   #0 #0 #0 ~NONE~ ~ARMOR~
+	ADD_CRE_ITEM ~BRAC02~   #0 #0 #0 ~NONE~ ~GLOVES~
+	ADD_CRE_ITEM ~POTN52~   #4 #0 #0 ~NONE~ ~INV1~
+	ADD_CRE_ITEM ~WAND10~   #0 #0 #0 ~NONE~ ~INV2~
+	ADD_CRE_ITEM ~SCRL71~   #0 #0 #0 ~NONE~ ~INV5~
 	ADD_CRE_ITEM ~RNDTRE04~ #0 #0 #0 ~NONE~ ~INV6~
 	ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~NONE~ ~INV7~
 
 // Alyssia
-COPY ~luxleysoa/cre/fhlali.cre~ ~override~
+// -------
+COPY ~%MOD_FOLDER%/cre/fhlali.cre~ ~override~
 	SAY NAME1 @182
 	SAY NAME2 @182
 
 // Archie
-COPY ~luxleysoa/cre/fhlarch.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlarch.cre~ ~override~
 	SAY NAME1 @183
 	SAY NAME2 @183
 
 // Robin
-COPY ~luxleysoa/cre/fhlboy.cre~ ~override~
+// -----
+COPY ~%MOD_FOLDER%/cre/fhlboy.cre~ ~override~
 	SAY NAME1 @184
 	SAY NAME2 @184
 
 // Thomas
-COPY ~luxleysoa/cre/fhlboy2.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlboy2.cre~ ~override~
 	SAY NAME1 @185
 	SAY NAME2 @185
 
 // Boy
-COPY ~luxleysoa/cre/fhlboy3.cre~ ~override~
+// ---
+COPY ~%MOD_FOLDER%/cre/fhlboy3.cre~ ~override~
 	SAY NAME1 @186
 	SAY NAME2 @186
 
 // Brid
-COPY ~luxleysoa/cre/fhlbrid.cre~ ~override~
+// ----
+COPY ~%MOD_FOLDER%/cre/fhlbrid.cre~ ~override~
 	SAY NAME1 @187
 	SAY NAME2 @187
-//	ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 	ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 
 // Edward
-COPY ~luxleysoa/cre/fhlchick.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlchick.cre~ ~override~
 	SAY NAME1 @188
 	SAY NAME2 @188
 
 // Mugger
-COPY ~luxleysoa/cre/fhlcrim1.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlcrim1.cre~ ~override~
 	SAY NAME1 @189
 	SAY NAME2 @189
 
 // Durydil
-COPY ~luxleysoa/cre/fhldu.cre~ ~override~
+// -------
+COPY ~%MOD_FOLDER%/cre/fhldu.cre~ ~override~
 	SAY NAME1 @190
 	SAY NAME2 @190
 
 // Commoner
-COPY ~luxleysoa/cre/fhlfred.cre~ ~override~
+// --------
+COPY ~%MOD_FOLDER%/cre/fhlfred.cre~ ~override~
 	SAY NAME1 @191
 	SAY NAME2 @191
 
 // Genevieve
-COPY ~luxleysoa/cre/fhlgen.cre~ ~override~
+// ---------
+COPY ~%MOD_FOLDER%/cre/fhlgen.cre~ ~override~
 	SAY NAME1 @192
 	SAY NAME2 @192
 	SAY SELECT_COMMON1 @193 // ~Hello, there.~ [FHLG4]
 
 // Clara
-COPY ~luxleysoa/cre/fhlgirl.cre~ ~override~
+// -----
+COPY ~%MOD_FOLDER%/cre/fhlgirl.cre~ ~override~
 	SAY NAME1 @194
 	SAY NAME2 @194
 
 // Lianne
-COPY ~luxleysoa/cre/fhlgirl2.cre~ ~override~
+// ---------
+COPY ~%MOD_FOLDER%/cre/fhlgirl2.cre~ ~override~
 	SAY NAME1 @195
 	SAY NAME2 @19
 
 // Josefyne
-COPY ~luxleysoa/cre/fhljos.cre~ ~override~
+// ---------
+COPY ~%MOD_FOLDER%/cre/fhljos.cre~ ~override~
 	SAY NAME1 @196
 	SAY NAME2 @196
-	ADD_CRE_ITEM ~STAF18~ #0 #0 #0 ~NONE~ ~WEAPON1~
+	ADD_CRE_ITEM ~STAF18~   #0 #0 #0 ~NONE~ ~WEAPON1~
 	ADD_CRE_ITEM ~HELMNOAN~ #0 #0 #0 ~NONE~ ~HELMET~
-	ADD_CRE_ITEM ~POTN52~ #2 #0 #0 ~IDENTIFIED~ ~QITEM1~
-	ADD_CRE_ITEM ~SCRL71~ #0 #0 #0 ~IDENTIFIED~ ~INV5~
+	ADD_CRE_ITEM ~POTN52~   #2 #0 #0 ~IDENTIFIED~ ~QITEM1~
+	ADD_CRE_ITEM ~SCRL71~   #0 #0 #0 ~IDENTIFIED~ ~INV5~
 	ADD_CRE_ITEM ~RNDTRE04~ #0 #0 #0 ~NONE~ ~INV6~
 	ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~NONE~ ~INV7~
-	ADD_CRE_ITEM ~MINHP1~ #0 #0 #0 ~NONE~ ~AMULET~
+	ADD_CRE_ITEM ~MINHP1~   #0 #0 #0 ~NONE~ ~AMULET~
 
 // Kavyn
-COPY ~luxleysoa/cre/fhlkav.cre~ ~override~
+// -----
+COPY ~%MOD_FOLDER%/cre/fhlkav.cre~ ~override~
 	SAY NAME1 @197
 	SAY NAME2 @19
 
 // Lealia
-COPY ~luxleysoa/cre/fhlleal.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlleal.cre~ ~override~
 	SAY NAME1 @198
 	SAY NAME2 @198
 	SAY SELECT_COMMON1 @199 // ~Hello, there. Is there anything you need?~ [FHLLEA6]
@@ -498,21 +510,23 @@ COPY ~luxleysoa/cre/fhlleal.cre~ ~override~
 	ADD_CRE_ITEM ~SHLD04~ #0 #0 #0 ~NONE~ ~SHIELD~
 
 // Lucas
-COPY ~luxleysoa/cre/fhlluc.cre~ ~override~
+// -----
+COPY ~%MOD_FOLDER%/cre/fhlluc.cre~ ~override~
 	SAY NAME1 @200
 	SAY NAME2 @200
 	SAY SELECT_COMMON1 @201 // ~What do you think you're looking at?~ [FHLLUC3]
-	ADD_CRE_ITEM ~POTN52~ #3 #0 #0 ~NONE~ ~INV1~
-	ADD_CRE_ITEM ~POTN11~ #0 #0 #0 ~NONE~ ~INV2~
+	ADD_CRE_ITEM ~POTN52~   #3 #0 #0 ~NONE~ ~INV1~
+	ADD_CRE_ITEM ~POTN11~   #0 #0 #0 ~NONE~ ~INV2~
 	ADD_CRE_ITEM ~RNDTRE02~ #0 #0 #0 ~NONE~ ~INV6~
 
 // Lyel
-COPY ~luxleysoa/cre/fhllyel.cre~ ~override~
+// ----
+COPY ~%MOD_FOLDER%/cre/fhllyel.cre~ ~override~
 	SAY NAME1 @202
 	SAY NAME2 @202
 	ADD_CRE_ITEM ~CHAN05~ #0 #0 #0 ~NONE~ ~ARMOR~
 
-COPY ~luxleysoa/cre/fhllyel2.cre~ ~override~
+COPY ~%MOD_FOLDER%/cre/fhllyel2.cre~ ~override~
 	SAY NAME1 @202
 	SAY NAME2 @202
 	ADD_CRE_ITEM ~CHAN05~ #0 #0 #0 ~NONE~ ~ARMOR~
@@ -520,89 +534,97 @@ COPY ~luxleysoa/cre/fhllyel2.cre~ ~override~
 	ADD_CRE_ITEM ~SW1H14~ #0 #0 #0 ~NONE~ ~WEAPON1~
 
 // Alistair
-COPY ~luxleysoa/cre/fhlm1.cre~ ~override~
+// --------
+COPY ~%MOD_FOLDER%/cre/fhlm1.cre~ ~override~
 	SAY NAME1 @203
 	SAY NAME2 @203
-//	ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 	ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 
 // Lantro
-COPY ~luxleysoa/cre/fhlm2.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlm2.cre~ ~override~
 	SAY NAME1 @204
 	SAY NAME2 @204
-//	ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 	ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 
 // Jonathen
-COPY ~luxleysoa/cre/fhlm3.cre~ ~override~
+// --------
+COPY ~%MOD_FOLDER%/cre/fhlm3.cre~ ~override~
 	SAY NAME1 @205
 	SAY NAME2 @205
-//	ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 	ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 
 // Katrin
-COPY ~luxleysoa/cre/fhlm4.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlm4.cre~ ~override~
 	SAY NAME1 @205
 	SAY NAME2 @206
-//	ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 	ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 
 // Nicolai
-COPY ~luxleysoa/cre/fhlm5.cre~ ~override~
+// -------
+COPY ~%MOD_FOLDER%/cre/fhlm5.cre~ ~override~
 	SAY NAME1 @207
 	SAY NAME2 @207
-//	ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 	ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 
 // Farris
-COPY ~luxleysoa/cre/fhlm6.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlm6.cre~ ~override~
 	SAY NAME1 @208
 	SAY NAME2 @208
-//	ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 	ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 
 // Tiger
-COPY ~luxleysoa/cre/fhlmie1.cre~ ~override~
+// -----
+COPY ~%MOD_FOLDER%/cre/fhlmie1.cre~ ~override~
 	SAY NAME1 @209
 	SAY NAME2 @209
 
 // Mietta
-COPY ~luxleysoa/cre/fhlmiet.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlmiet.cre~ ~override~
 	SAY NAME1 @55
 	SAY NAME2 @55
 
 // Miles
-COPY ~luxleysoa/cre/fhlmil.cre~ ~override~
+// -----
+COPY ~%MOD_FOLDER%/cre/fhlmil.cre~ ~override~
 	SAY NAME1 @210
 	SAY NAME2 @210
 
 // Katya
-COPY ~luxleysoa/cre/fhlmw.cre~ ~override~
+// -----
+COPY ~%MOD_FOLDER%/cre/fhlmw.cre~ ~override~
 	SAY NAME1 @211
 	SAY NAME2 @211
 
 // Nari
-COPY ~luxleysoa/cre/fhlngrl.cre~ ~override~
+// ----
+COPY ~%MOD_FOLDER%/cre/fhlngrl.cre~ ~override~
 	SAY NAME1 @212
 	SAY NAME2 @212
 
 // Quennell
-COPY ~luxleysoa/cre/fhlquen.cre~ ~override~
+// --------
+COPY ~%MOD_FOLDER%/cre/fhlquen.cre~ ~override~
 	SAY NAME1 @213
 	SAY NAME2 @213
 	ADD_CRE_ITEM ~FHLCHR~ #0 #0 #0 ~NONE~ ~INV6~
 
 // Rosanna
-COPY ~luxleysoa/cre/fhlros.cre~ ~override~
+// -------
+COPY ~%MOD_FOLDER%/cre/fhlros.cre~ ~override~
 	SAY NAME1 @214
 	SAY NAME2 @214
 	SAY SELECT_COMMON1 @215 // ~Hello again.~ [FHLROS5]
 	ADD_CRE_ITEM ~RNDTRE02~ #0 #0 #0 ~NONE~ ~INV6~
-	ADD_CRE_ITEM ~POTN52~ #3 #0 #0 ~NONE~ ~INV1~
-	ADD_CRE_ITEM ~POTN11~ #0 #0 #0 ~NONE~ ~INV2~
+	ADD_CRE_ITEM ~POTN52~   #3 #0 #0 ~NONE~ ~INV1~
+	ADD_CRE_ITEM ~POTN11~   #0 #0 #0 ~NONE~ ~INV2~
 
 // Samuel
-COPY ~luxleysoa/cre/fhlsam.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlsam.cre~ ~override~
 	SAY NAME1 @216
 	SAY NAME2 @216
 	SAY SELECT_COMMON1 @217 // ~Hello again.~ [FHLSAM2]
@@ -611,67 +633,75 @@ COPY ~luxleysoa/cre/fhlsam.cre~ ~override~
 	ADD_CRE_ITEM ~HAMM03~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON1~
 
 // Simeon
-COPY ~luxleysoa/cre/fhlsim.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlsim.cre~ ~override~
 	SAY NAME1 @218
 	SAY NAME2 @218
-	ADD_CRE_ITEM ~MFIST5~ #0 #0 #0 ~NONE~ ~WEAPON1~
-	ADD_CRE_ITEM ~POTN52~ #3 #0 #0 ~NONE~ ~INV1~
-	ADD_CRE_ITEM ~POTN11~ #0 #0 #0 ~NONE~ ~INV2~
+	ADD_CRE_ITEM ~MFIST5~   #0 #0 #0 ~NONE~ ~WEAPON1~
+	ADD_CRE_ITEM ~POTN52~   #3 #0 #0 ~NONE~ ~INV1~
+	ADD_CRE_ITEM ~POTN11~   #0 #0 #0 ~NONE~ ~INV2~
 	ADD_CRE_ITEM ~RNDTRE02~ #0 #0 #0 ~NONE~ ~INV6~
 
 // Skeleton Warrior
-COPY ~luxleysoa/cre/fhlskl1.cre~ ~override~
-     ~luxleysoa/cre/fhlskl2.cre~ ~override~
+// ----------------
+COPY ~%MOD_FOLDER%/cre/fhlskl1.cre~ ~override~
+     ~%MOD_FOLDER%/cre/fhlskl2.cre~ ~override~
 	SAY NAME1 @219
 	SAY NAME2 @219
 
 // Turi
-COPY ~luxleysoa/cre/fhlturi.cre~ ~override~
+// ----
+COPY ~%MOD_FOLDER%/cre/fhlturi.cre~ ~override~
 	SAY NAME1 @220
 	SAY NAME2 @220
-//	ADD_CRE_ITEM ~RNTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 	ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 
 // Katryna
-COPY ~luxleysoa/cre/fhlw1.cre~ ~override~
+// -------
+COPY ~%MOD_FOLDER%/cre/fhlw1.cre~ ~override~
 	SAY NAME1 @221
 	SAY NAME2 @221
-	ADD_CRE_ITEM ~LEAT02~ #0 #0 #0 ~NONE~ ~ARMOR~
+	ADD_CRE_ITEM ~LEAT02~   #0 #0 #0 ~NONE~ ~ARMOR~
 	ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 
 // Siri
-COPY ~luxleysoa/cre/fhlw2.cre~ ~override~
+// ----
+COPY ~%MOD_FOLDER%/cre/fhlw2.cre~ ~override~
 	SAY NAME1 @222
 	SAY NAME2 @222
-	ADD_CRE_ITEM ~CHAN01~ #0 #0 #0 ~NONE~ ~ARMOR~
+	ADD_CRE_ITEM ~CHAN01~   #0 #0 #0 ~NONE~ ~ARMOR~
 	ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 
 // Danica
-COPY ~luxleysoa/cre/fhlw3.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlw3.cre~ ~override~
 	SAY NAME1 @223
 	SAY NAME2 @223
 	ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 
 // Erinne
-COPY ~luxleysoa/cre/fhlw4.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlw4.cre~ ~override~
 	SAY NAME1 @224
 	SAY NAME2 @224
 	ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 
 // Serah
-COPY ~luxleysoa/cre/fhlw5.cre~ ~override~
+// -----
+COPY ~%MOD_FOLDER%/cre/fhlw5.cre~ ~override~
 	SAY NAME1 @225
 	SAY NAME2 @225
 	ADD_CRE_ITEM ~RNDTRE01~ #0 #0 #0 ~NONE~ ~QITEM1~
 
 // Xavier
-COPY ~luxleysoa/cre/fhlxav.cre~ ~override~
+// ------
+COPY ~%MOD_FOLDER%/cre/fhlxav.cre~ ~override~
 	SAY NAME1 @226
 	SAY NAME2 @226
 	ADD_CRE_ITEM ~HELMNOAN~ #0 #0 #0 ~NONE~ ~HELMET~
-	ADD_CRE_ITEM ~CLCK10~ #0 #0 #0 ~NONE~ ~ARMOR~
-	ADD_CRE_ITEM ~RING06~ #0 #0 #0 ~NONE~ ~LRING~
-	ADD_CRE_ITEM ~POTN52~ #4 #0 #0 ~IDENTIFIED~ ~QITEM1~
+	ADD_CRE_ITEM ~CLCK10~   #0 #0 #0 ~NONE~ ~ARMOR~
+	ADD_CRE_ITEM ~RING06~   #0 #0 #0 ~NONE~ ~LRING~
+	ADD_CRE_ITEM ~POTN52~   #4 #0 #0 ~IDENTIFIED~ ~QITEM1~
 	ADD_CRE_ITEM ~RNDTRE04~ #0 #0 #0 ~NONE~ ~INV6~
 	ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~NONE~ ~INV7~
 

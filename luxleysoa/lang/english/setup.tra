@@ -9,6 +9,10 @@
 
 @21   = ~Installing audio files...~
 
+
+/* ------- *
+ *  Areas  *
+ * ------- */
 @31   = ~Installing area files...~
 @32   = ~The Main House~
 @33   = ~Training Ground~
@@ -17,6 +21,10 @@
 
 @41   = ~Compiling dialogues and scripts...~
 
+
+/* ------- *
+ *  Items  *
+ * ------- */
 @51   = ~Installing custom items...~
 @52   = ~Sebastian's Book~
 @53   = ~This book contains Sebastian's notes for his plays and anything else he cares to write while on the road. He guards it jealously and will not let it out of his possession.~
@@ -51,6 +59,10 @@ Not usable by:
 @61   = ~Aegelfred's Chronicles~
 @62   = ~Genevieve wishes to have this book in order to help her investigate the Luxley family curse.~
 
+
+/* ---------------- *
+ *  Playwright Kit  *
+ * ---------------- */
 @71   = ~Installing Playwright Kit...~
 @72   = ~playwright~
 @73   = ~Playwright~
@@ -65,6 +77,10 @@ Disadvantages:
 - -20% pickpocketing penalty
 - -2 damage penalty~
 
+
+/* ----------- *
+ *  Creatures  *
+ * ----------- */
 @81   = ~Installing creature files...~
 @82   = ~Sebastian~
 @84   = ~There's nothing cowardly about self-preservation!~ [FHLSS1]
@@ -134,7 +150,7 @@ Disadvantages:
 @149  = ~Don't worry, I'm watching your back.~ [FHLASS19]
 @150  = ~The sunshine always looks so bright at home.~ [FHLASS20]
 @151  = ~Are we going to sleep anytime soon?~ [FHLASS21]
-@152  = 
+@152  = ~Yes?~ [FHLASS22]
 @153  = ~Hmm?~ [FHLASS23]
 @154  = ~What is it?~ [FHLASS24]
 @155  = ~Do you need anything?~ [FHLASS25]
@@ -156,8 +172,8 @@ Disadvantages:
 @171  = ~Maybe I should get a hood.~ [FHLASS41]
 @172  = ~Ah, dammit!~ [FHLASS42]
 @173  = ~ANDREI smiles when you ask him about himself. Though he is willing to talk about his relatives and is forthright about his beliefs, he is politely evasive on some subjects. He is skilled in hand-to-hand combat, a skill he developed at a young age, and was trained by an older member of his family. Despite his combat expertise, Andrei has only just left the family estate and seems a little naive about certain aspects of everyday life that you, perhaps, take for granted. Nevertheless, he comes across as quietly confident and it is rare to see him stray from a path he has chosen.~
-@114  = ~Yes?~ [FHLASS22]
 
+// Non joinable NPCs
 @181  = ~Alexandra~
 @182  = ~Alyssia~
 @183  = ~Archie~
@@ -214,9 +230,12 @@ Disadvantages:
 @172  = ~I'm sure you'd do it better.~ [FHNSS31]
 
 
+/* --------------------- *
+ *  Optional components  *
+ * --------------------- */
 @300  = ~Portraits for non-joinable NPCs~
 
-@400  = ~Nathaniel Content~
+@400  = ~Nathaniel Crossmod content~
 @401  = ~You do not appear to have Nathaniel installed.~
 
 

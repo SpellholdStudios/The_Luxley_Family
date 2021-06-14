@@ -16,20 +16,29 @@ ALWAYS
 		 *    Determines which game is installed.    *
 		 * ----------------------------------------- */
 
-		OUTER_SET is_tob   = (GAME_IS ~bgt tob tutu tutu_totsc~) ? 1 : 0  // based on vanilla ToB engine
-		OUTER_SET is_bg2ee = (GAME_IS "bg2ee") ? 1 : 0                    // b2gee
-		OUTER_SET is_eet   = (GAME_IS "eet") ? 1 : 0                      // eet
-		OUTER_SET is_ee    = (GAME_IS ~bg2ee eet~) ? 1 : 0                // EE game
+		OUTER_SET is_tob   = (GAME_IS ~bgt tob tutu tutu_totsc~) ? 1 : 0     // based on vanilla ToB engine
+		OUTER_SET is_bg2ee = (GAME_IS "bg2ee") ? 1 : 0                       // b2gee
+		OUTER_SET is_eet   = (GAME_IS "eet") ? 1 : 0                         // eet
+		OUTER_SET is_ee    = (GAME_IS ~bg2ee eet~) ? 1 : 0                   // EE game
+		OUTER_SET is_tobex = (FILE_EXISTS ~tobex_ini/tobexcore.ini~) ? 1 : 0 // ToBEx is installed
 
 
 		/* ------------------------------------------------------- *
 		 *    Sets default variables if they're not set already    *
 		 * ------------------------------------------------------- */
 
+		// Variable used to properly install specific EE games ressources
 		ACTION_IF (is_ee) BEGIN
 			OUTER_SPRINT ee_file "_ee"
 		END ELSE BEGIN
 			OUTER_SPRINT ee_file ""
+		END
+
+		// Variable used to properly install Sebastian kit
+		ACTION_IF (is_ee OR is_tobex) BEGIN
+			OUTER_SET kits_lim_256  = 0
+		END ELSE BEGIN
+			OUTER_SET kits_lim_256  = 1
 		END
 
 
