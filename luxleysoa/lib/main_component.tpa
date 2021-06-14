@@ -1,6 +1,6 @@
-/* ============================================== *
- *         MAIN   COMPONENT  INSTALLATION         *
- * ============================================== */
+/* ===================================================================== *
+ *         M A I N   C O M P O N E N T   I N S T A L L A T I O N         *
+ * ===================================================================== */
 
 SILENT
 
@@ -177,7 +177,7 @@ APPEND ~mastarea.2da~ ~FH4800 value~
 
 PRINT @41 // ~Compiling dialogues and scripts...~
 
-COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dialogues~
+COMPILE ~%MOD_FOLDER%/dialogues~ EVALUATE_BUFFER
 COMPILE ~%MOD_FOLDER%/scripts~
 
 EXTEND_BOTTOM ~ar0319.bcs~  ~%MOD_FOLDER%/scriptsext/fhl0319.baf~
@@ -234,6 +234,18 @@ COPY ~%MOD_FOLDER%/items/fhlchr.itm~ ~override~
 	SAY NAME1 @61
 	SAY NAME2 @61
 	SAY DESC @62
+
+
+/* ---------------------- *
+ *  Journal entries (EE)  *
+ * ---------------------- */
+
+ADD_JOURNAL @6 @10 @20 @44    USING ~%MOD_FOLDER%/lang/%LANGUAGE%/fhlgen.tra~ 
+ADD_JOURNAL @54 @61           USING ~%MOD_FOLDER%/lang/%LANGUAGE%/fhllyel.tra~ 
+ADD_JOURNAL @99               USING ~%MOD_FOLDER%/lang/%LANGUAGE%/fhlquen.tra~ 
+ADD_JOURNAL @38               USING ~%MOD_FOLDER%/lang/%LANGUAGE%/fhlseb.tra~ 
+ADD_JOURNAL @21 @48 @234 @341 USING ~%MOD_FOLDER%/lang/%LANGUAGE%/fhlsebj.tra~ 
+
 
 
 /* ----------------------------- *
