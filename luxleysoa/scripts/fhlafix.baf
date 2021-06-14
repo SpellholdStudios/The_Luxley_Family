@@ -35,7 +35,7 @@ THEN
 		SetPlayerSound(Myself,@163,SELECT_ACTION6)
 		SetPlayerSound(Myself,@164,SELECT_ACTION7)
 		SetPlayerSound(Myself,@165,SELECT_RARE1)
-		SetPlayerSound(Myself,@166],SELECT_RARE2)
+		SetPlayerSound(Myself,@166,SELECT_RARE2)
 		SetPlayerSound(Myself,@167,CRITICAL_HIT)
 		SetPlayerSound(Myself,@168,CRITICAL_MISS)
 		SetPlayerSound(Myself,@169,TARGET_IMMUNE)

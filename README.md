@@ -341,7 +341,6 @@ The installer includes the following components. All optional components require
     - Provided alternative TIS and PVRZ files for EE games (used Tipun's function to find free PVRZ-files indexes on EE-games).
     - Removed useless audio decoding and tiz unpacking `AT_NOW` and `AT_UNINSTALL` batch processes.
     - `ADD_KIT` process: added missing lower kit strref and WeiDU `fl#add_kit_ee` function for EE games.
-- ...
 - "*Portraits for non-joinable NPCs*" optional component: Does not overwrite joinable NPCs portraits anymore.
 - *fhlseb.baf*: Fixed wrong Gavin romance active variable (set to *`B!GavRA`*, was *`B!GavinRomanceActive`*).
 - Moved extended scripts into new :file_folder: *scriptsext* to avoid compiling useless baf files.
@@ -349,7 +348,6 @@ The installer includes the following components. All optional components require
 - Sebastian and Andrei soundsets: harmonized string references and removed duplicated ones (due to typos).
 - Added a more robust workaround than <a href="https://www.gibberlings3.net/forums/topic/21964-add_kit-and-tobex/?do=findComment&comment=183270">BWP Fixpack cmorgan's ToBEx compatible ADD_KIT fix</a> to fix Sebastian creature file installation issue with classic games if TobEx is not installed and more than 256 kits are installed. I know, pretty rare case, but who knows... :wink:
 - Cleaned up old ids entries patch replaced with more recent BG2 Fixpack one.
-- ...
 - Updated *setup.tra* file for compatibility with `GW_UPDATE_ITM_DESCRIPTION_TO_EE` WeiDU function requirements which automatically removes items usability restrictions for EE games.
 - Proofread strrefs (Gwendolyne).
 - TRAified the mod. Feel free to provide me with translations. I will include them as soon as possible.

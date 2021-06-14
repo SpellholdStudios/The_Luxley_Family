@@ -3,7 +3,7 @@ BACKUP ~luxleysoa/backup~
 //AUTHOR ~feuille_sakaki@spellholdstudios.net~
 SUPPORT ~SHS Staff at http://www.shsforums.net/forum/324-luxley-family~
 
-VERSION ~v1.2~
+VERSION ~v2.0.0~
 
 README ~luxleysoa/readme/luxleysoa-readme-english.html~
 
@@ -75,6 +75,8 @@ ALWAYS
 
 END
 
+
+AUTO_TRA ~luxleysoa/lang/%s~
 
 // Languages
 LANGUAGE ~English~

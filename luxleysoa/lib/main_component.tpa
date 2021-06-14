@@ -492,10 +492,10 @@ COPY ~%MOD_FOLDER%/cre/fhlgirl.cre~ ~override~
 	SAY NAME2 @194
 
 // Lianne
-// ---------
+// ------
 COPY ~%MOD_FOLDER%/cre/fhlgirl2.cre~ ~override~
 	SAY NAME1 @195
-	SAY NAME2 @19
+	SAY NAME2 @195
 
 // Josefyne
 // ---------
@@ -514,7 +514,7 @@ COPY ~%MOD_FOLDER%/cre/fhljos.cre~ ~override~
 // -----
 COPY ~%MOD_FOLDER%/cre/fhlkav.cre~ ~override~
 	SAY NAME1 @197
-	SAY NAME2 @19
+	SAY NAME2 @197
 
 // Lealia
 // ------
