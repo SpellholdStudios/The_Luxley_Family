@@ -3,7 +3,13 @@
  * ======================= */
 
 @1    = ~Luxley Family Mod for BGII:SoA~
+@2    = ~You must have BG2, ToB, BGT, BG2:EE or EET installed to install the Luxley Family mod~
+@3    = ~You must have the Luxley Family installed.~
 
+
+/* ---------------- *
+ *  Main component  *
+ * ---------------- */
 @11   = ~Installing spells and graphics...~
 @12   = ~Dark Rage~
 
@@ -127,6 +133,7 @@ Disadvantages:
 @125  = ~Boo!~ [FHLSS43]
 @126  = ~I didn't want to cast that one anyway.~ [FHLSS44]
 @127  = ~It is fair to say that whenever you question SEBASTIAN about himself he is maddeningly elusive. He is a playwright by trade - or so he says, though he is secretive about his work and claims that a great deal of what he writes would go over your head. He has a keen sense of frivolity and seems to take little in life with any seriousness. Nevertheless, on occasion it appears that there is something else going on with him, and it would be unwise to underestimate his intelligence.~
+@128  = ~Whenever you question SEBASTIAN about himself he is maddeningly elusive. He is a playwright by trade - or so he says, though he is secretive about his writings and claims that a great deal of what he writes is too much for you to cope with. Since his part in the murder of the head of his family, he has become distinctly more melancholy, and it seems that some of his former frivolous spirit has gone.~
 
 @130  = ~Andrei~
 @131  = ~I don't want-- I should go back!~ [FHLASS1]
@@ -222,12 +229,7 @@ Disadvantages:
 @226  = ~Xavier~
 
 
-@231  = ~Adding dialogue files to the game...~
-//@162  = ~The audio and area files for the Luxley Family mod have been unpacked to your computer.~
-
-@168  = ~Whenever you question SEBASTIAN about himself he is maddeningly elusive. He is a playwright by trade - or so he says, though he is secretive about his writings and claims that a great deal of what he writes is too much for you to cope with. Since his part in the murder of the head of his family, he has become distinctly more melancholy, and it seems that some of his former frivolous spirit has gone.~
-@171  = ~It is fair to say that whenever you question SEBASTIAN about himself he is maddeningly elusive. He is a playwright by trade - or so he says, though he is secretive about his writings and claims that a great deal of what he writes would go over your head. He has a keen sense of frivolity and seems to take little in life with any seriousness. Nevertheless, on occasion it appears that there is something else going on with him, and it would be unwise to underestimate his intelligence.~
-@172  = ~I'm sure you'd do it better.~ [FHNSS31]
+@231  = ~Appending Sebastian and Andrei's dialogue files to the game...~
 
 
 /* --------------------- *

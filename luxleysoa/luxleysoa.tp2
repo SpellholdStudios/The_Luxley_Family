@@ -1,6 +1,7 @@
 BACKUP ~luxleysoa/backup~
 
-AUTHOR ~feuille_sakaki@spellholdstudios.net~
+//AUTHOR ~feuille_sakaki@spellholdstudios.net~
+SUPPORT ~SHS Staff at http://www.shsforums.net/forum/324-luxley-family~
 
 VERSION ~v1.2~
 
@@ -86,6 +87,8 @@ LANGUAGE ~English~
  * ====================================================== */
 
 BEGIN @1 // ~Luxley Family Mod for BGII:SoA~
+LABEL ~fhl_luxley_main~
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @2 // ~You must have BG2, ToB, BGT, BG2:EE or EET installed to install the Luxley Family mod.~
 
 INCLUDE ~%MOD_FOLDER%/lib/main_component.tpa~
 
@@ -96,6 +99,10 @@ INCLUDE ~%MOD_FOLDER%/lib/main_component.tpa~
  * ===================================================================================================================================== */
 
 BEGIN @300 // ~Portraits for non-joinable NPCs~
+LABEL ~fhl_luxley_portraits~
+//REQUIRE_COMPONENT ~luxleysoa.tp2~ ~0~ @25 // ~You must have the Jerry Zinger Show installed.~
+//REQUIRE_PREDICATE (MOD_IS_INSTALLED ~luxleysoa.tp2~ 0) @22
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~luxleysoa.tp2~ (ID_OF_LABEL ~luxleysoa.tp2~ ~fhl_luxley_main~) @3 // ~You must have the Luxley Family installed.~
 
 COPY ~%MOD_FOLDER%/portraits_others~ ~override~
 
@@ -106,7 +113,9 @@ COPY ~%MOD_FOLDER%/portraits_others~ ~override~
  * =================================================================================================================================== */
 
 BEGIN @400                             // ~Nathaniel Crossmod content~
-REQUIRE_FILE ~override/fhnat.dlg~ @401 // ~You do not appear to have Nathaniel installed.~
+LABEL ~fhl_luxley_nathaniel_crossmod_content~
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~luxleysoa.tp2~ (ID_OF_LABEL ~luxleysoa.tp2~ ~fhl_luxley_main~) @3   // ~You must have the Luxley Family installed.~
+REQUIRE_FILE ~override/fhnat.dlg~                                                                  @401 // ~You do not appear to have Nathaniel installed.~
 
 COMPILE ~%MOD_FOLDER%/crossmod/fhlnath.d~
 EXTEND_BOTTOM ~fhnat.bcs~ ~%MOD_FOLDER%/crossmod/fhlnath.baf~
