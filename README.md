@@ -30,7 +30,7 @@ Baldur's Gate Trilogy and EET<h3>
 
 :page_facing_up: [Read the mod's readme](https://spellholdstudios.github.io/readmes/luxleysoa-readme-english.html)
 
-:inbox_tray: [Download the mod at Spellhold Studios](http://www.shsforums.net/files/file/560-the-luxley-family/<br>
+:inbox_tray: [Download the mod at Spellhold Studios](http://www.shsforums.net/files/file/560-the-luxley-family/)<br>
 
 ## 
 
@@ -306,6 +306,7 @@ The installer includes the following components. All optional components require
 - <a href="http://notepad-plus-plus.org/">Notepad++</a>, by the Notepad++ team, Don Ho, and the spellcheck plug-in.
 - <a href="http://www.shsforums.net/files/file/1048-weidu-highlighter-for-notepad/">WeiDU Notepad++ Highlighters </a>, by Argent77.
 - <a href="https://www.filecroco.com/download-context/">ConTEXT Text Editor</a>, by Eden Kirin.
+- <a href="https://forums.beamdog.com/discussion/78364/infinity-auto-packager-automatically-generate-and-adds-mod-packages-to-release-when-you-publish-it">Infinity Auto Packager</a>, by AL|EN.
 
 ## 
 
@@ -323,7 +324,7 @@ The installer includes the following components. All optional components require
 
 ## <a name="versions" id="versions"></a>Version History
 
-##### Version 1.3 &nbsp;(June 14, 2021)
+##### Version 2.0.0 &nbsp;(June 14, 2021)
 
 - Added *luxleysoa.ini* metadata file (including dynamic install order syntax and global `LABELS`) to support AL|EN's "Project Infinity".
 - Renamed *Setup-LuxleySoa.tp2* -> *luxleysoa.tp2* to support AL|EN's "Project Infinity".
@@ -356,7 +357,7 @@ The installer includes the following components. All optional components require
 - Re-formated, updated, renamed readme file to *luxleysoa-readme-english.html*, then moved it into new :file_folder: "*readme*" folder.
 - Removed useless :file_folder: "*backup*" folder.
 - Lower cased files.
-- Included Linux and macOS versions in the same package (thanks AL|EN!.
+- Included Linux and macOS versions in the same package (thanks AL|EN's Infinity Auto Packager tool!).
 - Updated OggDec to v1.9.7 and added sox v14.4.1 for mac.
 - Added archive libiconv-1.9.2-1-src.7z with iconv licence info.
 - Updated WeiDU installer to v247.
