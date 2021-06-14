@@ -86,10 +86,25 @@ If you want to write your own NPC talking about or with Sebastian or Andrei, or 
 ## <a name="details" id="details"></a>Details
 
 <table cellpadding=0 cellspacing=0 style="margin-top: 1%; margin-left: 80px">
+	<tr style= "line-height: 170%;">
+		<th WIDTH=50>Portrait</th>
+		<th WIDTH=50>Str</th>
+		<th WIDTH=50>Con</th>
+		<th>Int</th>
+		<th>Wis</th>
+		<th>Cha</th>
+	</tr>
 	<tr>
-	<td style="font-size: 90%;text-align:right;border:none"><img width=500 src="readme/images/fhsebm.png.jpg" title="Menace sur le Royaume de Diamant Éternel"><br>Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</td>
-	<td width=20 style="border:none"></td>
-	<td style="border:none;text-align: justify;font-size: 110%;line-height: 150%;">
+	<td><img src="luxleysoa/readme/images/fhsebm.png.jpg" title="Sebastian"></td>
+	<td>10</td>
+	<td>12</td>
+	<td>15</td>
+	<td>16</td>
+	<td>15</td>
+	<td>17</td>
+	</tr>
+	<tr>
+	<td colspan="7" ></td>
 	<strong>Menace sur le royaume de Diamant Éternel</strong> is a French mod designed to provide more than a huge quest, without being a total conversion. A tiny part takes place in BG2 Shadows of Amn, but the main part is played in the Throne of Bhaal extension. fhandrem.png<br><br>
 	You liked Excalibur, did not you? But have you ever wondered why every woman character is treated as a pest? Guinevere adultery, Morgane the wicked... Why do Paladin Orders recrute only men?<br><br>
 	And what if those tales were nothing but a fable spread by men to hide the truth?<br><br>
@@ -98,7 +113,6 @@ If you want to write your own NPC talking about or with Sebastian or Andrei, or 
 	The kingdom derives its wealth from its minings and its power from the protection of the silver dragon Diamantor, worshipped by some as a demigod.</td>
 	</tr>
 </table><br>
-
 <div align="right"><a href="#top">Back to top</a></div>
 
 
