@@ -45,8 +45,9 @@ Sebastian and Andrei both have detailed talk tracks with the PC; they also bante
 
 Note that there is adult content in this mod, but all of it is voluntary on the part of the player - nothing that you feel uncomfortable with is forced on you. :wink:
 
-**Key features:**
+&nbsp;
 
+**Content:**
 - A custom Playwright kit for Sebastian, giving him an additional spell per level but also combat penalties.
 - A special ability for Andrei, giving him a damage bonus with a Thac0 penalty and wisdom drain.
 - A brand-new area, as well as a set edited from the original game areas, along with new non-joinable NPCs.
@@ -85,34 +86,63 @@ If you want to write your own NPC talking about or with Sebastian or Andrei, or 
 
 ## <a name="details" id="details"></a>Details
 
+#### PNJs characteristics
+
 <table cellpadding=0 cellspacing=0 style="margin-top: 1%; margin-left: 80px">
 	<tr style= "line-height: 170%;">
-		<th WIDTH=50>Portrait</th>
-		<th WIDTH=50>Str</th>
-		<th WIDTH=50>Con</th>
-		<th>Int</th>
-		<th>Wis</th>
-		<th>Cha</th>
+		<th>Portrait</th>
+		<th>Strength</th>
+		<th>Dexterity</th>
+		<th>Constitution</th>
+		<th>Intelligence</th>
+		<th>Wisdom</th>
+		<th>Charisma</th>
 	</tr>
 	<tr>
-	<td><img src="luxleysoa/readme/images/fhsebm.png.jpg" title="Sebastian"></td>
-	<td>10</td>
-	<td>12</td>
-	<td>15</td>
-	<td>16</td>
-	<td>15</td>
-	<td>17</td>
+		<td><img src="luxleysoa/readme/images/fhsebm.png" title="Sebastian"></td>
+		<td><div align="center">10</div></td>
+		<td><div align="center">12</div></td>
+		<td><div align="center">15</div></td>
+		<td><div align="center">16</div></td>
+		<td><div align="center">15</div></td>
+		<td><div align="center">17</div></td>
 	</tr>
 	<tr>
-	<td colspan="7" ></td>
-	<strong>Menace sur le royaume de Diamant Éternel</strong> is a French mod designed to provide more than a huge quest, without being a total conversion. A tiny part takes place in BG2 Shadows of Amn, but the main part is played in the Throne of Bhaal extension. fhandrem.png<br><br>
-	You liked Excalibur, did not you? But have you ever wondered why every woman character is treated as a pest? Guinevere adultery, Morgane the wicked... Why do Paladin Orders recrute only men?<br><br>
-	And what if those tales were nothing but a fable spread by men to hide the truth?<br><br>
-	This mod tries to restore the truth, at least <em>ITS TRUTH</em>...<br><br>
-	The adventure takes place in a parallel dimension, both 'near' and 'far away' from Faerûn, more precisely in the Kingdom of Eternal Diamond, ruled by a dynasty of paladin kings that a renegade paladin attempts to overthrow. To carry out her betrayal, she has made a pact with rather 'special evil forces'...<br><br>
-	The kingdom derives its wealth from its minings and its power from the protection of the silver dragon Diamantor, worshipped by some as a demigod.</td>
+		<td colspan="7">
+		<strong>Biography:</strong><br>
+		It is fair to say that whenever you question Sebastian about himself he is maddeningly elusive. He is a playwright by trade - or so he says, though he is secretive about his work and claims that a great deal of what he writes would go over your head. He has a keen sense of frivolity and seems to take little in life with any seriousness. Nevertheless, on occasion it appears that there is something else going on with him, and it would be unwise to underestimate his intelligence.</td>
 	</tr>
-</table><br>
+	<tr>
+		<td><img src="luxleysoa/readme/images/fhandrem.png" title="Andrei"></td>
+		<td><div align="center">15</div></td>
+		<td><div align="center">17</div></td>
+		<td><div align="center">16</div></td>
+		<td><div align="center">12</div></td>
+		<td><div align="center">9</div></td>
+		<td><div align="center">11</div></td>
+	</tr>
+		<td colspan="7">
+		<strong>Biography:</strong>
+		Andrei smiles when you ask him about himself. Though he is willing to talk about his relatives and is forthright about his beliefs, he is politely evasive on some subjects. He is skilled in hand-to-hand combat, a skill he developed at a young age, and was trained by an older member of his family. Despite his combat expertise, Andrei has only just left the family estate and seems a little naive about certain aspects of everyday life that you, perhaps, take for granted. Nevertheless, he comes across as quietly confident and it is rare to see him stray from a path he has chosen.</td>
+	</tr>
+</table>
+
+## 
+
+#### Player-initiated dialogues
+
+You have the opportunity to initiate dialogue with Sebastian and Andrei if you click the *Talk* icon and click on their portraits or avatars. This option is available once they have had their first talk while in the party. Their reactions will depend on your behaviour during both scripted and player-initiated talks.
+
+<ins>Notes on flirting with Andrei:</ins>
+
+You can choose the option "*flirt with*" irrespective of race or gender. If the number of flirts he has accepted gets high enough, he will start a dialogue with you commenting on your behaviour and you can decide whether to try to take things further or remain friends.
+
+<ins>Notes on flirting with Sebastian:</ins>
+
+You can choose "*flirt with*" irrespective of race or gender. If the number of flirts he has accepted gets high enough, your Bioware loved one will object. Under certain circumstances, you can choose to try to take your relationship with Sebastian further.
+
+With both, you can choose the option "*I'd like us to just be friends*" at any time, and "*flirt with*" will disappear from the response menu.
+
 <div align="right"><a href="#top">Back to top</a></div>
 
 
