@@ -1,6 +1,6 @@
 
-![Latest Release](https://img.shields.io/github/v/release/GwendolyneFreddy/The_Luxley_Family?include_prereleases&color=darkred)<a name="top" id="top"> </a>
-![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/GwendolyneFreddy/The_Luxley_Family?color=gold)
+![Latest Release](https://img.shields.io/github/v/release/SpellholdStudios/The_Luxley_Family?include_prereleases&color=darkred)<a name="top" id="top"> </a>
+![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/SpellholdStudios/The_Luxley_Family?color=gold)
 ![Platform](https://img.shields.io/static/v1?label=platform&message=windows%20%7C%20macOS%20%7C%20linux%20%7C%20Project%20Infinity&color=informational)
 ![Language](https://img.shields.io/static/v1?label=language&message=English&color=limegreen)
 
@@ -20,11 +20,11 @@ Baldur's Gate Trilogy and EET<h3>
 
 ## 
 
-[![Created Badge](https://badges.pufler.dev/created/GwendolyneFreddy/The_Luxley_Family?style=plastic)](https://badges.pufler.dev)
-![GitHub repo size](https://img.shields.io/github/repo-size/GwendolyneFreddy/The_Luxley_Family?style=plastic)
-[![Visits Badge](https://badges.pufler.dev/visits/GwendolyneFreddy/The_Luxley_Family?color=cyan&style=plastic)](https://badges.pufler.dev) 
+[![Created Badge](https://badges.pufler.dev/created/SpellholdStudios/The_Luxley_Family?style=plastic)](https://badges.pufler.dev)
+![GitHub repo size](https://img.shields.io/github/repo-size/SpellholdStudios/The_Luxley_Family?style=plastic)
+[![Visits Badge](https://badges.pufler.dev/visits/SpellholdStudios/The_Luxley_Family?color=cyan&style=plastic)](https://badges.pufler.dev) 
 ![Maintenance](https://img.shields.io/static/v1?label=maintained%3F&message=yes&color=greenlight&style=plastic)
-![GitHub contributors](https://img.shields.io/github/contributors/GwendolyneFreddy/The_Luxley_Family?color=blueviolet&style=plastic) [![Contributors Display](https://badges.pufler.dev/contributors/GwendolyneFreddy/The_Luxley_Family?size=30&padding=5&bots=true)](https://badges.pufler.dev)
+![GitHub contributors](https://img.shields.io/github/contributors/SpellholdStudios/The_Luxley_Family?color=blueviolet&style=plastic) [![Contributors Display](https://badges.pufler.dev/contributors/SpellholdStudios/The_Luxley_Family?size=30&padding=5&bots=true)](https://badges.pufler.dev)
 
 ## 
 
@@ -283,7 +283,6 @@ The installer includes the following components. All optional components require
 - K'aeloree for major moral support and the roof over our heads.
 - CamDawg for letting us &quot;borrow&quot; pieces of code from the Fixpack.
 - Our wonderful beta testers, both for helping to find bugs and dialogue inconsistencies, and their feedback and suggestions.
-- ...
 - AL|EN: Wrote process which automatically provides Windows, Linux and Mac versions in the same archive file.
 - On the technical angle, we'd like to thank Westley Weimer (creation of WeiDU), the bigg (maintaining and adding to WeiDU), igi (maintaining IESDP), Jason Compton & Jesse Myers (player-initiated dialogue technology), Avenger (DLTCEP), Simding0, Ghreyfain, Blue, Rastor and CamDawg (tutorials), and everyone at the Q&amp;A forums who helped out when we were having difficulties.
 
