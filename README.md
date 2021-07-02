@@ -68,6 +68,7 @@ Sebastian and Andrei both have detailed talk tracks with the PC; they also bante
 - Tree of Life dialogue with different options depending on the paths you have chosen.
 - String fixers (K) in the case of re-installations mixing up Andrei and Sebastian's name strings.
 - Custom items, some of which are more useful than others.
+<div align="right"><a href="#top">Back to top</a></div>
 
 <hr>
 
@@ -95,6 +96,8 @@ The Luxley Family mod is a WeiDU mod, and therefore should be compatible with al
 Here is the recommended installation order:
 - Please install The Luxley Family after TobEx, BG2 Fixpack, Nathaniel and EET.
 - Please install The Luxley Family before virtue, EET_End, and any final "biffing" routines.
+
+<div align="right"><a href="#top">Back to top</a></div>
 
 <hr>
 
@@ -127,9 +130,9 @@ Run **`setup-luxleysoa.exe`** in your game folder to reinstall, un-install or ot
 
 ## 
 
-#### macOS
+#### Mac OS
 
-The Luxley Family for macOS is distributed in the same compressed archive and includes a WeiDU installer.
+The Luxley Family for Mac OS is distributed in the same compressed archive and includes a WeiDU installer.
 
 First, extract the files from the archive into your game directory. On successful extraction, there should be a :file_folder: luxleysoa folder, setup-luxleysoa and setup-luxleysoa.command files in your game folder. To install, simply double-click **`setup-luxleysoa.command`** and follow the instructions on screen.
 
@@ -354,7 +357,7 @@ The installer includes the following components. All optional components require
 - Re-formated, updated, renamed readme file to *luxleysoa-readme-english.html*, then moved it into new :file_folder: "*readme*" folder.
 - Removed useless :file_folder: "*backup*" folder.
 - Lower cased files.
-- Included Linux and macOS versions in the same package (thanks AL|EN's Infinity Auto Packager tool!).
+- Included Linux and Mac OS versions in the same package (thanks AL|EN's Infinity Auto Packager tool!).
 - Updated OggDec to v1.9.7 and added sox v14.4.1 for mac.
 - Added archive libiconv-1.9.2-1-src.7z with iconv licence info.
 - Updated WeiDU installer to v247.
