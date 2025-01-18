@@ -1,3 +1,8 @@
+<hr>
+
+:warning: **The maintenance and support of this project has been moved to a [new repository](https://github.com/Spellhold-Studios/Luxley-Family).**
+
+<hr><br>
 
 ![Latest Release](https://img.shields.io/github/v/release/SpellholdStudios/The_Luxley_Family?include_prereleases&color=darkred)<a name="top" id="top"> </a>
 ![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/SpellholdStudios/The_Luxley_Family?color=gold)
